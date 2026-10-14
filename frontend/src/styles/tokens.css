@@ -1,0 +1,57 @@
+:root {
+  color-scheme: dark;
+  --bg: #080d1c;
+  --midnight: #0b1020;
+  --surface: #131b30;
+  --elevated: #1a2540;
+  --border: #303d58;
+  --gold: #e6b65d;
+  --gold-light: #f5c96f;
+  --indigo: #6366f1;
+  --blue: #318cff;
+  --cyan: #21c9f3;
+  --emerald: #22d3a2;
+  --magenta: #e94faf;
+  --warning: #f9c74f;
+  --critical: #ff5f78;
+  --text: #f8fafc;
+  --secondary: #b8c4d6;
+  --muted: #8494ae;
+  --on-gold: #17130b;
+  --line: color-mix(in srgb, var(--border) 65%, transparent);
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --accent: var(--gold);
+  --heading: 'Space Grotesk', sans-serif;
+  --body: 'Plus Jakarta Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f5f7fc;
+  --midnight: #eef1f8;
+  --surface: #ffffff;
+  --elevated: #e6ecf6;
+  --border: #bac7da;
+  --text: #111b30;
+  --secondary: #3d4d67;
+  --muted: #52627d;
+  --gold: #896018;
+  --gold-light: #e6b65d;
+  --cyan: #007d9e;
+  --emerald: #087c5f;
+  --blue: #216acc;
+  --indigo: #5651cf;
+  --magenta: #ab287f;
+}
+[data-role='patient'] {
+  --accent: var(--gold);
+}
+[data-role='hospital'] {
+  --accent: var(--cyan);
+}
+[data-role='insurance'] {
+  --accent: var(--emerald);
+}
+[data-role='government'] {
+  --accent: var(--indigo);
+}

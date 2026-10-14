@@ -1,86 +1,87 @@
-# HEFIN: Decentralized AI for Healthcare & Finance
-https://github.com/Hari6484/-HEFIN/blob/5154dde3962b7e47acf6e0d5b947d6c6e42bd756/images/LOGO-removebg-preview.png
+# HEFIN 3.0 — Task 02 cinematic frontend
 
-![HEFIN Banner]
+A working Angular prototype for **HEFIN CYBERCARE — SPECTRAL INTELLIGENCE**, enhanced in place with a cinematic landing page and a genuine procedural Three.js hospital. The original gold logo and both supplied reference images are preserved.
 
-## 🌍 Vision
+## Start locally
 
-In an era where **data privacy, security, and transparency** are paramount, decentralized AI applications — especially those powered by the **Internet Computer Protocol (ICP)** — are poised to transform sensitive sectors such as **healthcare** and **finance**.
+Use Node.js 24.19+ and npm 11. The lockfile pins the verified dependency tree.
 
-By leveraging blockchain’s inherent strengths — transparency, immutability, and enhanced security — HEFIN offers groundbreaking solutions to long-standing challenges in these critical fields.
+```powershell
+cd frontend
+npm ci
+npm start
+```
 
----
+Open http://localhost:4200. The development-only component showcase is at `/design-system`.
 
-## 🚑 Transforming Healthcare with Trust and Privacy
+```powershell
+npm run build
+npm run typecheck
+npm test
+```
 
-The healthcare industry faces immense responsibility managing sensitive patient data while striving for advancements in treatment and research. HEFIN leverages **Decentralized AI on ICP** to address these complexities:
+To inspect the production bundle, run `npm run preview` after building and open http://127.0.0.1:4201. With that server running, `npm run test:production` checks production routing and the hidden development showcase.
 
-- **Decentralized Medical Records**  
-  Patients own their health data. AI can analyze anonymized records stored on-chain to identify disease patterns, predict outbreaks, and enable personalized treatment — all while keeping data private and tamper-proof.
+Browser tests use an installed Microsoft Edge browser (`channel: 'msedge'`) on Windows. On a machine without Edge, install Playwright Chromium (`npx playwright install chromium`) and remove the channel setting from `playwright.config.ts`. Tests start their own development server if one is not already reachable. The mobile project emulates an iPhone-size viewport in Chromium; it does not test Safari.
 
-- **Accelerating Drug Discovery & Research**  
-  Securely contribute data and models without exposing IP. Collaborative, transparent, and efficient research environments accelerate new therapies.
+Production output: `frontend/dist/frontend/browser`. Serve it with an SPA fallback to `index.html` for deep links. Do not open `index.html` through `file://`. The `/design-system` route and footer link are disabled in production.
 
-- **Personalized Medicine with Data Sovereignty**  
-  Individuals retain full control over genomic, lifestyle, and health data. AI provides hyper-personalized plans without unauthorized use or commercialization.
+## Implemented
 
----
+- Angular 22.2, standalone components, lazy routes, strict TypeScript and strict Angular templates.
+- Original full HEFIN logo, cropped shield emblem, generated multi-resolution favicon, browser metadata.
+- Responsive public layout, twelve-part landing narrative, four-role portal selector and clearly labeled dashboard layout previews. Hero CTAs lead to the mission section and portal selector; process and roadmap controls change their explanatory panels.
+- Public pages: `/`, `/about`, `/solution`, `/how-it-works`, `/ai`, `/roadmap`, `/contact`; `/login`; four `/<role>/dashboard` routes; not-found recovery.
+- Interactive proposed workflow diagram and persistent dark/light theme toggle.
+- Twelve reusable foundation components, Lucide icons, Tailwind CSS, CDK focus-trapped dialog and selectively used Material progress bar in the development showcase.
+- Central CSS color, typography and animation tokens. All seven requested font families are self-hosted through Fontsource. Body copy uses Plus Jakarta Sans; headings use Space Grotesk; technical labels use JetBrains Mono. Other display families are available in the showcase for selective later use.
+- Interactive procedural SmartHospitalScene: two wings, glass atrium, medical cross, helipad, rooftop equipment, architectural lighting, holographic ECG panels, data nodes and ground platform. AIBrainScene and HEFINShieldScene remain explicitly static.
+- Keyboard skip link, focus-visible states, mobile menu, focus management on route changes and reduced-motion overrides.
 
-## 💰 Fortifying Finance with Transparency and Resilience
+## Scope and honest limitations
 
-Finance demands trust, security, and real-time fraud prevention. HEFIN applies Decentralized AI to:
+The scope is **Task 02**, not the full ten-day project. No Django, FastAPI, RAG, database, backend API, real login, contact submission or full dashboard has been implemented. There are no demo credentials yet. Portal selection opens public layout previews and never authenticates a user. The hospital is an original procedural 3D concept, not a precise reconstruction or live hospital integration. The AI brain and shield remain **static 2D images**. No real partnerships, claim decisions, government connections or financial transfers are represented.
 
-- **Enhanced Fraud Detection**  
-  Monitor blockchain transactions in real-time, detecting anomalies like fraud or money laundering.
+No clinical or financial data is stored. The only browser persistence is the theme preference. The contact route explicitly explains that submission is unavailable. Future integrations must enforce authentication and object permissions on Django independently of frontend guards.
 
-- **Transparent DeFi Lending & Borrowing**  
-  AI ensures fairness in credit scoring and interest rates.
+Lucide's Angular adapter currently advertises support only through Angular 21. The app uses the framework-independent `lucide` package through a small typed Angular wrapper instead of bypassing peer dependency checks. Three.js 0.186 is loaded only for the hospital scene. GSAP, ECharts and AI libraries remain deferred.
 
-- **Robust Risk Management**  
-  Analyze market data to predict trends and assess risks in a transparent, auditable way.
+## Hospital rendering architecture
 
-- **Efficient Algorithmic Trading**  
-  On-chain AI agents autonomously execute strategies, ensuring trustless, transparent trading.
+`SmartHospitalScene` is the Angular lifecycle/accessibility adapter. It renders the supplied image immediately and uses IntersectionObserver to decide when the scene is visible. Only then, if motion and power preferences allow it, it dynamically imports `hospital-renderer.ts`. Three.js stays in that separate lazy chunk; there are no paid models, HDR textures, postprocessing passes or additional 3D frameworks.
 
----
+The renderer owns one guarded requestAnimationFrame chain. Submission is capped at 30 Hz on desktop and 20 Hz on mobile opt-in; those are configuration limits, not guaranteed measured frame rates. DPR is capped at 1.5 and 1 respectively. Rendering stops when the host leaves the viewport, the document is hidden, or the user pauses motion. ResizeObserver updates canvas dimensions and camera fit. Teardown cancels RAF, disconnects observers, removes listeners, disposes shared geometries/materials/textures and instance buffers, releases render lists and renderer, and loses the owned context unless it is already lost. An async request generation counter prevents imports completing after teardown from creating a late canvas.
 
-## 🔐 The ICP Advantage
+### Calculated camera framing
 
-HEFIN is powered by the **Internet Computer Protocol (ICP)**, enabling:  
+The initial 768px crop came from using nearly the same camera distance/FOV in a much narrower canvas. `camera-fit.ts` now fits the eight corners of an envelope around the complete hospital, platform, holograms and animated node path. The envelope includes the yaw sweep and vertical motion. For each camera-space corner, it solves the horizontal and vertical perspective constraints using FOV and current aspect ratio, with a 12% margin. The original desktop angle, target and minimum distance are retained; narrower canvases move the camera back only as far as the bounds require. Reset and live resizing use this fitted baseline. Browser tests project the envelope into normalized device coordinates at all four requested sizes and during pointer movement to verify containment.
 
-- **End-to-End On-Chain AI & Storage**  
-- **Reverse Gas Model (developer-pays)**  
-- **Security, Privacy & Censorship Resistance**  
+### Fallback and controls
 
-This makes ICP the ideal foundation for the next generation of secure, private, and trust-minimized AI applications.
+- Reduced motion uses the static reference and disables automatic 3D loading; changing the preference while rendering tears down the scene.
+- Widths up to 600px, available device memory of 4GB or less, four or fewer reported logical processors, or Save-Data default to static. These are conservative heuristics, not actual battery detection. The explicit **Load 3D preview** button permits opt-in unless reduced motion is requested.
+- WebGL 2 initialization failure, context loss or import failure returns to the original image. The hospital portal link remains available without WebGL.
+- Pause/resume, reset and static-view controls are native keyboard-accessible buttons outside the canvas. Touch events do not capture or block page scrolling. Pointer movement gently changes the view and architectural highlights.
+- Use a current WebGL 2-capable browser for interactive rendering. Verified browser coverage is Edge/Chromium desktop and mobile emulation, not physical iOS/Safari. The static fallback remains usable without WebGL 2.
 
----
+## Source map
 
-## 🛠️ Project Setup
+| Location | Purpose |
+| --- | --- |
+| `legacy/` | Unmodified contents of the supplied project archive |
+| `frontend/src/app/core/` | Navbar, footer, theme service and future guard boundary |
+| `frontend/src/app/shared/` | Reusable UI, icons, portal placeholder and motion notes |
+| `frontend/src/app/features/` | Public pages, portal selection and future role folders |
+| `frontend/src/app/three-d/` | Lazy hospital renderer, calculated camera fit and static scene adapters |
+| `frontend/src/styles/` | Design tokens, typography, component styles and motion |
+| `frontend/public/assets/` | Original/optimized images, logo derivatives and model notes |
+| `frontend/tests/` | Playwright route, asset, accessibility and interaction checks |
+| `docs/MIGRATION.md` | Audit, architecture and phased migration checklist |
+| `docs/VERIFICATION.md` | Actual verification outcomes and limitations |
 
-### 🔹 Backend (Node.js + Express + MongoDB)
-```bash
-# Clone repo
-git clone https://github.com/<your-username>/hefin-backend.git
-cd hefin-backend
+## Next task
 
-# Install dependencies
-npm install
+Task 03 can continue from this frontend according to its brief. Task 03 has not been started. Backend, authentication and AI services remain deferred.
 
-# Create .env file
-touch .env
-PORT=5000
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/hefin
-JWT_SECRET=your_jwt_secret
-CORS_ORIGINS=http://localhost:3000
-Run backend
-npm run dev
-# Clone repo
-git clone https://github.com/<your-username>/hefin-frontend.git
-cd hefin-frontend
-
-# Install dependencies
-npm install
-VITE_API_URL=https://hefin-backend.up.railway.app
-npm run dev
+Compatibility reference: https://angular.dev/reference/versions. Existing source is retained under its original license in `legacy/LICENSE`. User-supplied artwork is retained for this project; no third-party model rights are claimed.
 

@@ -1,0 +1,42 @@
+{
+  "initial": {
+    "created": 1,
+    "disposed": 0,
+    "activeRenderers": 1,
+    "activeLoops": 1,
+    "frames": 7,
+    "geometries": 24,
+    "materials": 11,
+    "textures": 0,
+    "drawCalls": 146,
+    "triangles": 5240,
+    "dpr": 1,
+    "framing": {
+      "maxAbsX": 0.8928571428571429,
+      "maxAbsY": 0.8049844306787235,
+      "distance": 24.108091783898427,
+      "width": 374,
+      "height": 309
+    }
+  },
+  "clean": {
+    "created": 2,
+    "disposed": 2,
+    "activeRenderers": 0,
+    "activeLoops": 0,
+    "frames": 18,
+    "geometries": 0,
+    "materials": 0,
+    "textures": 0,
+    "drawCalls": 146,
+    "triangles": 5240,
+    "dpr": 1,
+    "framing": {
+      "maxAbsX": 0.8928571428571429,
+      "maxAbsY": 0.8049844306787235,
+      "distance": 24.108091783898427,
+      "width": 374,
+      "height": 309
+    }
+  }
+}

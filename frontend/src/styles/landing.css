@@ -1,0 +1,1215 @@
+/* Task 02 additions are scoped to the existing landing page and hospital adapter. */
+h-home-page {
+  display: block;
+  overflow: clip;
+}
+h-home-page section[id] {
+  scroll-margin-top: 24px;
+}
+h-home-page .hero {
+  min-height: 690px;
+  padding-top: 52px;
+  padding-bottom: 52px;
+  grid-template-columns: 1.02fr 1fr;
+  gap: 20px;
+}
+h-home-page .hero h1 {
+  font-size: clamp(2.7rem, 4.85vw, 4.4rem);
+  letter-spacing: -0.065em;
+  line-height: 1.12;
+}
+h-home-page .hero-description {
+  max-width: 470px;
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+h-home-page .hero .button-row {
+  gap: 14px;
+}
+h-home-page .hero .button {
+  font-size: 0.76rem;
+  min-height: 48px;
+}
+.spectral-text {
+  color: var(--gold);
+}
+.spectral-text .text-mask > span {
+  background: linear-gradient(105deg, var(--gold) 20%, var(--gold-light) 62%, var(--cyan));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-proposals {
+  display: flex;
+  gap: 18px;
+  margin-top: 28px;
+  color: var(--secondary);
+  font-size: 0.6rem;
+  flex-wrap: wrap;
+}
+.hero-proposals > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-proposals svg {
+  width: 15px;
+  color: var(--gold);
+}
+.prototype-caption {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 20px 0 0;
+}
+.hero-label {
+  font-family: Orbitron, var(--heading);
+}
+h-home-page .hero-visual {
+  height: 565px;
+  background: radial-gradient(
+    ellipse at 50% 53%,
+    color-mix(in srgb, var(--cyan) 12%, transparent),
+    transparent 66%
+  );
+}
+h-home-page .chip-one {
+  top: 75px;
+  right: 0;
+  pointer-events: none;
+  animation: holo-float 6s ease-in-out infinite;
+}
+h-home-page .scene-bottomline {
+  font-size: 0.46rem;
+}
+h-smart-hospital-scene {
+  display: block;
+  position: absolute;
+  inset: 36px -20px 34px;
+}
+.hospital-experience {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.hospital-viewport {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  isolation: isolate;
+  touch-action: pan-y;
+}
+.hospital-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  animation: scene-entrance 0.8s var(--ease) both;
+  touch-action: pan-y;
+}
+.hospital-fallback {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: sepia(0.8) hue-rotate(148deg) saturate(0.7) brightness(0.82);
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(ellipse 56% 57% at 50% 49%, black 47%, transparent 86%);
+}
+.hospital-scene-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font: 0.51rem var(--mono);
+  color: var(--cyan);
+  padding-top: 8px;
+  min-height: 22px;
+  letter-spacing: 0.035em;
+}
+.scene-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+}
+.scene-controls button,
+.scene-controls a {
+  font: 0.58rem var(--body);
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  color: var(--secondary);
+  transition:
+    border-color 0.18s var(--ease),
+    color 0.18s var(--ease);
+}
+.scene-controls a {
+  color: var(--gold);
+}
+.scene-controls button:hover,
+.scene-controls a:hover {
+  border-color: var(--cyan);
+  color: var(--text);
+}
+.scene-controls button[aria-pressed='true'] {
+  border-color: var(--gold);
+}
+.mission-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  padding-block: 105px;
+}
+.mission-section h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  line-height: 1.18;
+}
+.muted-heading {
+  color: var(--secondary);
+}
+.mission-copy {
+  padding-top: 32px;
+}
+.mission-copy p {
+  font-size: 0.85rem;
+}
+.mission-copy .lead-copy {
+  font-size: 1.13rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+.underline-link {
+  position: relative;
+  padding-bottom: 5px;
+}
+.underline-link:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  transition: transform 0.2s var(--ease);
+}
+.underline-link:hover:after,
+.underline-link:focus-visible:after {
+  transform: scaleX(1);
+}
+.problem-section {
+  padding-block: 65px;
+  background: var(--midnight);
+  border-block: 1px solid var(--line);
+}
+.problem-intro {
+  font-size: 0.85rem;
+  max-width: 345px;
+  line-height: 1.9;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 45px;
+}
+.problem-grid article {
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+}
+.problem-number {
+  font: 0.65rem var(--mono);
+  color: var(--gold);
+}
+.problem-grid h3 {
+  font-size: 1.35rem;
+  margin-block: 17px;
+}
+.problem-grid p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+.solution-bento {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 20px;
+}
+.solution-bento .feature-card {
+  min-height: 0;
+  padding: 32px;
+}
+.solution-bento .solution-main {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    color-mix(in srgb, var(--cyan) 9%, var(--surface)),
+    var(--midnight) 80%
+  );
+}
+.solution-main h3 {
+  font-size: 2.3rem;
+  margin-top: 25px;
+}
+.solution-bento p {
+  max-width: 440px;
+}
+.solution-bento .feature-symbol {
+  margin: 0 0 20px;
+}
+.connection-diagram {
+  position: relative;
+  margin-top: auto;
+  min-height: 260px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px 65px;
+  padding: 15px;
+}
+.connection-diagram:before,
+.connection-diagram:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  transform: rotate(32deg);
+}
+.connection-diagram:after {
+  transform: rotate(-32deg);
+}
+.diagram-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid color-mix(in srgb, var(--gold) 65%, transparent);
+  background: var(--midnight);
+  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  box-shadow: 0 0 40px color-mix(in srgb, var(--gold) 8%, transparent);
+}
+.diagram-center img {
+  width: 41px;
+  height: auto;
+}
+.diagram-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  position: relative;
+  z-index: 1;
+  font-size: 0.67rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  min-height: 58px;
+  padding: 10px;
+}
+.diagram-node h-icon {
+  color: var(--accent);
+}
+.hospital-integration {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 65px;
+  align-items: center;
+  border-block: 1px solid var(--line);
+  padding-block: 60px;
+}
+.hospital-integration p {
+  font-size: 0.85rem;
+}
+.integration-visual {
+  position: relative;
+  padding: 25px 22px 25px 45px;
+  min-height: 245px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--cyan) 8%, transparent),
+    transparent 70%
+  );
+}
+.integration-visual > h-icon svg {
+  width: 70px;
+  height: 70px;
+  stroke-width: 0.8;
+  color: var(--cyan);
+}
+.vertical-label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%);
+  font: 0.5rem var(--mono);
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.integration-path {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+}
+.integration-path > span {
+  border: 1px solid var(--border);
+  padding: 9px 13px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  background: var(--midnight);
+}
+.integration-visual .micro-label {
+  font-size: 0.45rem;
+  text-align: center;
+}
+.care-proposals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.prevention-card,
+.emergency-card {
+  padding: 38px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--midnight);
+}
+.prevention-card h2,
+.emergency-card h2 {
+  font-size: 2.2rem;
+}
+.prevention-card > p,
+.emergency-card > p {
+  font-size: 0.82rem;
+}
+.checkup-track {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0;
+}
+.checkup-track li {
+  display: flex;
+  gap: 18px;
+  position: relative;
+  padding-bottom: 20px;
+}
+.checkup-track li:last-child {
+  padding-bottom: 0;
+}
+.checkup-track li > span {
+  border: 1px solid color-mix(in srgb, var(--cyan) 50%, var(--border));
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  font: 0.58rem var(--mono);
+  color: var(--cyan);
+  flex-shrink: 0;
+  background: var(--midnight);
+  z-index: 1;
+}
+.checkup-track li:not(:last-child):after {
+  content: '';
+  position: absolute;
+  top: 34px;
+  bottom: 0;
+  left: 16px;
+  width: 1px;
+  background: var(--border);
+}
+.checkup-track h3 {
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  margin: 3px 0 6px;
+}
+.checkup-track p {
+  font-size: 0.74rem;
+  margin: 0;
+}
+.proposal-note {
+  font-size: 0.65rem !important;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.emergency-card {
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    color-mix(in srgb, var(--gold) 8%, var(--midnight)),
+    var(--midnight) 70%
+  );
+}
+.emergency-card > .eyebrow {
+  color: var(--gold);
+}
+.protection-emblem {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.protection-emblem img {
+  width: 80px;
+  height: auto;
+  filter: drop-shadow(0 0 25px color-mix(in srgb, var(--gold) 15%, transparent));
+}
+.emergency-sequence {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 10px 25px;
+  color: var(--gold);
+  font: 0.65rem var(--mono);
+}
+.emergency-sequence svg {
+  width: 15px;
+}
+.intelligence-section {
+  grid-template-columns: 0.75fr 1.25fr;
+  background: radial-gradient(
+    ellipse at 16% 50%,
+    color-mix(in srgb, var(--indigo) 17%, var(--midnight)),
+    var(--midnight) 75%
+  );
+  align-items: center;
+}
+.intelligence-section .ai-art {
+  height: 440px;
+}
+.intelligence-section .ai-copy {
+  padding: 50px 40px 45px 0;
+}
+.intelligence-section .ai-copy > p {
+  max-width: none;
+}
+.ai-capabilities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-block: 12px;
+}
+.ai-capabilities article:last-child {
+  grid-column: 1/-1;
+}
+.ai-capabilities h3 {
+  font-size: 1rem;
+  letter-spacing: -0.025em;
+  margin: 7px 0;
+}
+.ai-capabilities p {
+  font-size: 0.72rem;
+  line-height: 1.8;
+  margin: 0;
+}
+.ai-safety {
+  border-block: 1px solid var(--line);
+  padding: 18px 0;
+  margin: 16px 0 22px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: var(--secondary);
+  font-size: 0.68rem;
+}
+.ai-safety h-icon {
+  color: var(--gold);
+}
+.intelligence-section .ai-copy > .micro-label {
+  font-size: 0.45rem;
+}
+.stakeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.stakeholder-card {
+  padding: 28px 24px;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: 6px;
+  background: var(--surface);
+  transition:
+    transform 0.22s var(--ease),
+    box-shadow 0.22s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+.stakeholder-card > h-icon {
+  color: var(--accent);
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+.stakeholder-card > h-icon svg {
+  width: 27px;
+  height: 27px;
+}
+.stakeholder-card h3 {
+  font-size: 1.35rem;
+}
+.stakeholder-card p {
+  font-size: 0.76rem;
+  line-height: 1.8;
+}
+.stakeholder-card .text-link {
+  color: var(--accent);
+  margin-top: auto;
+  font-size: 0.68rem;
+}
+.stakeholder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 35px color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.workflow-section {
+  background: var(--midnight);
+  border-block: 1px solid var(--line);
+  padding-block: 70px;
+}
+.workflow-section > .container > p:not(.eyebrow) {
+  font-size: 0.85rem;
+}
+.workflow-steps {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-top: 35px;
+}
+.workflow-steps button {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  padding: 17px 13px;
+  font-size: 0.68rem;
+  color: var(--secondary);
+  text-align: left;
+}
+.workflow-steps button > span {
+  font: 0.6rem var(--mono);
+  color: var(--muted);
+  width: 100%;
+  margin-bottom: 8px;
+}
+.workflow-steps h-icon {
+  margin-left: auto;
+}
+.workflow-steps svg {
+  width: 14px;
+}
+.workflow-steps .selected {
+  border-color: var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 6%, var(--surface));
+  color: var(--cyan);
+}
+.workflow-detail {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  border-bottom: 1px solid var(--line);
+  padding: 35px 0;
+  min-height: 190px;
+}
+.workflow-ordinal {
+  font:
+    3.9rem 'Russo One',
+    sans-serif;
+  color: color-mix(in srgb, var(--cyan) 45%, var(--bg));
+}
+.workflow-detail > div {
+  flex: 1;
+}
+.workflow-detail .eyebrow {
+  font-size: 0.55rem;
+}
+.workflow-detail h3 {
+  font-size: 1.6rem;
+}
+.workflow-detail p {
+  font-size: 0.8rem;
+  max-width: 680px;
+  margin: 0;
+}
+.workflow-detail > a {
+  flex-shrink: 0;
+}
+.roadmap-track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  position: relative;
+  margin-top: 35px;
+}
+.roadmap-track:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  height: 1px;
+  background: var(--border);
+}
+.roadmap-track button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0 15px 0 0;
+  color: var(--secondary);
+  gap: 14px;
+}
+.roadmap-dot {
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  margin-bottom: 10px;
+}
+.roadmap-track .selected .roadmap-dot {
+  border: 5px solid var(--gold);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+.roadmap-track strong {
+  font: 500 1rem var(--heading);
+  letter-spacing: -0.03em;
+}
+.roadmap-track .selected strong {
+  color: var(--gold);
+}
+.roadmap-track .micro-label {
+  font-size: 0.5rem;
+}
+.roadmap-detail {
+  background: var(--midnight);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 27px 30px;
+  margin: 35px 0 18px;
+  min-height: 145px;
+}
+.roadmap-detail h3 {
+  font-size: 1.4rem;
+  margin-top: 0;
+}
+.roadmap-detail p {
+  font-size: 0.85rem;
+  max-width: 880px;
+  margin: 0;
+}
+.contact-band {
+  border-top: 1px solid var(--line);
+  background: radial-gradient(
+    ellipse at 15% 50%,
+    color-mix(in srgb, var(--gold) 8%, var(--bg)),
+    var(--bg) 70%
+  );
+  padding-block: 65px;
+}
+.contact-band > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+}
+.contact-band h2 {
+  font-size: 2.6rem;
+}
+.contact-band p:not(.micro-label) {
+  font-size: 0.8rem;
+  margin: 0;
+}
+.contact-band .micro-label {
+  max-width: 220px;
+  margin: 18px 0 0;
+  font-size: 0.48rem;
+}
+.section-revealed {
+  animation: rise 0.55s var(--ease) both;
+}
+@keyframes holo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes scene-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:root[data-theme='light'] .hospital-fallback {
+  mix-blend-mode: multiply;
+}
+@media (max-width: 1150px) {
+  h-home-page .hero h1 {
+    font-size: clamp(2.6rem, 4.85vw, 4rem);
+  }
+  .hero-proposals {
+    gap: 12px;
+    font-size: 0.53rem;
+  }
+  .mission-section {
+    gap: 45px;
+  }
+  .solution-bento .feature-card {
+    padding: 26px;
+  }
+  .diagram-node {
+    gap: 5px;
+    font-size: 0.58rem;
+    padding: 8px;
+  }
+  .connection-diagram {
+    gap: 90px 60px;
+    padding: 5px;
+  }
+  .prevention-card,
+  .emergency-card {
+    padding: 28px;
+  }
+  .prevention-card h2,
+  .emergency-card h2 {
+    font-size: 1.95rem;
+  }
+  .stakeholder-card {
+    padding: 24px 17px;
+  }
+  .workflow-steps button {
+    gap: 5px;
+    font-size: 0.62rem;
+  }
+  .intelligence-section .ai-copy {
+    padding-right: 30px;
+  }
+}
+@media (max-width: 850px) {
+  h-home-page .hero {
+    min-height: 610px;
+    grid-template-columns: 1fr 1fr;
+  }
+  h-home-page .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  h-home-page .hero-label {
+    font-size: 0.45rem;
+    letter-spacing: 0;
+  }
+  h-home-page .hero-description {
+    font-size: 0.8rem;
+  }
+  h-home-page .hero .button {
+    font-size: 0.65rem;
+    padding: 12px;
+    gap: 9px;
+  }
+  h-home-page .hero-visual {
+    height: 500px;
+  }
+  h-home-page .chip-one {
+    top: 62px;
+  }
+  .hero-proposals {
+    gap: 12px;
+    flex-direction: column;
+    font-size: 0.59rem;
+  }
+  .prototype-caption {
+    font-size: 0.43rem;
+  }
+  .mission-section {
+    gap: 30px;
+    padding-block: 65px;
+  }
+  .mission-copy {
+    padding-top: 20px;
+  }
+  .mission-copy .lead-copy {
+    font-size: 1rem;
+  }
+  .problem-grid {
+    gap: 24px;
+  }
+  .problem-grid h3 {
+    font-size: 1.15rem;
+  }
+  .solution-bento {
+    grid-template-columns: 1fr 1fr;
+  }
+  .solution-bento .solution-main {
+    grid-column: 1/-1;
+    grid-row: auto;
+  }
+  .connection-diagram {
+    width: min(430px, 100%);
+    align-self: center;
+    min-height: 260px;
+  }
+  .hospital-integration {
+    gap: 28px;
+  }
+  .hospital-integration h2 {
+    font-size: 1.9rem;
+  }
+  .integration-path {
+    gap: 6px;
+  }
+  .integration-path > span {
+    padding: 7px;
+    font-size: 0.58rem;
+  }
+  .care-proposals {
+    gap: 18px;
+  }
+  .prevention-card,
+  .emergency-card {
+    padding: 23px;
+  }
+  .prevention-card h2,
+  .emergency-card h2 {
+    font-size: 1.7rem;
+  }
+  .prevention-card > p,
+  .emergency-card > p {
+    font-size: 0.76rem;
+  }
+  .emergency-sequence {
+    gap: 10px;
+    font-size: 0.6rem;
+  }
+  .intelligence-section {
+    grid-template-columns: 0.65fr 1fr;
+  }
+  .intelligence-section .ai-art {
+    height: 360px;
+  }
+  .ai-capabilities {
+    grid-template-columns: 1fr;
+  }
+  .ai-capabilities article:last-child {
+    grid-column: auto;
+  }
+  .intelligence-section .ai-copy {
+    padding: 35px 25px 35px 0;
+  }
+  .stakeholder-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .workflow-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .workflow-detail {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .workflow-detail > a {
+    margin-left: 85px;
+  }
+  .roadmap-track strong {
+    font-size: 0.82rem;
+  }
+  .roadmap-track .micro-label {
+    font-size: 0.43rem;
+  }
+  .contact-band h2 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  h-home-page .hero {
+    grid-template-columns: 1fr;
+    padding-block: 38px 28px;
+    gap: 10px;
+  }
+  h-home-page .hero h1 {
+    font-size: clamp(2.65rem, 10.2vw, 3.9rem);
+    letter-spacing: -0.06em;
+  }
+  h-home-page .hero-label {
+    font-size: 0.46rem;
+    letter-spacing: 0.045em;
+  }
+  h-home-page .hero .button {
+    font-size: 0.71rem;
+    padding: 12px 15px;
+    gap: 10px;
+  }
+  .hero-proposals {
+    flex-direction: row;
+    gap: 9px 15px;
+    font-size: 0.53rem;
+    margin-top: 23px;
+  }
+  .hero-proposals span:last-child {
+    flex-basis: 100%;
+  }
+  .prototype-caption {
+    font-size: 0.42rem;
+    margin-top: 17px;
+  }
+  h-home-page .hero-visual {
+    height: 440px;
+    margin-top: 15px;
+  }
+  h-smart-hospital-scene {
+    inset: 25px -12px 32px;
+  }
+  h-home-page .chip-one {
+    top: 65px;
+    right: 0;
+  }
+  h-home-page .scene-bottomline {
+    font-size: 0.4rem;
+  }
+  .scene-controls button,
+  .scene-controls a {
+    min-height: 40px;
+    font-size: 0.55rem;
+    padding: 7px 9px;
+  }
+  .hospital-scene-caption {
+    font-size: 0.47rem;
+  }
+  .mission-section {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding-block: 55px;
+  }
+  .mission-copy {
+    padding-top: 0;
+  }
+  .mission-section h2 {
+    font-size: 2.05rem;
+  }
+  .problem-section {
+    padding-block: 50px;
+  }
+  .problem-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 25px;
+  }
+  .problem-grid article {
+    padding-top: 18px;
+  }
+  .problem-grid h3 {
+    font-size: 1.35rem;
+  }
+  .solution-bento {
+    grid-template-columns: 1fr;
+  }
+  .solution-bento .solution-main {
+    grid-column: auto;
+  }
+  .solution-main h3 {
+    font-size: 2rem;
+  }
+  .solution-bento .feature-card {
+    padding: 25px;
+  }
+  .diagram-node {
+    font-size: 0.54rem;
+    gap: 5px;
+    padding: 7px;
+  }
+  .diagram-node svg {
+    width: 15px;
+  }
+  .connection-diagram {
+    gap: 90px 50px;
+    min-height: 245px;
+  }
+  .diagram-center {
+    width: 76px;
+    height: 76px;
+  }
+  .diagram-center img {
+    width: 34px;
+  }
+  .hospital-integration {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-block: 35px;
+  }
+  .hospital-integration h2 {
+    font-size: 2rem;
+  }
+  .integration-visual {
+    min-height: 230px;
+  }
+  .integration-path > span {
+    font-size: 0.62rem;
+    padding: 9px 10px;
+  }
+  .care-proposals {
+    grid-template-columns: 1fr;
+  }
+  .prevention-card,
+  .emergency-card {
+    padding: 26px;
+  }
+  .prevention-card h2,
+  .emergency-card h2 {
+    font-size: 1.95rem;
+  }
+  .protection-emblem {
+    height: 135px;
+  }
+  .intelligence-section {
+    grid-template-columns: 1fr;
+  }
+  .intelligence-section .ai-art {
+    height: 300px;
+  }
+  .intelligence-section .ai-copy {
+    padding: 0 25px 35px;
+  }
+  .intelligence-section .ai-copy > .micro-label {
+    font-size: 0.43rem;
+  }
+  .ai-capabilities {
+    gap: 20px;
+    padding-top: 15px;
+  }
+  .ai-capabilities h3 {
+    font-size: 1.1rem;
+  }
+  .ai-capabilities p {
+    font-size: 0.76rem;
+  }
+  .stakeholder-grid {
+    gap: 14px;
+  }
+  .stakeholder-card {
+    padding: 22px 16px;
+  }
+  .stakeholder-card h3 {
+    font-size: 1.1rem;
+  }
+  .stakeholder-card p {
+    font-size: 0.7rem;
+  }
+  .stakeholder-card .text-link {
+    font-size: 0.61rem;
+    gap: 5px;
+  }
+  .stakeholder-card .text-link svg {
+    width: 14px;
+  }
+  .workflow-section {
+    padding-block: 50px;
+  }
+  .workflow-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+  .workflow-steps button {
+    font-size: 0.7rem;
+    padding: 15px;
+  }
+  .workflow-detail {
+    gap: 18px;
+    align-items: flex-start;
+    min-height: 270px;
+  }
+  .workflow-ordinal {
+    font-size: 3rem;
+  }
+  .workflow-detail > div {
+    min-width: 220px;
+  }
+  .workflow-detail > a {
+    margin-left: 0;
+  }
+  .roadmap-track {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .roadmap-track:before {
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    height: 100%;
+    right: auto;
+  }
+  .roadmap-track button {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 8px;
+    padding-left: 0;
+  }
+  .roadmap-dot {
+    grid-row: span 2;
+    align-self: center;
+    margin: 0;
+  }
+  .roadmap-track strong {
+    font-size: 1.05rem;
+  }
+  .roadmap-track .micro-label {
+    font-size: 0.5rem;
+  }
+  .roadmap-detail {
+    padding: 24px;
+    min-height: 210px;
+  }
+  .contact-band {
+    padding-block: 50px;
+  }
+  .contact-band > .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .contact-band h2 {
+    font-size: 2.05rem;
+  }
+  .contact-band .micro-label {
+    max-width: 280px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-revealed,
+  .hospital-canvas,
+  h-home-page .chip-one {
+    animation: none;
+  }
+  .stakeholder-card:hover {
+    transform: none;
+  }
+}

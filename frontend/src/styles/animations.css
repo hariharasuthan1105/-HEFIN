@@ -1,0 +1,112 @@
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes maskReveal {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.page-enter {
+  animation: rise 0.55s var(--ease) both;
+}
+.text-mask {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.text-mask > span {
+  display: block;
+  animation: maskReveal 0.6s var(--ease) both;
+}
+h-animated-text:nth-of-type(2) .text-mask > span {
+  animation-delay: 90ms;
+}
+.hero h1 > .gold-text .text-mask > span {
+  animation-delay: 180ms;
+}
+.glass-card,
+.feature-card,
+.portal-card {
+  transition:
+    transform 0.24s var(--ease),
+    border-color 0.24s var(--ease),
+    box-shadow 0.24s var(--ease);
+}
+.glass-card:hover,
+.feature-card:hover,
+.portal-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 10px 35px color-mix(in srgb, var(--accent) 7%, transparent);
+}
+.button,
+.text-link {
+  transition:
+    transform 0.18s var(--ease),
+    background 0.18s var(--ease);
+}
+.button:hover {
+  transform: translateY(-2px);
+}
+.button:active {
+  transform: translateY(1px);
+}
+.text-link:hover {
+  transform: translateX(3px);
+}
+nav a:after {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s var(--ease);
+}
+nav a:hover:after,
+nav a.active:after {
+  transform: scaleX(1);
+}
+.skeleton {
+  animation: shimmer 2.4s linear infinite;
+}
+.spinner {
+  animation: spin 1s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .glass-card:hover,
+  .feature-card:hover,
+  .portal-card:hover,
+  .button:hover,
+  .text-link:hover {
+    transform: none;
+  }
+  .mat-mdc-progress-bar .mdc-linear-progress__bar {
+    animation: none !important;
+  }
+}
