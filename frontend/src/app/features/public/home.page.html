@@ -1,0 +1,400 @@
+<section class="hero container page-enter" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <div class="hero-label">
+      <span class="status-dot"></span> A NEW PERSPECTIVE ON CARE <span class="version">V 3.0</span>
+    </div>
+    <h1 id="hero-title">
+      <h-animated-text>Healthcare</h-animated-text><br /><h-animated-text>Without</h-animated-text
+      ><br /><span class="spectral-text"><h-animated-text>Financial Fear.</h-animated-text></span>
+    </h1>
+    <p class="hero-description">
+      An intelligent ecosystem connecting patients, hospitals, insurers, and government healthcare
+      programs.
+    </p>
+    <div class="button-row">
+      <a class="button" routerLink="/" fragment="mission"
+        >Explore HEFIN <h-icon name="ArrowUpRight" /></a
+      ><h-gradient-button to="/login" [secondary]="true">Experience Demo</h-gradient-button>
+    </div>
+    <div class="hero-proposals" aria-label="Proposed platform features">
+      <span><h-icon name="HeartPulse" />Preventive care</span
+      ><span><h-icon name="ShieldCheck" />Financial clarity</span
+      ><span><h-icon name="BrainCircuit" />Assisted intelligence</span>
+    </div>
+    <p class="prototype-caption">PROPOSED PLATFORM · FRONTEND DEMO · NO LIVE SERVICES</p>
+  </div>
+  <div class="hero-visual">
+    <div class="scene-topline">
+      <span class="eyebrow">HEFIN / SMART HOSPITAL CONCEPT</span
+      ><span class="crosshair" aria-hidden="true">+</span>
+    </div>
+    <h-smart-hospital-scene />
+    <div class="visual-chip chip-one" aria-hidden="true">
+      <span class="chip-icon"><h-icon name="HeartPulse" /></span>
+      <div>
+        <span class="micro-label">CARE NETWORK / CONCEPT</span><strong>Connected by purpose</strong>
+      </div>
+      <span class="status-dot"></span>
+    </div>
+    <div class="scene-bottomline">
+      <span>01 / HUMAN-CENTERED INFRASTRUCTURE</span><span>DESIGNED TO CONNECT ↗</span>
+    </div>
+  </div>
+</section>
+<div class="ecosystem-strip">
+  <div class="container strip-inner">
+    <span class="eyebrow">ONE VISION.<br /><b>FOUR CONNECTED WORLDS.</b></span>
+    @for (role of roles; track role.path) {
+      <a [routerLink]="role.path"
+        ><h-icon [name]="role.icon" /><span>{{ role.label }}</span
+        ><h-icon name="ArrowUpRight"
+      /></a>
+    }
+  </div>
+</div>
+
+<section
+  id="mission"
+  class="container section mission-section"
+  hReveal
+  aria-labelledby="mission-title"
+>
+  <div>
+    <p class="eyebrow">01 / OUR MISSION</p>
+    <h2 id="mission-title">
+      Care is personal.<br /><span class="muted-heading">The connection should be, too.</span>
+    </h2>
+  </div>
+  <div class="mission-copy">
+    <p class="lead-copy">
+      We believe getting better should be your priority. Understanding how to pay for care should
+      not stand in the way.
+    </p>
+    <p>
+      HEFIN proposes a shared path between healthcare and financial protection, with people at its
+      center and clarity at every step.
+    </p>
+    <a routerLink="/about" class="text-link underline-link"
+      >The purpose behind HEFIN <h-icon name="ArrowUpRight"
+    /></a>
+  </div>
+</section>
+
+<section class="problem-section" hReveal aria-labelledby="problem-title">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <p class="eyebrow">02 / THE DISCONNECTED JOURNEY</p>
+        <h2 id="problem-title">When systems fall apart,<br />people carry the weight.</h2>
+      </div>
+      <p class="problem-intro">These are the gaps our proposed platform is designed to address.</p>
+    </div>
+    <div class="problem-grid">
+      <article>
+        <span class="problem-number">01</span>
+        <h3>Care, scattered.</h3>
+        <p>
+          Appointments, records and follow-ups can live in different places, making the next step
+          harder to see.
+        </p>
+      </article>
+      <article>
+        <span class="problem-number">02</span>
+        <h3>Coverage, unclear.</h3>
+        <p>
+          Policy terms and document requirements can be difficult to navigate when time and peace of
+          mind matter.
+        </p>
+      </article>
+      <article>
+        <span class="problem-number">03</span>
+        <h3>Support, disconnected.</h3>
+        <p>
+          Hospital and insurance workflows need a clearer way to coordinate around the same person.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="solution" class="container section" hReveal aria-labelledby="solution-title">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow">03 / OUR PROPOSED SOLUTION</p>
+      <h2 id="solution-title">A more connected<br />kind of confidence.</h2>
+    </div>
+    <a routerLink="/solution" class="text-link underline-link"
+      >Discover the approach <h-icon name="ArrowUpRight"
+    /></a>
+  </div>
+  <div class="solution-bento">
+    <article class="feature-card solution-main">
+      <span class="feature-index">THE HEFIN CONNECTION</span>
+      <h3>One journey.<br />Shared understanding.</h3>
+      <p>A proposed bridge between care teams, coverage providers and the people they serve.</p>
+      <div
+        class="connection-diagram"
+        aria-label="HEFIN connects patients, hospitals, insurers and government programs"
+      >
+        <div class="diagram-center">
+          <img src="/assets/logo/hefin-shield.png" alt="HEFIN" width="140" height="154" />
+        </div>
+        @for (role of roles; track role.path) {
+          <a [routerLink]="role.path" class="diagram-node" [attr.data-role]="role.role"
+            ><h-icon [name]="role.icon" /><span>{{ role.label }}</span></a
+          >
+        }
+      </div>
+    </article>
+    <article class="feature-card">
+      <div class="feature-symbol gold-text"><h-icon name="ShieldCheck" /></div>
+      <h3>Clearer protection.</h3>
+      <p>Understand proposed coverage views, authorization stages and claim timelines.</p>
+      <a routerLink="/insurance/dashboard" class="text-link"
+        >Preview insurer workspace <h-icon name="ArrowUpRight"
+      /></a>
+    </article>
+    <article class="feature-card">
+      <div class="feature-symbol"><h-icon name="LockKeyhole" /></div>
+      <h3>Trust, by design.</h3>
+      <p>
+        Consent-aware access and traceable human decisions are requirements for the future backend.
+      </p>
+      <a routerLink="/solution" class="text-link"
+        >Explore the principles <h-icon name="ArrowUpRight"
+      /></a>
+    </article>
+  </div>
+</section>
+
+<section class="container hospital-integration" hReveal aria-labelledby="hospital-title">
+  <div class="integration-visual">
+    <span class="vertical-label">CARE / COORDINATION / CONTINUITY</span><h-icon name="Building2" />
+    <div class="integration-path">
+      <span>Admission</span><span>Eligibility</span><span>Authorization</span>
+    </div>
+    <span class="micro-label">PROPOSED WORKFLOW · NOT CONNECTED TO LIVE SYSTEMS</span>
+  </div>
+  <div>
+    <p class="eyebrow">04 / SMART HOSPITAL INTEGRATION</p>
+    <h2 id="hospital-title">Behind every room,<br />a connected journey.</h2>
+    <p>
+      From an admission to an authorization, the vision is a shared view of what happens next. The
+      interactive hospital above is a procedural concept inspired by your original architectural
+      reference.
+    </p>
+    <a routerLink="/hospital/dashboard" class="text-link underline-link"
+      >Explore the hospital preview <h-icon name="ArrowUpRight"
+    /></a>
+  </div>
+</section>
+
+<section class="container section care-proposals" hReveal aria-labelledby="prevention-title">
+  <article class="prevention-card">
+    <p class="eyebrow">05 / PREVENTIVE CARE PROPOSAL</p>
+    <h2 id="prevention-title">Three touchpoints.<br />A habit of care.</h2>
+    <p>
+      A proposed annual framework for three preventive checkups, with screening choices and timing
+      guided by qualified clinicians.
+    </p>
+    <ol class="checkup-track">
+      <li>
+        <span>01</span>
+        <div>
+          <h3>Understand</h3>
+          <p>Establish a personal health overview.</p>
+        </div>
+      </li>
+      <li>
+        <span>02</span>
+        <div>
+          <h3>Follow through</h3>
+          <p>Review progress and recommended follow-ups.</p>
+        </div>
+      </li>
+      <li>
+        <span>03</span>
+        <div>
+          <h3>Look ahead</h3>
+          <p>Plan the next steps in ongoing care.</p>
+        </div>
+      </li>
+    </ol>
+    <p class="proposal-note">
+      An illustrative program concept, not a universal medical screening recommendation.
+    </p>
+    <a routerLink="/patient/dashboard" class="text-link"
+      >Preview patient workspace <h-icon name="ArrowUpRight"
+    /></a>
+  </article>
+  <article class="emergency-card">
+    <p class="eyebrow">06 / EMERGENCY FINANCIAL ASSISTANCE</p>
+    <div class="protection-emblem">
+      <img
+        src="/assets/logo/hefin-shield.png"
+        alt="Original HEFIN protection emblem"
+        width="140"
+        height="154"
+        loading="lazy"
+      />
+    </div>
+    <h2>In uncertain moments,<br />a clearer path forward.</h2>
+    <p>
+      A proposed request-to-review workflow helps hospitals and insurers coordinate around
+      eligibility, supporting documents and a human decision.
+    </p>
+    <div class="emergency-sequence">
+      <span>Request</span><h-icon name="ArrowRight" /><span>Review</span
+      ><h-icon name="ArrowRight" /><span>Decision</span>
+    </div>
+    <p class="proposal-note">
+      Future demonstrations will use synthetic cases. No real emergency service, authorization or
+      fund transfer is available.
+    </p>
+    <a routerLink="/how-it-works" class="text-link"
+      >Understand the proposed process <h-icon name="ArrowUpRight"
+    /></a>
+  </article>
+</section>
+
+<section
+  class="container ai-banner intelligence-section"
+  hReveal
+  aria-labelledby="intelligence-title"
+>
+  <div class="ai-art"><h-ai-brain-scene /></div>
+  <div class="ai-copy">
+    <h-status-badge>07 / HEFIN INTELLIGENCE</h-status-badge>
+    <h2 id="intelligence-title">
+      Complex information.<br /><span class="cyan-text">Clearer understanding.</span>
+    </h2>
+    <p>
+      The proposed HEFIN AI layer pairs local Gemma inference with retrieval from authorized
+      documents, so explanations can point back to their sources.
+    </p>
+    <div class="ai-capabilities">
+      <article>
+        <span class="micro-label">01 / GEMMA</span>
+        <h3>Local-first assistance</h3>
+        <p>Planned Gemma 3 4B through Ollama, with configurable providers.</p>
+      </article>
+      <article>
+        <span class="micro-label">02 / RAG</span>
+        <h3>Grounded in sources</h3>
+        <p>Retrieve permitted policy clauses before generating a cited explanation.</p>
+      </article>
+      <article>
+        <span class="micro-label">03 / DOCUMENT INTELLIGENCE</span>
+        <h3>Less information friction</h3>
+        <p>Summaries, extraction and missing-document flags for human review.</p>
+      </article>
+    </div>
+    <div class="ai-safety">
+      <h-icon name="ShieldCheck" /><span
+        >AI assists. People decide. No automated claim approvals or medical decisions.</span
+      >
+    </div>
+    <a routerLink="/ai" class="text-link underline-link"
+      >Explore the AI vision <h-icon name="ArrowUpRight" /></a
+    ><span class="micro-label">AI NOT CONNECTED · BRAIN VISUAL IS A STATIC 2D REFERENCE</span>
+  </div>
+</section>
+
+<section id="portals" class="container section" hReveal aria-labelledby="portals-title">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow">08 / FOUR PERSPECTIVES. ONE PLATFORM.</p>
+      <h2 id="portals-title">A place for everyone<br />in the care journey.</h2>
+    </div>
+    <p class="problem-intro">
+      Explore public workspace layouts. Authentication and synthetic data workflows are planned for
+      later phases.
+    </p>
+  </div>
+  <div class="stakeholder-grid">
+    @for (role of roles; track role.path) {
+      <a class="stakeholder-card" [attr.data-role]="role.role" [routerLink]="role.path"
+        ><h-icon [name]="role.icon" />
+        <h3>{{ role.label }}</h3>
+        <p>{{ role.description }}</p>
+        <span class="text-link">Preview portal <h-icon name="ArrowUpRight" /></span
+      ></a>
+    }
+  </div>
+</section>
+
+<section id="workflow" class="workflow-section" hReveal aria-labelledby="workflow-title">
+  <div class="container">
+    <p class="eyebrow">09 / HOW HEFIN WOULD WORK</p>
+    <h2 id="workflow-title">Every step connected.<br />Every decision traceable.</h2>
+    <p>A proposed emergency claim journey. Select a step to explore.</p>
+    <div class="workflow-steps" aria-label="Proposed claim workflow">
+      @for (item of steps; track item.title; let i = $index) {
+        <button
+          (click)="step.set(i)"
+          [attr.aria-pressed]="step() === i"
+          [class.selected]="step() === i"
+        >
+          <span>0{{ i + 1 }}</span
+          >{{ item.title }}<h-icon name="ChevronRight" />
+        </button>
+      }
+    </div>
+    <div class="workflow-detail" aria-live="polite">
+      <span class="workflow-ordinal" aria-hidden="true">0{{ step() + 1 }}</span>
+      <div>
+        <span class="eyebrow">{{ steps[step()]?.tag }}</span>
+        <h3>{{ steps[step()]?.title }}</h3>
+        <p>{{ steps[step()]?.detail }}</p>
+      </div>
+      <a routerLink="/how-it-works" class="text-link"
+        >Full process <h-icon name="ArrowUpRight"
+      /></a>
+    </div>
+  </div>
+</section>
+
+<section class="container section roadmap-section" hReveal aria-labelledby="roadmap-title">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow">10 / A THOUGHTFUL PATH FORWARD</p>
+      <h2 id="roadmap-title">Built in steps.<br />Guided by purpose.</h2>
+    </div>
+    <a routerLink="/roadmap" class="text-link underline-link"
+      >View the full roadmap <h-icon name="ArrowUpRight"
+    /></a>
+  </div>
+  <div class="roadmap-track" aria-label="Development roadmap">
+    @for (item of milestones; track item.name; let i = $index) {
+      <button
+        (click)="milestone.set(i)"
+        [class.selected]="milestone() === i"
+        [attr.aria-pressed]="milestone() === i"
+      >
+        <span class="roadmap-dot"></span><span class="micro-label">{{ item.phase }}</span
+        ><strong>{{ item.name }}</strong>
+      </button>
+    }
+  </div>
+  <div class="roadmap-detail" aria-live="polite">
+    <h3>{{ milestones[milestone()]?.name }}</h3>
+    <p>{{ milestones[milestone()]?.description }}</p>
+  </div>
+  <p class="proposal-note">
+    Expansion depends on validation, appropriate approvals and future partnerships.
+  </p>
+</section>
+
+<section class="contact-band" hReveal aria-labelledby="contact-title">
+  <div class="container">
+    <div>
+      <span class="eyebrow">11 / LET’S SHAPE WHAT COMES NEXT</span>
+      <h2 id="contact-title">Better care begins<br />with a shared vision.</h2>
+      <p>Explore the project and its proposed collaboration path.</p>
+    </div>
+    <div>
+      <h-gradient-button to="/contact">Connect with HEFIN</h-gradient-button>
+      <p class="micro-label">CONTACT INFORMATION PAGE · SUBMISSIONS NOT YET ENABLED</p>
+    </div>
+  </div>
+</section>

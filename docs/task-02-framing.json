@@ -1,0 +1,194 @@
+[
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "maxAbsX": 0.788361741049472,
+    "maxAbsY": 0.9129831289163204,
+    "distance": 22.372078848414112,
+    "width": 644,
+    "height": 427
+  },
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "maxAbsX": 0.7649274757702963,
+    "maxAbsY": 0.893372562142581,
+    "distance": 22.372078848414112,
+    "width": 644,
+    "height": 427
+  },
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "maxAbsX": 0.7583154605453747,
+    "maxAbsY": 0.8694129929314971,
+    "distance": 22.372078848414112,
+    "width": 644,
+    "height": 427
+  },
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "maxAbsX": 0.7870223668613556,
+    "maxAbsY": 0.8913362652200328,
+    "distance": 22.372078848414112,
+    "width": 644,
+    "height": 427
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "maxAbsX": 0.9031121031962479,
+    "maxAbsY": 0.7012051378771706,
+    "distance": 27.135053089434063,
+    "width": 386,
+    "height": 362
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "maxAbsX": 0.8821513098448294,
+    "maxAbsY": 0.688979244551256,
+    "distance": 27.135053089434063,
+    "width": 386,
+    "height": 362
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "maxAbsX": 0.8774340588230619,
+    "maxAbsY": 0.6726299716498441,
+    "distance": 27.135053089434063,
+    "width": 386,
+    "height": 362
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "maxAbsX": 0.90142704673472,
+    "maxAbsY": 0.6846601215670571,
+    "distance": 27.135053089434063,
+    "width": 386,
+    "height": 362
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "maxAbsX": 0.9045448455933907,
+    "maxAbsY": 0.7811329949932637,
+    "distance": 25.044243212861712,
+    "width": 359,
+    "height": 309
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "maxAbsX": 0.8809151394129612,
+    "maxAbsY": 0.7657609667753211,
+    "distance": 25.044243212861712,
+    "width": 359,
+    "height": 309
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "maxAbsX": 0.8751833607474186,
+    "maxAbsY": 0.747405609656511,
+    "distance": 25.044243212861712,
+    "width": 359,
+    "height": 309
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "maxAbsX": 0.9020540969294253,
+    "maxAbsY": 0.7621197619562443,
+    "distance": 25.044243212861712,
+    "width": 359,
+    "height": 309
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "maxAbsX": 0.9050153082104919,
+    "maxAbsY": 0.8071510055807428,
+    "distance": 24.452401820654604,
+    "width": 509,
+    "height": 427
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "maxAbsX": 0.8810941891507659,
+    "maxAbsY": 0.7915332260203166,
+    "distance": 24.452401820654604,
+    "width": 509,
+    "height": 427
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "maxAbsX": 0.8745129133158822,
+    "maxAbsY": 0.7709355353012057,
+    "distance": 24.452401820654604,
+    "width": 509,
+    "height": 427
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "maxAbsX": 0.9022796991937967,
+    "maxAbsY": 0.7870191031787688,
+    "distance": 24.452401820654604,
+    "width": 509,
+    "height": 427
+  }
+]

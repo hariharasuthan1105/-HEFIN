@@ -1,0 +1,124 @@
+# Task 02 deliverable file inventory
+
+No Git repository exists in the supplied workspace. Changes below are compared with the preserved Task 01 ZIP. Legacy code, original reference images and logo assets were hash-verified unchanged. Generated dependencies, build output, caches and browser reports are excluded from the portable source archive.
+
+## Task 02 source and documentation changes
+
+- **Modified:** `docs/MIGRATION.md`
+- **Created:** `docs/TASK-02.md`
+- **Created:** `docs/VERIFICATION-TASK-01.md`
+- **Modified:** `docs/VERIFICATION.md`
+- **Modified:** `frontend/package-lock.json`
+- **Modified:** `frontend/package.json`
+- **Modified:** `frontend/public/assets/models/README.md`
+- **Created:** `frontend/src/app/features/public/home.page.html`
+- **Modified:** `frontend/src/app/features/public/home.page.ts`
+- **Created:** `frontend/src/app/shared/directives/reveal.directive.ts`
+- **Created:** `frontend/src/app/three-d/smart-hospital/camera-fit.ts`
+- **Created:** `frontend/src/app/three-d/smart-hospital/hospital-renderer.ts`
+- **Modified:** `frontend/src/app/three-d/smart-hospital/smart-hospital-scene.ts`
+- **Created:** `frontend/src/styles/landing.css`
+- **Modified:** `frontend/src/styles.css`
+- **Created:** `frontend/tests/landing-3d.spec.ts`
+- **Modified:** `frontend/tests/production-smoke.mjs`
+- **Modified:** `README.md`
+- **Updated:** `docs/FILES.md` (this inventory).
+
+## Complete application/documentation inventory
+
+- `.gitignore`
+- `docs/FILES.md`
+- `docs/landing-desktop.png`
+- `docs/landing-mobile.png`
+- `docs/MIGRATION.md`
+- `docs/task-02-1024.png`
+- `docs/task-02-1440.png`
+- `docs/task-02-375.png`
+- `docs/task-02-768.png`
+- `docs/task-02-ai-1440.png`
+- `docs/task-02-ai-375.png`
+- `docs/task-02-camera-1024.png`
+- `docs/task-02-camera-1440.png`
+- `docs/task-02-camera-375.png`
+- `docs/task-02-camera-768.png`
+- `docs/task-02-care-1440.png`
+- `docs/task-02-care-375.png`
+- `docs/task-02-framing.json`
+- `docs/task-02-hero-1024.png`
+- `docs/task-02-hero-1440.png`
+- `docs/task-02-hero-375.png`
+- `docs/task-02-hero-768.png`
+- `docs/task-02-render-desktop.json`
+- `docs/task-02-render-mobile.json`
+- `docs/task-02-solution-1440.png`
+- `docs/task-02-solution-375.png`
+- `docs/TASK-02.md`
+- `docs/VERIFICATION-TASK-01.md`
+- `docs/VERIFICATION.md`
+- `frontend/.editorconfig`
+- `frontend/.gitignore`
+- `frontend/.postcssrc.json`
+- `frontend/.prettierrc`
+- `frontend/.vscode/extensions.json`
+- `frontend/.vscode/launch.json`
+- `frontend/.vscode/tasks.json`
+- `frontend/angular.json`
+- `frontend/package-lock.json`
+- `frontend/package.json`
+- `frontend/playwright.config.ts`
+- `frontend/public/assets/images/ai-brain-original.png`
+- `frontend/public/assets/images/ai-brain.webp`
+- `frontend/public/assets/images/smart-hospital-original.png`
+- `frontend/public/assets/images/smart-hospital.webp`
+- `frontend/public/assets/logo/favicon.png`
+- `frontend/public/assets/logo/hefin-logo.png`
+- `frontend/public/assets/logo/hefin-shield.png`
+- `frontend/public/assets/models/README.md`
+- `frontend/public/favicon.ico`
+- `frontend/README.md`
+- `frontend/scripts/preview.mjs`
+- `frontend/src/app/app.config.ts`
+- `frontend/src/app/app.css`
+- `frontend/src/app/app.html`
+- `frontend/src/app/app.routes.ts`
+- `frontend/src/app/app.ts`
+- `frontend/src/app/core/guards/README.md`
+- `frontend/src/app/core/layout/footer.component.ts`
+- `frontend/src/app/core/layout/public-navbar.component.ts`
+- `frontend/src/app/core/services/theme.service.ts`
+- `frontend/src/app/features/auth/login.page.ts`
+- `frontend/src/app/features/government/README.md`
+- `frontend/src/app/features/hospital/README.md`
+- `frontend/src/app/features/insurance/README.md`
+- `frontend/src/app/features/patient/README.md`
+- `frontend/src/app/features/public/ai.page.ts`
+- `frontend/src/app/features/public/design-system.page.ts`
+- `frontend/src/app/features/public/home.page.html`
+- `frontend/src/app/features/public/home.page.ts`
+- `frontend/src/app/features/public/info.page.ts`
+- `frontend/src/app/shared/animations/README.md`
+- `frontend/src/app/shared/components/icon.component.ts`
+- `frontend/src/app/shared/components/portal-placeholder.page.ts`
+- `frontend/src/app/shared/components/theme-toggle.component.ts`
+- `frontend/src/app/shared/components/ui.ts`
+- `frontend/src/app/shared/directives/reveal.directive.ts`
+- `frontend/src/app/three-d/ai-brain/ai-brain-scene.ts`
+- `frontend/src/app/three-d/shield/hefin-shield-scene.ts`
+- `frontend/src/app/three-d/smart-hospital/camera-fit.ts`
+- `frontend/src/app/three-d/smart-hospital/hospital-renderer.ts`
+- `frontend/src/app/three-d/smart-hospital/smart-hospital-scene.ts`
+- `frontend/src/index.html`
+- `frontend/src/main.ts`
+- `frontend/src/styles/animations.css`
+- `frontend/src/styles/components.css`
+- `frontend/src/styles/landing.css`
+- `frontend/src/styles/tokens.css`
+- `frontend/src/styles/typography.css`
+- `frontend/src/styles.css`
+- `frontend/tests/foundation.spec.ts`
+- `frontend/tests/landing-3d.spec.ts`
+- `frontend/tests/production-smoke.mjs`
+- `frontend/tsconfig.app.json`
+- `frontend/tsconfig.json`
+- `frontend/tsconfig.spec.json`
+- `README.md`
