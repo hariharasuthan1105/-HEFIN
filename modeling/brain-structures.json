@@ -1,0 +1,882 @@
+[
+  {
+    "name": "Temporal pole.l",
+    "category": "cortex",
+    "faces": 523
+  },
+  {
+    "name": "Occipital pole.l",
+    "category": "cortex",
+    "faces": 954
+  },
+  {
+    "name": "Central sulcus.l",
+    "category": "cortex",
+    "faces": 1440
+  },
+  {
+    "name": "Parieto-occipital sulcus.l",
+    "category": "cortex",
+    "faces": 1636
+  },
+  {
+    "name": "Subparietal sulcus.l",
+    "category": "cortex",
+    "faces": 561
+  },
+  {
+    "name": "Cingulate sulcus (Marginal part*).l",
+    "category": "cortex",
+    "faces": 544
+  },
+  {
+    "name": "Circular sulcus of insula.l",
+    "category": "cortex",
+    "faces": 798
+  },
+  {
+    "name": "Collateral sulcus.l",
+    "category": "cortex",
+    "faces": 1142
+  },
+  {
+    "name": "Anterior occipital sulcus*.l",
+    "category": "cortex",
+    "faces": 364
+  },
+  {
+    "name": "Opercular part of inferior frontal gyrus.l",
+    "category": "cortex",
+    "faces": 740
+  },
+  {
+    "name": "Orbital part of  inferior frontal gyrus.l",
+    "category": "cortex",
+    "faces": 186
+  },
+  {
+    "name": "Triangular part of inferior frontal gyrus.l",
+    "category": "cortex",
+    "faces": 504
+  },
+  {
+    "name": "Orbital gyri (Frontomarginal gyrus and sulcus*).l",
+    "category": "cortex",
+    "faces": 656
+  },
+  {
+    "name": "Paracentral gyrus and sulcus*.l",
+    "category": "cortex",
+    "faces": 746
+  },
+  {
+    "name": "Transverse frontopolar gyrus and sulcus*.l",
+    "category": "cortex",
+    "faces": 242
+  },
+  {
+    "name": "Straight gyrus (Gyrus rectus).l",
+    "category": "cortex",
+    "faces": 508
+  },
+  {
+    "name": "Lat_Fis-ant-Vertical.l",
+    "category": "cortex",
+    "faces": 194
+  },
+  {
+    "name": "Inferior frontal sulcus.l",
+    "category": "cortex",
+    "faces": 742
+  },
+  {
+    "name": "Middle frontal gyrus.l",
+    "category": "cortex",
+    "faces": 1092
+  },
+  {
+    "name": "Orbital gyri.l",
+    "category": "cortex",
+    "faces": 1512
+  },
+  {
+    "name": "Precentral gyrus.l",
+    "category": "cortex",
+    "faces": 1532
+  },
+  {
+    "name": "Superior frontal gyrus.l",
+    "category": "cortex",
+    "faces": 1792
+  },
+  {
+    "name": "Superior frontal sulcus.l",
+    "category": "cortex",
+    "faces": 1290
+  },
+  {
+    "name": "Paracentral sulcus.l",
+    "category": "cortex",
+    "faces": 668
+  },
+  {
+    "name": "Orbital sulci (H-shaped orbital sulci*).l",
+    "category": "cortex",
+    "faces": 762
+  },
+  {
+    "name": "Orbital sulci (Lateral Orbital sulcus*).l",
+    "category": "cortex",
+    "faces": 200
+  },
+  {
+    "name": "Olfactory sulcus.l",
+    "category": "cortex",
+    "faces": 548
+  },
+  {
+    "name": "Precentral sulcus (inferior part)*.l",
+    "category": "cortex",
+    "faces": 780
+  },
+  {
+    "name": "Precentral sulcus (Superior part)*.l",
+    "category": "cortex",
+    "faces": 568
+  },
+  {
+    "name": "Angular gyrus.l",
+    "category": "cortex",
+    "faces": 1511
+  },
+  {
+    "name": "Supramarginal gyrus.l",
+    "category": "cortex",
+    "faces": 1510
+  },
+  {
+    "name": "Postcentral gyrus.l",
+    "category": "cortex",
+    "faces": 1153
+  },
+  {
+    "name": "Postcentral sulcus.l",
+    "category": "cortex",
+    "faces": 1189
+  },
+  {
+    "name": "Precuneus.l",
+    "category": "cortex",
+    "faces": 1300
+  },
+  {
+    "name": "Superior parietal lobule.l",
+    "category": "cortex",
+    "faces": 1199
+  },
+  {
+    "name": "Intraparietal sulcus.l",
+    "category": "cortex",
+    "faces": 852
+  },
+  {
+    "name": "Inferior occipital gyrus and sulcus*.l",
+    "category": "cortex",
+    "faces": 894
+  },
+  {
+    "name": "Lingual gyrus.l",
+    "category": "cortex",
+    "faces": 1658
+  },
+  {
+    "name": "Lateral occipital gyrus (Middle occipital gyrus*).l",
+    "category": "cortex",
+    "faces": 854
+  },
+  {
+    "name": "Calcarine sulcus.l",
+    "category": "cortex",
+    "faces": 872
+  },
+  {
+    "name": "Cuneus.l",
+    "category": "cortex",
+    "faces": 946
+  },
+  {
+    "name": "Superior occipital gyri.l",
+    "category": "cortex",
+    "faces": 670
+  },
+  {
+    "name": "Lunate sulcus.l",
+    "category": "cortex",
+    "faces": 382
+  },
+  {
+    "name": "Transverse occipital sulcus.l",
+    "category": "cortex",
+    "faces": 686
+  },
+  {
+    "name": "Transverse temporal gyri.l",
+    "category": "cortex",
+    "faces": 234
+  },
+  {
+    "name": "Temporal plane.l",
+    "category": "cortex",
+    "faces": 556
+  },
+  {
+    "name": "Superior temporal gyrus (Lateral part).l",
+    "category": "cortex",
+    "faces": 1072
+  },
+  {
+    "name": "Lateral occipitotemporal gyrus.l",
+    "category": "cortex",
+    "faces": 866
+  },
+  {
+    "name": "Medial occipitotemporal gyrus (Parahippocampal*).l",
+    "category": "cortex",
+    "faces": 858
+  },
+  {
+    "name": "Inferior temporal sulcus.l",
+    "category": "cortex",
+    "faces": 246
+  },
+  {
+    "name": "Inferior temporal gyrus.l",
+    "category": "cortex",
+    "faces": 1498
+  },
+  {
+    "name": "Middle temporal gyrus.l",
+    "category": "cortex",
+    "faces": 1312
+  },
+  {
+    "name": "Superior temporal sulcus.l",
+    "category": "cortex",
+    "faces": 1139
+  },
+  {
+    "name": "Occipitotemporal sulcus (Lateral part*).l",
+    "category": "cortex",
+    "faces": 487
+  },
+  {
+    "name": "Insula (Subcentral gyrus and ant. and post. sulci*).l",
+    "category": "cortex",
+    "faces": 740
+  },
+  {
+    "name": "Cingulate gyrus and sulcus (Middle anterior part).l",
+    "category": "cortex",
+    "faces": 736
+  },
+  {
+    "name": "Cingulate gyrus and sulcus (Middle posterior part).l",
+    "category": "cortex",
+    "faces": 600
+  },
+  {
+    "name": "Cingulate gyrus and sulcus (Posterior dorsal part).l",
+    "category": "cortex",
+    "faces": 410
+  },
+  {
+    "name": "Cingulate gyrus (Posteroventral part*).l",
+    "category": "cortex",
+    "faces": 298
+  },
+  {
+    "name": "Hippocampus.r",
+    "category": "cortex",
+    "faces": 1020
+  },
+  {
+    "name": "Hippocampus.l",
+    "category": "cortex",
+    "faces": 1020
+  },
+  {
+    "name": "Lat_Fis-ant-Horizont.l",
+    "category": "cortex",
+    "faces": 174
+  },
+  {
+    "name": "Lat_Fis-post.l",
+    "category": "cortex",
+    "faces": 480
+  },
+  {
+    "name": " Posterior transverse collateral sulcus.l",
+    "category": "cortex",
+    "faces": 184
+  },
+  {
+    "name": "Sulcus interm_prim-Jensen.l",
+    "category": "cortex",
+    "faces": 360
+  },
+  {
+    "name": "Base of peduncle.r",
+    "category": "cerebellum",
+    "faces": 2422
+  },
+  {
+    "name": "Base of peduncle.l",
+    "category": "cerebellum",
+    "faces": 2422
+  },
+  {
+    "name": "Superior colliculus.r",
+    "category": "brainstem",
+    "faces": 458
+  },
+  {
+    "name": "Superior colliculus.l",
+    "category": "brainstem",
+    "faces": 458
+  },
+  {
+    "name": "Inferior colliculus.r",
+    "category": "brainstem",
+    "faces": 464
+  },
+  {
+    "name": "Inferior colliculus.l",
+    "category": "brainstem",
+    "faces": 464
+  },
+  {
+    "name": "Midbrain.r",
+    "category": "brainstem",
+    "faces": 2924
+  },
+  {
+    "name": "Interpeduncular fossa.l",
+    "category": "brainstem",
+    "faces": 58
+  },
+  {
+    "name": "Interpeduncular fossa.r",
+    "category": "brainstem",
+    "faces": 58
+  },
+  {
+    "name": "Midbrain.l",
+    "category": "brainstem",
+    "faces": 2924
+  },
+  {
+    "name": "Pons.r",
+    "category": "brainstem",
+    "faces": 4881
+  },
+  {
+    "name": "Pons.l",
+    "category": "brainstem",
+    "faces": 4881
+  },
+  {
+    "name": "Medulla oblongata.l",
+    "category": "brainstem",
+    "faces": 2918
+  },
+  {
+    "name": "Pyramid of medulla oblongata.l",
+    "category": "brainstem",
+    "faces": 960
+  },
+  {
+    "name": "Olive.r",
+    "category": "brainstem",
+    "faces": 960
+  },
+  {
+    "name": "Olive.l",
+    "category": "brainstem",
+    "faces": 960
+  },
+  {
+    "name": "Pyramid of medulla oblongata.r",
+    "category": "brainstem",
+    "faces": 960
+  },
+  {
+    "name": "Wing of central lobule.l",
+    "category": "cerebellum",
+    "faces": 1508
+  },
+  {
+    "name": "Uvula of vermis",
+    "category": "cerebellum",
+    "faces": 1044
+  },
+  {
+    "name": "Tuber of vermis",
+    "category": "cerebellum",
+    "faces": 1178
+  },
+  {
+    "name": "Tonsil of cerebellum.l",
+    "category": "cerebellum",
+    "faces": 1746
+  },
+  {
+    "name": "Superior semilunar lobule.l",
+    "category": "cerebellum",
+    "faces": 4170
+  },
+  {
+    "name": "Superior cerebellar peduncle.l",
+    "category": "cerebellum",
+    "faces": 4066
+  },
+  {
+    "name": "Pyramis of vermis",
+    "category": "cerebellum",
+    "faces": 1182
+  },
+  {
+    "name": "Posterior quadrangular lobule.l",
+    "category": "cerebellum",
+    "faces": 1736
+  },
+  {
+    "name": "Peduncle of flocculus.l",
+    "category": "cerebellum",
+    "faces": 1136
+  },
+  {
+    "name": "Nodule of vermis",
+    "category": "cerebellum",
+    "faces": 1012
+  },
+  {
+    "name": "Lingula of cerebellum",
+    "category": "cerebellum",
+    "faces": 1028
+  },
+  {
+    "name": "Inferior semilunar lobule.l",
+    "category": "cerebellum",
+    "faces": 3737
+  },
+  {
+    "name": "Gracile lobule.l",
+    "category": "cerebellum",
+    "faces": 3341
+  },
+  {
+    "name": "Folium of vermis",
+    "category": "cerebellum",
+    "faces": 812
+  },
+  {
+    "name": "Flocculus.l",
+    "category": "cerebellum",
+    "faces": 1756
+  },
+  {
+    "name": "Declive",
+    "category": "cerebellum",
+    "faces": 1020
+  },
+  {
+    "name": "Culmen",
+    "category": "cerebellum",
+    "faces": 1140
+  },
+  {
+    "name": "Central lobule",
+    "category": "cerebellum",
+    "faces": 1006
+  },
+  {
+    "name": "Biventral lobule.l",
+    "category": "cerebellum",
+    "faces": 4272
+  },
+  {
+    "name": "Anterior quadrangular lobule.l",
+    "category": "cerebellum",
+    "faces": 3128
+  },
+  {
+    "name": "Temporal pole.r",
+    "category": "cortex",
+    "faces": 523
+  },
+  {
+    "name": "Occipital pole.r",
+    "category": "cortex",
+    "faces": 954
+  },
+  {
+    "name": "Central sulcus.r",
+    "category": "cortex",
+    "faces": 1440
+  },
+  {
+    "name": "Parieto-occipital sulcus.r",
+    "category": "cortex",
+    "faces": 1636
+  },
+  {
+    "name": "Subparietal sulcus.r",
+    "category": "cortex",
+    "faces": 561
+  },
+  {
+    "name": "Cingulate sulcus (Marginal part*).r",
+    "category": "cortex",
+    "faces": 544
+  },
+  {
+    "name": "Circular sulcus of insula.r",
+    "category": "cortex",
+    "faces": 798
+  },
+  {
+    "name": "Collateral sulcus.r",
+    "category": "cortex",
+    "faces": 1142
+  },
+  {
+    "name": "Anterior occipital sulcus*.r",
+    "category": "cortex",
+    "faces": 364
+  },
+  {
+    "name": "Opercular part of inferior frontal gyrus.r",
+    "category": "cortex",
+    "faces": 740
+  },
+  {
+    "name": "Orbital part of  inferior frontal gyrus.r",
+    "category": "cortex",
+    "faces": 186
+  },
+  {
+    "name": "Triangular part of inferior frontal gyrus.r",
+    "category": "cortex",
+    "faces": 504
+  },
+  {
+    "name": "Orbital gyri (Frontomarginal gyrus and sulcus*).r",
+    "category": "cortex",
+    "faces": 656
+  },
+  {
+    "name": "Paracentral gyrus and sulcus*.r",
+    "category": "cortex",
+    "faces": 746
+  },
+  {
+    "name": "Transverse frontopolar gyrus and sulcus*.r",
+    "category": "cortex",
+    "faces": 242
+  },
+  {
+    "name": "Straight gyrus (Gyrus rectus).r",
+    "category": "cortex",
+    "faces": 508
+  },
+  {
+    "name": "Lat_Fis-ant-Vertical.r",
+    "category": "cortex",
+    "faces": 194
+  },
+  {
+    "name": "Inferior frontal sulcus.r",
+    "category": "cortex",
+    "faces": 742
+  },
+  {
+    "name": "Middle frontal gyrus.r",
+    "category": "cortex",
+    "faces": 1092
+  },
+  {
+    "name": "Orbital gyri.r",
+    "category": "cortex",
+    "faces": 1512
+  },
+  {
+    "name": "Precentral gyrus.r",
+    "category": "cortex",
+    "faces": 1532
+  },
+  {
+    "name": "Superior frontal gyrus.r",
+    "category": "cortex",
+    "faces": 1792
+  },
+  {
+    "name": "Superior frontal sulcus.r",
+    "category": "cortex",
+    "faces": 1290
+  },
+  {
+    "name": "Paracentral sulcus.r",
+    "category": "cortex",
+    "faces": 668
+  },
+  {
+    "name": "Orbital sulci (H-shaped orbital sulci*).r",
+    "category": "cortex",
+    "faces": 762
+  },
+  {
+    "name": "Orbital sulci (Lateral Orbital sulcus*).r",
+    "category": "cortex",
+    "faces": 200
+  },
+  {
+    "name": "Olfactory sulcus.r",
+    "category": "cortex",
+    "faces": 548
+  },
+  {
+    "name": "Precentral sulcus (inferior part)*.r",
+    "category": "cortex",
+    "faces": 780
+  },
+  {
+    "name": "Precentral sulcus (Superior part)*.r",
+    "category": "cortex",
+    "faces": 568
+  },
+  {
+    "name": "Angular gyrus.r",
+    "category": "cortex",
+    "faces": 1511
+  },
+  {
+    "name": "Supramarginal gyrus.r",
+    "category": "cortex",
+    "faces": 1510
+  },
+  {
+    "name": "Postcentral gyrus.r",
+    "category": "cortex",
+    "faces": 1153
+  },
+  {
+    "name": "Postcentral sulcus.r",
+    "category": "cortex",
+    "faces": 1189
+  },
+  {
+    "name": "Precuneus.r",
+    "category": "cortex",
+    "faces": 1300
+  },
+  {
+    "name": "Superior parietal lobule.r",
+    "category": "cortex",
+    "faces": 1199
+  },
+  {
+    "name": "Intraparietal sulcus.r",
+    "category": "cortex",
+    "faces": 852
+  },
+  {
+    "name": "Inferior occipital gyrus and sulcus*.r",
+    "category": "cortex",
+    "faces": 894
+  },
+  {
+    "name": "Lingual gyrus.r",
+    "category": "cortex",
+    "faces": 1658
+  },
+  {
+    "name": "Lateral occipital gyrus (Middle occipital gyrus*).r",
+    "category": "cortex",
+    "faces": 854
+  },
+  {
+    "name": "Calcarine sulcus.r",
+    "category": "cortex",
+    "faces": 872
+  },
+  {
+    "name": "Cuneus.r",
+    "category": "cortex",
+    "faces": 946
+  },
+  {
+    "name": "Superior occipital gyri.r",
+    "category": "cortex",
+    "faces": 670
+  },
+  {
+    "name": "Lunate sulcus.r",
+    "category": "cortex",
+    "faces": 382
+  },
+  {
+    "name": "Transverse occipital sulcus.r",
+    "category": "cortex",
+    "faces": 686
+  },
+  {
+    "name": "Transverse temporal gyri.r",
+    "category": "cortex",
+    "faces": 234
+  },
+  {
+    "name": "Temporal plane.r",
+    "category": "cortex",
+    "faces": 556
+  },
+  {
+    "name": "Superior temporal gyrus (Lateral part).r",
+    "category": "cortex",
+    "faces": 1072
+  },
+  {
+    "name": "Lateral occipitotemporal gyrus.r",
+    "category": "cortex",
+    "faces": 866
+  },
+  {
+    "name": "Medial occipitotemporal gyrus (Parahippocampal*).r",
+    "category": "cortex",
+    "faces": 858
+  },
+  {
+    "name": "Inferior temporal sulcus.r",
+    "category": "cortex",
+    "faces": 246
+  },
+  {
+    "name": "Inferior temporal gyrus.r",
+    "category": "cortex",
+    "faces": 1498
+  },
+  {
+    "name": "Middle temporal gyrus.r",
+    "category": "cortex",
+    "faces": 1312
+  },
+  {
+    "name": "Superior temporal sulcus.r",
+    "category": "cortex",
+    "faces": 1139
+  },
+  {
+    "name": "Occipitotemporal sulcus (Lateral part*).r",
+    "category": "cortex",
+    "faces": 487
+  },
+  {
+    "name": "Insula (Subcentral gyrus and ant. and post. sulci*).r",
+    "category": "cortex",
+    "faces": 740
+  },
+  {
+    "name": "Cingulate gyrus and sulcus (Middle anterior part).r",
+    "category": "cortex",
+    "faces": 736
+  },
+  {
+    "name": "Cingulate gyrus and sulcus (Middle posterior part).r",
+    "category": "cortex",
+    "faces": 600
+  },
+  {
+    "name": "Cingulate gyrus and sulcus (Posterior dorsal part).r",
+    "category": "cortex",
+    "faces": 410
+  },
+  {
+    "name": "Cingulate gyrus (Posteroventral part*).r",
+    "category": "cortex",
+    "faces": 298
+  },
+  {
+    "name": "Lat_Fis-ant-Horizont.r",
+    "category": "cortex",
+    "faces": 174
+  },
+  {
+    "name": "Lat_Fis-post.r",
+    "category": "cortex",
+    "faces": 480
+  },
+  {
+    "name": " Posterior transverse collateral sulcus.r",
+    "category": "cortex",
+    "faces": 184
+  },
+  {
+    "name": "Sulcus interm_prim-Jensen.r",
+    "category": "cortex",
+    "faces": 360
+  },
+  {
+    "name": "Wing of central lobule.r",
+    "category": "cerebellum",
+    "faces": 1508
+  },
+  {
+    "name": "Tonsil of cerebellum.r",
+    "category": "cerebellum",
+    "faces": 1746
+  },
+  {
+    "name": "Superior semilunar lobule.r",
+    "category": "cerebellum",
+    "faces": 4170
+  },
+  {
+    "name": "Superior cerebellar peduncle.r",
+    "category": "cerebellum",
+    "faces": 4066
+  },
+  {
+    "name": "Posterior quadrangular lobule.r",
+    "category": "cerebellum",
+    "faces": 1736
+  },
+  {
+    "name": "Peduncle of flocculus.r",
+    "category": "cerebellum",
+    "faces": 1136
+  },
+  {
+    "name": "Inferior semilunar lobule.r",
+    "category": "cerebellum",
+    "faces": 3737
+  },
+  {
+    "name": "Gracile lobule.r",
+    "category": "cerebellum",
+    "faces": 3341
+  },
+  {
+    "name": "Flocculus.r",
+    "category": "cerebellum",
+    "faces": 1756
+  },
+  {
+    "name": "Biventral lobule.r",
+    "category": "cerebellum",
+    "faces": 4272
+  },
+  {
+    "name": "Anterior quadrangular lobule.r",
+    "category": "cerebellum",
+    "faces": 3128
+  }
+]

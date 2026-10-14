@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   template: `<figure class="brain-scene">
     <img
       src="assets/images/ai-brain.webp"
-      alt="Supplied brain wireframe reference for the future neural visualization"
+      alt="Supplied anatomical brain wireframe design reference"
       width="819"
       height="965"
       loading="lazy"
