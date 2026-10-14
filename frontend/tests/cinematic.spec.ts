@@ -120,6 +120,8 @@ test('five viewport captures preserve composition, touch targets, and both theme
   page,
 }, info) => {
   test.skip(info.project.name !== 'desktop', 'Five explicit sizes checked once.');
+  // Five independent model initializations each retain their 30-second limit.
+  test.setTimeout(180000);
   await capable(page);
   const report = [];
   for (const width of [375, 768, 1024, 1440, 1920]) {

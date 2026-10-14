@@ -241,6 +241,7 @@ test('context loss releases renderer and shows original reference', async ({ pag
 });
 test('requested breakpoints remain readable and overflow-free', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'All requested sizes are checked once.');
+  test.setTimeout(180000);
   await capableDevice(page);
   for (const width of [375, 768, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 1000 });
