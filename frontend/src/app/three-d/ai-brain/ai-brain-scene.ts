@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
   selector: 'h-ai-brain-scene',
   template: `<figure class="brain-scene">
     <img
-      src="/assets/images/ai-brain.webp"
+      src="assets/images/ai-brain.webp"
       alt="Supplied brain wireframe reference for the future neural visualization"
       width="819"
       height="965"

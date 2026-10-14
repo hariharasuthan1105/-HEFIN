@@ -4,7 +4,7 @@ import { IconComponent } from './icon.component';
 @Component({
   selector: 'h-logo',
   template: `<img
-    [src]="compact() ? '/assets/logo/hefin-shield.png' : '/assets/logo/hefin-logo.png'"
+    [src]="compact() ? 'assets/logo/hefin-shield.png' : 'assets/logo/hefin-logo.png'"
     [class.compact]="compact()"
     alt="HEFIN gold H shield"
     width="294"

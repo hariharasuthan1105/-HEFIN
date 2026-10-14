@@ -31,7 +31,7 @@ type PowerNavigator = Navigator & { deviceMemory?: number; connection?: { saveDa
         @if (mode() !== 'interactive') {
           <img
             class="hospital-fallback"
-            src="/assets/images/smart-hospital.webp"
+            src="assets/images/smart-hospital.webp"
             alt="Supplied static architectural reference for the Smart Hospital"
             width="810"
             height="965"

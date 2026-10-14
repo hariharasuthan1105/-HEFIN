@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
   selector: 'h-hefin-shield-scene',
   template: `<figure class="shield-scene">
     <img
-      src="/assets/logo/hefin-shield.png"
+      src="assets/logo/hefin-shield.png"
       alt="Original HEFIN gold shield emblem, static fallback"
       width="140"
       height="154"
