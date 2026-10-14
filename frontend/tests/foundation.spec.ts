@@ -66,7 +66,7 @@ test('portal selection and return navigation work without implying authenticatio
     await page.goto('/login');
     await page.locator(`.portal-card[data-role="${role}"]`).click();
     await expect(page).toHaveURL(new RegExp(`/${role}/dashboard$`));
-    await expect(page.getByText('FOUNDATION PREVIEW', { exact: true })).toBeVisible();
+    await expect(page.getByText('SIMULATED WORKSPACE', { exact: true })).toBeVisible();
     await expect(
       page.getByText('These placeholders do not represent live activity.', { exact: false }),
     ).toBeVisible();
@@ -127,9 +127,11 @@ test('reduced-motion disables animation and captures responsive landing', async 
   await page.evaluate(() => document.fonts.ready);
   const brain = page.locator('.brain-scene img');
   await brain.scrollIntoViewIfNeeded();
-  await expect.poll(() => brain.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+  await expect
+    .poll(() => brain.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0))
+    .toBe(true);
   await page.evaluate(() => window.scrollTo(0, 0));
   await expect(page.locator('.page-enter')).toHaveCSS('animation-name', 'none');
   await expect(page.locator('.text-mask>span').first()).toHaveCSS('animation-name', 'none');
-  await page.screenshot({ path: `../docs/landing-${testInfo.project.name}.png`, fullPage: true });
+  await page.screenshot({ path: `../docs/task-03-landing-${testInfo.project.name}.png`, fullPage: true });
 });

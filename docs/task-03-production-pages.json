@@ -1,0 +1,175 @@
+{
+  "timing": {
+    "navigation": {
+      "name": "http://127.0.0.1:4201/-HEFIN/",
+      "entryType": "navigation",
+      "startTime": 0,
+      "duration": 344,
+      "navigationId": 9345,
+      "initiatorType": "navigation",
+      "deliveryType": "",
+      "nextHopProtocol": "http/1.1",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/html",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 3.5,
+      "domainLookupStart": 3.5,
+      "domainLookupEnd": 3.5,
+      "connectStart": 3.5,
+      "secureConnectionStart": 0,
+      "connectEnd": 3.5,
+      "requestStart": 5.599999997764826,
+      "responseStart": 19.599999997764826,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 19.599999997764826,
+      "responseEnd": 20.300000000745058,
+      "transferSize": 6784,
+      "encodedBodySize": 6484,
+      "decodedBodySize": 6484,
+      "responseStatus": 200,
+      "serverTiming": [],
+      "unloadEventStart": 0,
+      "unloadEventEnd": 0,
+      "domInteractive": 37.599999997764826,
+      "domContentLoadedEventStart": 131.69999999925494,
+      "domContentLoadedEventEnd": 132.09999999776483,
+      "domComplete": 344,
+      "loadEventStart": 344,
+      "loadEventEnd": 344,
+      "type": "navigate",
+      "redirectCount": 0,
+      "activationStart": 0,
+      "criticalCHRestart": 0,
+      "notRestoredReasons": null,
+      "confidence": {
+        "randomizedTriggerRate": 0.4994798,
+        "value": "high"
+      }
+    },
+    "rafMedianMs": 7,
+    "rafP95Ms": 7.100000000000364,
+    "resources": [
+      {
+        "name": "/-HEFIN/chunk-DJVAsKa_.js",
+        "bytes": 464,
+        "duration": 15
+      },
+      {
+        "name": "/-HEFIN/main-PVM7P2HW.js",
+        "bytes": 256269,
+        "duration": 16.699999999254942
+      },
+      {
+        "name": "/-HEFIN/styles-YYZTCUJQ.css",
+        "bytes": 63322,
+        "duration": 11.099999997764826
+      },
+      {
+        "name": "/-HEFIN/chunk-C0KNJlFV.js",
+        "bytes": 28491,
+        "duration": 3.400000002235174
+      },
+      {
+        "name": "/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+        "bytes": 11816,
+        "duration": 5.600000001490116
+      },
+      {
+        "name": "/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+        "bytes": 21168,
+        "duration": 39.100000001490116
+      },
+      {
+        "name": "/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+        "bytes": 12188,
+        "duration": 39.399999998509884
+      },
+      {
+        "name": "/-HEFIN/chunk-KSp0NHDI.js",
+        "bytes": 538,
+        "duration": 4.699999999254942
+      },
+      {
+        "name": "/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+        "bytes": 6596,
+        "duration": 107.80000000074506
+      },
+      {
+        "name": "/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+        "bytes": 13312,
+        "duration": 112.59999999776483
+      },
+      {
+        "name": "/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+        "bytes": 12312,
+        "duration": 113.40000000223517
+      },
+      {
+        "name": "/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+        "bytes": 7692,
+        "duration": 113.39999999850988
+      },
+      {
+        "name": "/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+        "bytes": 13388,
+        "duration": 113.90000000223517
+      },
+      {
+        "name": "/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+        "bytes": 7344,
+        "duration": 113.5
+      },
+      {
+        "name": "/-HEFIN/chunk-azbPoVgo.js",
+        "bytes": 682454,
+        "duration": 8.100000001490116
+      },
+      {
+        "name": "/-HEFIN/assets/models/anatomical-brain.glb",
+        "bytes": 717836,
+        "duration": 12.700000002980232
+      },
+      {
+        "name": "/-HEFIN/assets/models/smart-hospital.glb",
+        "bytes": 1150132,
+        "duration": 15.800000000745058
+      },
+      {
+        "name": "/-HEFIN/assets/draco/draco_wasm_wrapper.js",
+        "bytes": 58456,
+        "duration": 89.40000000223517
+      },
+      {
+        "name": "/-HEFIN/assets/draco/draco_decoder.wasm",
+        "bytes": 192420,
+        "duration": 6.699999999254942
+      }
+    ]
+  },
+  "heapBeforeScene": {
+    "Documents": 4,
+    "Nodes": 922,
+    "JSHeapUsedSize": 5267144,
+    "JSHeapTotalSize": 7409664
+  },
+  "heapAfterScene": {
+    "Documents": 1,
+    "Nodes": 924,
+    "JSHeapUsedSize": 83944904,
+    "JSHeapTotalSize": 139542528
+  },
+  "heapAfterNavigation": {
+    "Documents": 5,
+    "Nodes": 1428,
+    "JSHeapUsedSize": 99713148,
+    "JSHeapTotalSize": 143413248
+  },
+  "note": "Local Chromium observation; rAF cadence is not GPU frame time. Heap includes the whole app and is not a leak proof."
+}

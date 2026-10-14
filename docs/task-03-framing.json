@@ -1,0 +1,178 @@
+[
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "width": 1390,
+    "height": 691,
+    "maxAbsX": 0.8771929824561403,
+    "maxAbsY": 0.8659370446299866
+  },
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "width": 1390,
+    "height": 691,
+    "maxAbsX": 0.8771929824561403,
+    "maxAbsY": 0.8659370446299866
+  },
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "width": 1390,
+    "height": 691,
+    "maxAbsX": 0.8771929824561403,
+    "maxAbsY": 0.8659370446299866
+  },
+  {
+    "viewportWidth": 1440,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "width": 1390,
+    "height": 691,
+    "maxAbsX": 0.8771929824561403,
+    "maxAbsY": 0.8659370446299866
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "width": 734,
+    "height": 480,
+    "maxAbsX": 0.8771929824561405,
+    "maxAbsY": 0.6768466918211851
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "width": 734,
+    "height": 480,
+    "maxAbsX": 0.8771929824561405,
+    "maxAbsY": 0.6768466918211851
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "width": 734,
+    "height": 480,
+    "maxAbsX": 0.8771929824561405,
+    "maxAbsY": 0.6768466918211851
+  },
+  {
+    "viewportWidth": 768,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "width": 734,
+    "height": 480,
+    "maxAbsX": 0.8771929824561405,
+    "maxAbsY": 0.6768466918211851
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "width": 353,
+    "height": 300,
+    "maxAbsX": 0.8771929824561402,
+    "maxAbsY": 0.5327331703815663
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "width": 353,
+    "height": 300,
+    "maxAbsX": 0.8771929824561402,
+    "maxAbsY": 0.5327331703815663
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "width": 353,
+    "height": 300,
+    "maxAbsX": 0.8771929824561402,
+    "maxAbsY": 0.5327331703815663
+  },
+  {
+    "viewportWidth": 375,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "width": 353,
+    "height": 300,
+    "maxAbsX": 0.8771929824561402,
+    "maxAbsY": 0.5327331703815663
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.03,
+      0.03
+    ],
+    "width": 974,
+    "height": 492,
+    "maxAbsX": 0.8771929824561404,
+    "maxAbsY": 0.853753269463121
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.97,
+      0.03
+    ],
+    "width": 974,
+    "height": 492,
+    "maxAbsX": 0.8771929824561404,
+    "maxAbsY": 0.853753269463121
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.97,
+      0.97
+    ],
+    "width": 974,
+    "height": 492,
+    "maxAbsX": 0.8771929824561404,
+    "maxAbsY": 0.853753269463121
+  },
+  {
+    "viewportWidth": 1024,
+    "pointer": [
+      0.03,
+      0.97
+    ],
+    "width": 974,
+    "height": 492,
+    "maxAbsX": 0.8771929824561404,
+    "maxAbsY": 0.853753269463121
+  }
+]
