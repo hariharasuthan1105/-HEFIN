@@ -15,7 +15,13 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./features/auth/login.page').then((m) => m.LoginPage),
   },
-  ...['patient', 'hospital', 'insurance', 'government'].map((role) => ({
+  {
+    path: 'patient/dashboard',
+    loadComponent: () =>
+      import('./features/patient/patient-portal.page').then((m) => m.PatientPortalPage),
+    data: { role: 'patient' },
+  },
+  ...['hospital', 'insurance', 'government'].map((role) => ({
     path: role + '/dashboard',
     loadComponent: dashboard,
     data: { role },
