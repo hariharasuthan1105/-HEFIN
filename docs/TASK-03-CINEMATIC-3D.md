@@ -81,3 +81,7 @@ Target: `hefin-3.0-development`. The PR quality workflow runs type checking, pro
 Implementation commit: [5968cc5](https://github.com/hariharasuthan1105/-HEFIN/commit/5968cc5eacb5a0f10bd6aec712934bcf5a594c23).
 Pull request: [#2](https://github.com/hariharasuthan1105/-HEFIN/pull/2).
 Remote quality checks: [current PR checks](https://github.com/hariharasuthan1105/-HEFIN/pull/2/checks). Status is live there; local results above are the completed verification record. All four LFS objects uploaded successfully and `git lfs fsck` passed.
+
+### Release review correction
+
+The first Linux CI run completed with 29 passed, 10 failed and 3 skips. Its failures clustered around desktop rendering and model-reload waits. Software rasterizers now retain the same detailed GLBs and controls at DPR 0.65 and 5fps, with planar reflection and bloom omitted to preserve CPU time for interaction. Hardware-rendered desktop/mobile quality remains unchanged. Development metrics expose the selected quality. `HEFIN_SOFTWARE_TEST=1` forces Chromium's documented SwiftShader backend for reproducible local verification (https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md). Model reload assertions consistently allow 30 seconds; behavioral outcomes are unchanged.

@@ -35,6 +35,7 @@ export const sceneMetrics = {
   loadMs: 0,
   averageFrameMs: 0,
   mode: 'Hybrid',
+  quality: 'full',
   yaw: 0,
   framing: { width: 0, height: 0, maxAbsX: 0, maxAbsY: 0 },
 };
@@ -117,6 +118,7 @@ export async function createHealthcareScene(
     downY = 0,
     downYaw = 0,
     downPitch = 0;
+  let softwareRenderer = false;
   const canvas = document.createElement('canvas');
   canvas.className = 'cinematic-canvas';
   canvas.setAttribute('aria-hidden', 'true');
@@ -209,7 +211,7 @@ export async function createHealthcareScene(
   let links: ReturnType<typeof dataConnections>, platform: ReturnType<typeof displayPlatform>;
   function tick(now: number) {
     if (disposed || raf === null) return;
-    if (now - lastRender >= (options.lowPower ? 50 : 1000 / 30)) {
+    if (now - lastRender >= (softwareRenderer ? 200 : options.lowPower ? 50 : 1000 / 30)) {
       time += last ? Math.min((now - last) / 1000, 0.1) : 0;
       last = now;
       lastRender = now;
@@ -290,8 +292,18 @@ export async function createHealthcareScene(
       powerPreference: 'low-power',
     });
     if (!context) throw new Error('WebGL unavailable');
+    // Software rasterizers share CPU time with navigation and accessible controls.
+    // Keep the detailed models but reduce resolution and expensive screen passes.
+    const debugRenderer = context.getExtension('WEBGL_debug_renderer_info');
+    const rendererName = debugRenderer
+      ? String(context.getParameter(debugRenderer.UNMASKED_RENDERER_WEBGL))
+      : '';
+    softwareRenderer = /swiftshader|llvmpipe|softpipe|software rasterizer/i.test(rendererName);
+    sceneMetrics.quality = softwareRenderer ? 'software' : options.lowPower ? 'mobile' : 'full';
     renderer = new T.WebGLRenderer({ canvas, context, antialias: !options.lowPower });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, options.lowPower ? 1 : 1.25));
+    renderer.setPixelRatio(
+      Math.min(devicePixelRatio, softwareRenderer ? 0.65 : options.lowPower ? 1 : 1.25),
+    );
     renderer.toneMapping = T.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.05;
     renderer.outputColorSpace = T.SRGBColorSpace;
@@ -486,7 +498,7 @@ export async function createHealthcareScene(
     cross.position.set(8.4, 6.4, -0.4);
     scene.add(cross);
     // A single low-resolution planar reflection; skipped for mobile opt-in.
-    if (!options.lowPower) {
+    if (!options.lowPower && !softwareRenderer) {
       mirror = new Reflector(new T.PlaneGeometry(120, 120), {
         clipBias: 0.003,
         textureWidth: 512,
@@ -513,8 +525,10 @@ export async function createHealthcareScene(
     }
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    bloom = new UnrealBloomPass(new T.Vector2(1, 1), 0.28, 0.45, 1.05);
-    composer.addPass(bloom);
+    if (!softwareRenderer) {
+      bloom = new UnrealBloomPass(new T.Vector2(1, 1), 0.28, 0.45, 1.05);
+      composer.addPass(bloom);
+    }
     output = new OutputPass();
     composer.addPass(output);
     host.append(canvas);

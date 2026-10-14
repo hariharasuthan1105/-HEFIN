@@ -51,6 +51,10 @@ test('both genuine GLBs load, material controls and keyboard orbit reset work', 
   await scene.getByRole('button', { name: 'Reset view' }).click();
   expect((await metrics(page))['yaw']).toBe(0);
   const initial = await metrics(page);
+  if (process.env['HEFIN_SOFTWARE_TEST']) {
+    expect(initial['quality']).toBe('software');
+    expect(initial['dpr']).toBeLessThanOrEqual(0.65);
+  }
   expect(initial['modelBytes']).toBeGreaterThan(1000000);
   await page.getByRole('link', { name: 'Experience Demo', exact: true }).click();
   await expect.poll(async () => (await metrics(page))['activeRenderers']).toBe(0);

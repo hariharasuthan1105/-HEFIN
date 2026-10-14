@@ -9,6 +9,9 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:4200',
     channel: process.env['CI'] ? undefined : 'msedge',
     trace: 'retain-on-failure',
+    launchOptions: {
+      args: process.env['HEFIN_SOFTWARE_TEST'] ? ['--use-gl=angle', '--use-angle=swiftshader'] : [],
+    },
   },
   projects: [
     { name: 'desktop', use: { viewport: { width: 1440, height: 1000 } } },

@@ -33,7 +33,7 @@ async function interactive(page: Page) {
   await scene.scrollIntoViewIfNeeded();
   if ((page.viewportSize()?.width ?? 1440) <= 600)
     await page.getByRole('button', { name: 'Explore in 3D' }).click();
-  await expect(scene).toHaveAttribute('data-mode', 'interactive', { timeout: 20000 });
+  await expect(scene).toHaveAttribute('data-mode', 'interactive', { timeout: 30000 });
   await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(1);
 }
 test('hero actions, workflow and roadmap have real destinations and state', async ({ page }) => {
@@ -121,7 +121,9 @@ test('real 3D pauses offscreen, supports controls and disposes all owned resourc
   expect((await metrics(page)).geometries).toBe(0);
   expect((await metrics(page)).materials).toBe(0);
   await page.getByRole('button', { name: 'Explore in 3D' }).click();
-  await expect(page.locator('.cinematic-experience')).toHaveAttribute('data-mode', 'interactive');
+  await expect(page.locator('.cinematic-experience')).toHaveAttribute('data-mode', 'interactive', {
+    timeout: 30000,
+  });
   await page.getByRole('link', { name: 'Experience Demo', exact: true }).click();
   await expect(page).toHaveURL(/\/login$/);
   const clean = await metrics(page);
@@ -210,7 +212,11 @@ test('route cycles and changing motion preference do not duplicate render loops'
     await page.locator('.cinematic-experience').scrollIntoViewIfNeeded();
     if ((page.viewportSize()?.width ?? 1440) <= 600)
       await page.getByRole('button', { name: 'Explore in 3D' }).click();
-    await expect(page.locator('.cinematic-experience')).toHaveAttribute('data-mode', 'interactive');
+    await expect(page.locator('.cinematic-experience')).toHaveAttribute(
+      'data-mode',
+      'interactive',
+      { timeout: 30000 },
+    );
     expect((await metrics(page)).activeRenderers).toBe(1);
     expect((await metrics(page)).activeLoops).toBe(1);
     await expect(page.locator('canvas')).toHaveCount(1);
