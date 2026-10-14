@@ -77,3 +77,7 @@ Reviewed captures have no horizontal overflow and retain both subjects:
 Feature branch: [feature/task-03-cinematic-3d](https://github.com/hariharasuthan1105/-HEFIN/tree/feature/task-03-cinematic-3d).
 
 Target: `hefin-3.0-development`. The PR quality workflow runs type checking, production build, browser suite and Pages smoke without deployment. No merge, force push or Pages dispatch is part of this task. PR and CI details are recorded after publication below.
+
+Implementation commit: [5968cc5](https://github.com/hariharasuthan1105/-HEFIN/commit/5968cc5eacb5a0f10bd6aec712934bcf5a594c23).
+Pull request: [#2](https://github.com/hariharasuthan1105/-HEFIN/pull/2).
+Remote quality checks: [current PR checks](https://github.com/hariharasuthan1105/-HEFIN/pull/2/checks). Status is live there; local results above are the completed verification record. All four LFS objects uploaded successfully and `git lfs fsck` passed.
