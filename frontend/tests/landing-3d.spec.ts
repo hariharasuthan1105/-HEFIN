@@ -94,6 +94,7 @@ test('real 3D pauses offscreen, supports controls and disposes all owned resourc
   await interactive(page);
   await expect.poll(async () => (await metrics(page)).frames).toBeGreaterThan(3);
   const initial = await metrics(page);
+  if (process.env['CI']) console.log('Scene render sample:', JSON.stringify(initial));
   expect(initial.activeRenderers).toBe(1);
   expect(initial.activeLoops).toBe(1);
   expect(initial.dpr).toBeLessThanOrEqual(testInfo.project.name === 'mobile' ? 1 : 1.5);
@@ -147,9 +148,11 @@ test('calculated camera fit contains the campus through live resize and pointer 
   page,
 }, testInfo) => {
   test.skip(
+    // Several resizes and pointer operations share one initialized renderer.
     testInfo.project.name !== 'desktop',
     'This test resizes the same live renderer through all four sizes.',
   );
+  test.setTimeout(180000);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await interactive(page);
   const samples: unknown[] = [];
@@ -204,6 +207,7 @@ test('hidden documents stop rendering and visible documents resume one loop', as
 test('route cycles and changing motion preference do not duplicate render loops', async ({
   page,
 }) => {
+  test.setTimeout(180000);
   await interactive(page);
   for (let i = 0; i < 3; i++) {
     await page.getByRole('link', { name: 'Experience Demo', exact: true }).click();

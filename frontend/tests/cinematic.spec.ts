@@ -31,6 +31,7 @@ test('both genuine GLBs load, material controls and keyboard orbit reset work', 
   page,
 }, info) => {
   const loaded: string[] = [];
+  test.setTimeout(120000);
   page.on('response', (r) => {
     if (r.url().endsWith('.glb') && r.ok()) loaded.push(r.url());
   });

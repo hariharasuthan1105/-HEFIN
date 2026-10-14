@@ -182,6 +182,13 @@ export async function createHealthcareScene(
     if (!renderer || disposed) return;
     const w = Math.max(1, host.clientWidth),
       h = Math.max(1, host.clientHeight);
+    if (softwareRenderer) {
+      // Bound rasterization work even on a large desktop canvas.
+      const dpr = Math.min(devicePixelRatio, 0.65, Math.sqrt(180000 / (w * h)));
+      renderer.setPixelRatio(dpr);
+      composer?.setPixelRatio(dpr);
+      sceneMetrics.dpr = dpr;
+    }
     renderer.setSize(w, h, false);
     composer?.setSize(w, h);
     camera.aspect = w / h;
