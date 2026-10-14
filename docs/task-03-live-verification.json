@@ -1,0 +1,2189 @@
+{
+  "base": "https://hariharasuthan1105.github.io/-HEFIN/",
+  "verifiedAt": "2026-10-14T16:38:00.438Z",
+  "routes": [
+    {
+      "route": "about",
+      "directStatus": 404,
+      "heading": "Care should build confidence."
+    },
+    {
+      "route": "ai",
+      "directStatus": 404,
+      "heading": "Understanding\nis a form of care."
+    },
+    {
+      "route": "login",
+      "directStatus": 404,
+      "heading": "Your world of care\nstarts here."
+    },
+    {
+      "route": "patient/dashboard",
+      "directStatus": 404,
+      "heading": "Patient workspace"
+    },
+    {
+      "route": "hospital/dashboard",
+      "directStatus": 404,
+      "heading": "Hospital workspace"
+    },
+    {
+      "route": "insurance/dashboard",
+      "directStatus": 404,
+      "heading": "Insurance company workspace"
+    },
+    {
+      "route": "government/dashboard",
+      "directStatus": 404,
+      "heading": "Government workspace"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 375,
+      "mode": "static",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "mode": "interactive",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "mode": "interactive",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "mode": "interactive",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "mode": "interactive",
+      "overflow": false
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BAovp_XS.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/smart-hospital.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BgcMsEdF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/smart-hospital.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/anatomical-brain.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_wasm_wrapper.js",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_decoder.wasm",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_decoder.wasm",
+      "status": 200,
+      "type": "explicit-check"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_wasm_wrapper.js",
+      "status": 200,
+      "type": "explicit-check"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "explicit-check"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/ATTRIBUTION.txt",
+      "status": 200,
+      "type": "explicit-check"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-C7oanBB6.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-C7oanBB6.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-pUNwmaPF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-pUNwmaPF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/ai-brain.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-C6wt7a-k.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-C6wt7a-k.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BffRdy73.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-CfLXFITW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BAovp_XS.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/smart-hospital.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-C7oanBB6.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BAovp_XS.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/smart-hospital.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/ai-brain.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BAovp_XS.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/smart-hospital.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/ai-brain.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BgcMsEdF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/anatomical-brain.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/smart-hospital.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_wasm_wrapper.js",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_decoder.wasm",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BAovp_XS.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/smart-hospital.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/ai-brain.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BgcMsEdF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/anatomical-brain.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/smart-hospital.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_wasm_wrapper.js",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_decoder.wasm",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BAovp_XS.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/smart-hospital.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/ai-brain.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BgcMsEdF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/anatomical-brain.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/smart-hospital.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_wasm_wrapper.js",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_decoder.wasm",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-DJVAsKa_.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/main-QFDXX42C.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/styles-YYZTCUJQ.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BAovp_XS.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-400-normal-LF3ZIHND.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/space-grotesk-latin-500-normal-GESQWJQV.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-400-normal-EIG3GRNB.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-500-normal-NGHMNRZC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/plus-jakarta-sans-latin-600-normal-EJXYMLOY.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/orbitron-latin-500-normal-DR7MPCHC.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/audiowide-latin-400-normal-2YDS2MKE.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/russo-one-latin-400-normal-XCSY7XKA.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/media/pixelify-sans-latin-400-normal-5B4KSHQT.woff2",
+      "status": 200,
+      "type": "font"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-eMuawsI-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-shield.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/smart-hospital.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/ai-brain.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/images/cinematic-fallback.webp",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/chunk-BgcMsEdF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/anatomical-brain.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/models/smart-hospital.glb",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_wasm_wrapper.js",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/draco/draco_decoder.wasm",
+      "status": 200,
+      "type": "fetch"
+    },
+    {
+      "url": "https://hariharasuthan1105.github.io/-HEFIN/assets/logo/hefin-logo.png",
+      "status": 200,
+      "type": "image"
+    }
+  ],
+  "expectedDocument404s": [
+    "https://hariharasuthan1105.github.io/-HEFIN/about",
+    "https://hariharasuthan1105.github.io/-HEFIN/about",
+    "https://hariharasuthan1105.github.io/-HEFIN/ai",
+    "https://hariharasuthan1105.github.io/-HEFIN/ai",
+    "https://hariharasuthan1105.github.io/-HEFIN/login",
+    "https://hariharasuthan1105.github.io/-HEFIN/login",
+    "https://hariharasuthan1105.github.io/-HEFIN/patient/dashboard",
+    "https://hariharasuthan1105.github.io/-HEFIN/patient/dashboard",
+    "https://hariharasuthan1105.github.io/-HEFIN/hospital/dashboard",
+    "https://hariharasuthan1105.github.io/-HEFIN/hospital/dashboard",
+    "https://hariharasuthan1105.github.io/-HEFIN/insurance/dashboard",
+    "https://hariharasuthan1105.github.io/-HEFIN/insurance/dashboard",
+    "https://hariharasuthan1105.github.io/-HEFIN/government/dashboard",
+    "https://hariharasuthan1105.github.io/-HEFIN/government/dashboard"
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "animation": "canvas changes while running",
+  "pause": "canvas remains stable while paused",
+  "camera": "orbit changes canvas; reset reproducibly restores view",
+  "fontsLoaded": [
+    "Space Grotesk",
+    "Space Grotesk",
+    "Plus Jakarta Sans",
+    "Plus Jakarta Sans",
+    "Plus Jakarta Sans",
+    "JetBrains Mono",
+    "Orbitron",
+    "Audiowide",
+    "Russo One",
+    "Pixelify Sans"
+  ],
+  "models": [
+    {
+      "name": "anatomical-brain.glb",
+      "bytes": 717836,
+      "sha256": "c18caf816c8f4185a0f75ad4d553157ffa1e10111077e4375fea2f44ceaa7f53"
+    },
+    {
+      "name": "smart-hospital.glb",
+      "bytes": 1150132,
+      "sha256": "f6c08dbab0646d60f442e843178d70359f75b3a262fd082de5a58b6ffd396696"
+    }
+  ],
+  "mobileNavigation": "passed",
+  "reducedMotion": "passed",
+  "result": "passed"
+}
