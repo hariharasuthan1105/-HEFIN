@@ -39,7 +39,7 @@ export function sanitizeApiUrl(url: string | undefined | null): string | null {
     if (parsed.protocol === 'https:') {
       const host = parsed.hostname.toLowerCase();
       // Allow Render hosted services
-      if (host.endsWith('.onrender.com') || host === 'hefin-backend.onrender.com') {
+      if (host.endsWith('.onrender.com') || host === 'hefin-backend-mofn.onrender.com') {
         return trimmed;
       }
       // Allow valid domain names with at least one dot
@@ -70,7 +70,7 @@ export const environment = {
     }
     // GitHub Pages production deployment points to Render backend
     if (isGitHubPages || isRenderHost) {
-      return 'https://hefin-backend.onrender.com/api/v1';
+      return 'https://hefin-backend-mofn.onrender.com/api/v1';
     }
     return 'http://127.0.0.1:8000/api/v1';
   },

@@ -335,7 +335,7 @@ databases:
 
 ### 5. Frontend API Dynamic Routing & Safe Origin Sanitization
 [`frontend/src/environments/environment.ts`](file:///c:/Users/hariharasuthan/Downloads/-HEFIN-main%20%282%29/-HEFIN-main/frontend/src/environments/environment.ts) detects the hosting environment:
-- When hosted on `https://hariharasuthan1105.github.io/`, it targets `https://hefin-backend.onrender.com/api/v1`.
+- When hosted on `https://hariharasuthan1105.github.io/`, it targets `https://hefin-backend-mofn.onrender.com/api/v1`.
 - When running locally (`localhost` / `127.0.0.1`), it targets `http://127.0.0.1:8000/api/v1`.
 - **Safe Origin Sanitization:** Custom API URL overrides (via `window.__HEFIN_CONFIG__.apiBaseUrl` or `localStorage`) are sanitized through `sanitizeApiUrl(...)`. Dangerous schemes (e.g. `javascript:`, `data:`), credentials in URLs, and unencrypted remote HTTP endpoints are rejected, falling back safely to the official Render endpoint.
 - If the backend is unreachable or sleeping, the frontend displays an explicit, honest status banner rather than silently simulating responses.
