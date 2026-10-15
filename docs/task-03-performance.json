@@ -1,0 +1,110 @@
+[
+  {
+    "width": 768,
+    "metrics": {
+      "created": 1,
+      "disposed": 0,
+      "activeRenderers": 1,
+      "activeLoops": 0,
+      "frames": 8,
+      "drawCalls": 181,
+      "triangles": 1135812,
+      "geometries": 78,
+      "textures": 19,
+      "materials": 28,
+      "dpr": 1,
+      "modelBytes": 1867968,
+      "loadMs": 2097.5,
+      "averageFrameMs": 10.420000000298023,
+      "mode": "Hybrid",
+      "yaw": 0,
+      "framing": {
+        "width": 734,
+        "height": 480,
+        "maxAbsX": 0.8771929824561405,
+        "maxAbsY": 0.6768466918211851
+      }
+    }
+  },
+  {
+    "width": 1024,
+    "metrics": {
+      "created": 1,
+      "disposed": 0,
+      "activeRenderers": 1,
+      "activeLoops": 0,
+      "frames": 9,
+      "drawCalls": 178,
+      "triangles": 1135786,
+      "geometries": 78,
+      "textures": 19,
+      "materials": 28,
+      "dpr": 1,
+      "modelBytes": 1867968,
+      "loadMs": 2172.400000002235,
+      "averageFrameMs": 9.433333333581686,
+      "mode": "Hybrid",
+      "yaw": 0,
+      "framing": {
+        "width": 974,
+        "height": 492,
+        "maxAbsX": 0.8771929824561404,
+        "maxAbsY": 0.853753269463121
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "metrics": {
+      "created": 1,
+      "disposed": 0,
+      "activeRenderers": 1,
+      "activeLoops": 0,
+      "frames": 9,
+      "drawCalls": 178,
+      "triangles": 1135786,
+      "geometries": 78,
+      "textures": 19,
+      "materials": 28,
+      "dpr": 1,
+      "modelBytes": 1867968,
+      "loadMs": 2303.400000002235,
+      "averageFrameMs": 9.283333332588276,
+      "mode": "Hybrid",
+      "yaw": 0,
+      "framing": {
+        "width": 1390,
+        "height": 691,
+        "maxAbsX": 0.8771929824561403,
+        "maxAbsY": 0.8659370446299866
+      }
+    }
+  },
+  {
+    "width": 1920,
+    "metrics": {
+      "created": 1,
+      "disposed": 0,
+      "activeRenderers": 1,
+      "activeLoops": 0,
+      "frames": 8,
+      "drawCalls": 178,
+      "triangles": 1135786,
+      "geometries": 78,
+      "textures": 19,
+      "materials": 28,
+      "dpr": 1,
+      "modelBytes": 1867968,
+      "loadMs": 2176.300000000745,
+      "averageFrameMs": 9.220000000298024,
+      "mode": "Hybrid",
+      "yaw": 0,
+      "framing": {
+        "width": 1558,
+        "height": 720,
+        "maxAbsX": 0.8274388871770629,
+        "maxAbsY": 0.8771929824561404
+      }
+    }
+  }
+]

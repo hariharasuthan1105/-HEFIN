@@ -1,0 +1,27 @@
+{
+  "models": [
+    {
+      "path": "frontend/public/assets/models/smart-hospital.glb",
+      "bytes": 1150132,
+      "sha256": "f6c08dbab0646d60f442e843178d70359f75b3a262fd082de5a58b6ffd396696",
+      "meshes": 9,
+      "triangles": 134204,
+      "extensions": [
+        "KHR_draco_mesh_compression",
+        "KHR_materials_emissive_strength"
+      ]
+    },
+    {
+      "path": "frontend/public/assets/models/anatomical-brain.glb",
+      "bytes": 717836,
+      "sha256": "c18caf816c8f4185a0f75ad4d553157ffa1e10111077e4375fea2f44ceaa7f53",
+      "meshes": 5,
+      "triangles": 206446,
+      "extensions": [
+        "KHR_draco_mesh_compression"
+      ]
+    }
+  ],
+  "sourceBrainSha256": "76a49ea4526a4880613aec7a02756bd7301b0b9d0680d7cae33e197b672c5453",
+  "sourceBrainBytes": 4650816
+}

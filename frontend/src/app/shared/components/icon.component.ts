@@ -18,7 +18,17 @@ import {
   Layers,
   LockKeyhole,
   CircleHelp,
+  User,
+  LayoutDashboard,
+  FileText,
+  Receipt,
+  Calendar,
+  Settings,
+  Sparkles,
+  RotateCcw,
+  Bot,
 } from 'lucide';
+
 const icons = {
   ArrowUpRight,
   ArrowRight,
@@ -37,8 +47,19 @@ const icons = {
   Layers,
   LockKeyhole,
   CircleHelp,
+  User,
+  LayoutDashboard,
+  FileText,
+  Receipt,
+  Calendar,
+  Settings,
+  Sparkles,
+  RotateCcw,
+  Bot,
 };
+
 export type IconName = keyof typeof icons;
+
 @Component({ selector: 'h-icon', template: '', host: { 'aria-hidden': 'true', class: 'icon' } })
 export class IconComponent {
   name = input<IconName>('ArrowRight');

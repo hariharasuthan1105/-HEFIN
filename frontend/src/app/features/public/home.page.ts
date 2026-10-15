@@ -1,3 +1,5 @@
+import { CinematicHealthcareScene } from '../../three-d/cinematic-healthcare/cinematic-healthcare-scene';
+import { CinematicHeadline } from '../../shared/components/cinematic-headline';
 import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
@@ -13,6 +15,8 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
   selector: 'h-home-page',
   imports: [
     RouterLink,
+    CinematicHealthcareScene,
+    CinematicHeadline,
     GradientButtonComponent,
     StatusBadgeComponent,
     AnimatedTextComponent,
@@ -98,7 +102,7 @@ export class HomePage {
       name: 'Prototype',
       phase: '01 / CURRENT',
       description:
-        'Design the experience, then connect synthetic data and validate one complete emergency claim journey. Today: frontend and procedural hospital visualization.',
+        'Design the experience, then connect synthetic data and validate one complete emergency claim journey. Today: frontend and a cinematic brain–hospital concept visualization.',
     },
     {
       name: 'Pilot',

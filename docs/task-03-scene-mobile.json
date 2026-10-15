@@ -1,0 +1,50 @@
+{
+  "initial": {
+    "created": 1,
+    "disposed": 0,
+    "activeRenderers": 1,
+    "activeLoops": 1,
+    "frames": 21,
+    "drawCalls": 98,
+    "triangles": 567914,
+    "geometries": 78,
+    "textures": 18,
+    "materials": 28,
+    "dpr": 1,
+    "modelBytes": 1867968,
+    "loadMs": 2776.199999999255,
+    "averageFrameMs": 4.188888889220026,
+    "mode": "Hybrid",
+    "yaw": 0,
+    "framing": {
+      "width": 368,
+      "height": 300,
+      "maxAbsX": 0.8771929824561403,
+      "maxAbsY": 0.5491459215276562
+    }
+  },
+  "disposed": {
+    "created": 1,
+    "disposed": 1,
+    "activeRenderers": 0,
+    "activeLoops": 0,
+    "frames": 22,
+    "drawCalls": 98,
+    "triangles": 567914,
+    "geometries": 0,
+    "textures": 0,
+    "materials": 0,
+    "dpr": 1,
+    "modelBytes": 1867968,
+    "loadMs": 2776.199999999255,
+    "averageFrameMs": 4.126315789787393,
+    "mode": "Hybrid",
+    "yaw": 0,
+    "framing": {
+      "width": 368,
+      "height": 300,
+      "maxAbsX": 0.8771929824561403,
+      "maxAbsY": 0.5491459215276562
+    }
+  }
+}
