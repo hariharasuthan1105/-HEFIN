@@ -32,16 +32,22 @@ class APIStatusView(APIView):
                 'insurance_claims': '/api/v1/insurance/claims/',
                 'appointments': '/api/v1/appointments/',
                 'timeline': '/api/v1/timeline/',
+                'assistant': '/api/v1/assistant/messages/',
             },
         })
 
 urlpatterns = [
+    path('', APIStatusView.as_view(), name='root-status'),
+    path('healthz/', APIStatusView.as_view(), name='healthz'),
+    path('healthz', APIStatusView.as_view(), name='healthz-noslash'),
     path('admin/', admin.site.urls),
     path('api/v1/status/', APIStatusView.as_view(), name='api-status'),
+    path('api/v1/healthz/', APIStatusView.as_view(), name='api-healthz'),
     path('api/v1/auth/', include('apps.accounts.urls')),
     path('api/v1/patient/', include('apps.patients.urls')),
     path('api/v1/records/', include('apps.records.urls')),
     path('api/v1/billing/', include('apps.billing.urls')),
     path('api/v1/insurance/', include('apps.insurance.urls')),
+    path('api/v1/assistant/', include('apps.assistant.urls')),
     path('api/v1/', include('apps.appointments.urls')),
 ]

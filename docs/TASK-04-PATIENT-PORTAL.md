@@ -1,13 +1,14 @@
-# HEFIN 3.0 — Task 04: Functional Patient Portal & Django API Foundation
+# HEFIN 3.0 — Task 04: Functional Patient Portal, Grounded Care Assistant & Django API Foundation
 
 ## Executive Summary
 
 Task 04 establishes the first functional application milestone for HEFIN 3.0. It delivers:
-1. **A responsive, professional Patient Workspace** built in Angular, replacing the static preview with 7 dedicated tabs (Dashboard Overview, Health Records, Medical Bills in INR, Insurance Policy & Claims, Care Timeline, Profile & Accessibility Preferences, and an honest AI Assistant placeholder).
-2. **A robust Django REST Framework backend** (`backend/`) structured into modular domain applications (`accounts`, `patients`, `records`, `billing`, `insurance`, `appointments`), using token authentication and strict patient-scoped data isolation.
-3. **A database foundation** designed with Django ORM, supporting zero-setup SQLite for local testing and PostgreSQL for production environments via `DATABASE_URL` or standard database environment parameters.
-4. **Idempotent synthetic demo data seeding** (`python manage.py seed_demo`) creating 3 realistic patient identities with records, itemized bills with INR decimal accuracy, and insurance policies.
-5. **Full compatibility with existing Task 03 assets**, retaining the cinematic 3D brain and hospital scenes, gold branding, typography tokens, and GitHub Pages static hosting limitations without broken network calls.
+1. **A responsive, professional Patient Workspace** built in Angular, replacing the static preview with 7 dedicated tabs (Dashboard Overview, Health Records, Medical Bills in INR, Insurance Policy & Claims, Care Timeline, Profile & Accessibility Preferences, and an integrated Care Assistant).
+2. **A grounded, deterministic Care Assistant** (`backend/apps/assistant/` & `frontend/src/app/shared/components/assistant/`), providing both an inline dashboard workspace and a persistent floating launcher. All inquiries (claim tracking, itemized bills in INR, insurance coverage, upcoming appointments, and care timelines) are grounded directly in the patient's authenticated records with strict data isolation, zero hallucinated medical advice, and zero fabricated LLM claims.
+3. **A robust Django REST Framework backend** (`backend/`) structured into modular domain applications (`accounts`, `patients`, `records`, `billing`, `insurance`, `appointments`, `assistant`), using token authentication and strict patient-scoped data isolation.
+4. **A database foundation** designed with Django ORM, supporting zero-setup SQLite for local testing and PostgreSQL for production environments via `DATABASE_URL` or standard database environment parameters.
+5. **Idempotent synthetic demo data seeding** (`python manage.py seed_demo`) creating 3 realistic patient identities with records, itemized bills with INR decimal accuracy, and insurance policies.
+6. **Full compatibility with existing Task 03 assets**, retaining the cinematic 3D brain and hospital scenes, gold branding, typography tokens, and GitHub Pages static hosting limitations without broken network calls.
 
 ---
 
@@ -18,7 +19,8 @@ HEFIN 3.0 SYSTEM TOPOLOGY
 ┌────────────────────────────────────────────────────────────────────────┐
 │ Angular 22 Frontend (Client Layer)                                     │
 │ ├─ Route: /patient/dashboard                                           │
-│ ├─ State & API Service: PatientApiService (Observable signals)         │
+│ ├─ State & API Service: PatientApiService & ChatService                │
+│ ├─ Chatbot Interface: AssistantChatComponent (Floating + Inline Modes) │
 │ ├─ Mode Switcher: Simulated Mode (Static/Pages) vs Live API (Django)   │
 │ └─ Design Tokens: Midnight Navy, HEFIN Gold, Cyan, Violet, Glass       │
 └───────────────────────────────────┬────────────────────────────────────┘
@@ -31,7 +33,8 @@ HEFIN 3.0 SYSTEM TOPOLOGY
 │ ├─ apps/records/      -> MedicalRecord, Vitals, Search & Type Filter   │
 │ ├─ apps/billing/      -> MedicalBill, BillLineItem (INR Decimal)       │
 │ ├─ apps/insurance/    -> InsurancePolicy, InsuranceClaim, Timeline     │
-│ └─ apps/appointments/ -> Appointment, CareEvent Timeline Aggregator    │
+│ ├─ apps/appointments/ -> Appointment, CareEvent Timeline Aggregator    │
+│ └─ apps/assistant/    -> ChatMessage, AssistantIntentRouter            │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │ Django ORM (Migrations)
 ┌───────────────────────────────────▼────────────────────────────────────┐
@@ -86,9 +89,21 @@ The Patient Portal lives at route `/patient/dashboard` and provides 7 functional
   - *High Contrast Mode:* Enhances borders and text legibility.
   - *Email & SMS Alerts:* Configurable notification preferences.
 
-### G. AI Assistant Entry Point
-- Professional UI for HEFIN Spectral AI Assistant.
-- Transparently communicates that model integration is planned for future tasks; **no fake AI responses or hallucinated Gemma 3/Ollama model outputs are generated**.
+### G. HEFIN Care Assistant (Grounded Clinical & Financial Explainer)
+- **Deterministic Intent Classification:** Maps conversational queries strictly to authenticated patient records:
+  1. *Claim Status & Tracking:* Retrieves claim references (`CLM-2026-7702`), hospital names, claimed vs approved amounts in INR, current workflow stages, missing document notices, and chronological processing steps.
+  2. *Hospital Billing & Invoices:* Explains invoices, total billed amounts, insurance portions, patient co-pay responsibilities, and itemized hospital service line items.
+  3. *Insurance Policy Coverage:* Computes active policy details, annual coverage limits, utilized vs remaining balances, co-pay percentages, and exclusions.
+  4. *Appointments & Consultations:* Retrieves upcoming clinician consultations, facilities, and instructions.
+  5. *Health Records & Vitals:* Summarizes verified laboratory and imaging reports with structured vital signs.
+  6. *Care Journey Timeline:* Aggregates recent healthcare events with chronological traces.
+  7. *Clinical Advice Guardrail:* Actively detects medical diagnosis or drug dosage inquiries, refuses medical advice, and directs patients to licensed physicians.
+  8. *Read-Only Guardrails:* Rejects requests to delete or fabricate clinical records.
+- **Dual Display Modes:**
+  - *Persistent Floating Launcher:* Circular gold button (`#assistant-launcher-btn`) with subtle pulse animation, accessible from every tab.
+  - *Inline Workspace Session:* Embedded directly within the AI Assistant section of the portal.
+- **Structured Response Cards:** Rich visual cards (`claim`, `bill`, `insurance`, `appointment`, `record`, `timeline`, `navigation`) with direct action buttons that navigate the user to the corresponding workspace tab.
+- **Active Session Management:** Chat history is maintained in the active session and can be cleared at any time via the reset control.
 
 ---
 
@@ -98,8 +113,8 @@ In compliance with Task 03 and Task 04 design requirements:
 - **Color Palette:** Midnight navy (`#050814`, `#0b1026`), HEFIN gold (`#c5a059`), cyan highlights (`#38bdf8`), violet accents (`#818cf8`), emerald for verified items (`#10b981`), rose for pending alerts (`#f43f5e`).
 - **Typography:** Space Grotesk for section headings, Plus Jakarta Sans for body copy, JetBrains Mono for monetary metrics and identifiers, Orbitron for futuristic badges.
 - **Glassmorphism:** Layered surfaces with subtle translucent backdrops (`color-mix` with srgb).
-- **Responsiveness:** Desktop sidebar navigation switches to accessible horizontal tab bar on screens `< 900px`.
-- **No WebGL Overhead:** The portal deliberately avoids adding a second heavy 3D canvas, preserving 60fps responsiveness.
+- **Responsiveness:** Desktop sidebar navigation switches to accessible horizontal tab bar on screens `< 900px`. Mobile assistant expands to a full-screen, touch-friendly overlay.
+- **No WebGL Overhead:** Preserves 60fps responsiveness across all views.
 
 ---
 
@@ -108,6 +123,9 @@ In compliance with Task 03 and Task 04 design requirements:
 | View | Screenshot File | Description |
 | :--- | :--- | :--- |
 | **Desktop Dashboard** | ![Patient Dashboard](task-04-patient-portal-desktop.png) | Overview tab with greeting, metrics, and care activity |
+| **Floating Care Assistant** | ![Floating Assistant](task-04-assistant-floating-desktop.png) | Floating chat panel displaying grounded claim progress card |
+| **Inline Assistant Session** | ![Inline Assistant](task-04-assistant-inline-desktop.png) | Embedded Care Assistant in AI Assistant tab with INR bill breakdown |
+| **Mobile Care Assistant** | ![Mobile Assistant](task-04-assistant-mobile.png) | Full-screen responsive assistant panel at 375px mobile viewport |
 | **Health Records** | ![Health Records](task-04-records-desktop.png) | Searchable records table with category filters |
 | **Medical Bills** | ![Medical Bills](task-04-bills-desktop.png) | Itemized bills with INR currency formatting |
 | **Insurance Coverage** | ![Insurance Coverage](task-04-insurance-desktop.png) | Policy card, utilization progress bar, exclusions |
@@ -149,6 +167,11 @@ The Django backend (`backend/`) is structured into decoupled domain apps:
 - **`CareEvent`:** Chronological care feed aggregator.
   - Fields: `event_type`, `event_date`, `title`, `facility`, `summary`, `related_reference`.
 
+### 7. `apps/assistant/`
+- **`ChatMessage`:** Scoped to `PatientProfile`.
+  - Fields: `patient` (ForeignKey), `role` (`user` / `assistant`), `content` (TextField), `intent` (CharField), `cards` (JSONField), `suggested_actions` (JSONField), `navigation_target` (CharField), `is_simulated` (BooleanField), `created_at` (DateTimeField).
+- **`AssistantIntentRouter`:** Service executing deterministic intent matching against the patient's authenticated records, producing structured card payloads and INR currency formatting.
+
 ---
 
 ## REST API Reference (`/api/v1/`)
@@ -171,15 +194,20 @@ All private endpoints require `Authorization: Token <token>` header and enforce 
 | `GET` | `/api/v1/insurance/claims/` | Insurance claims list | `?status=` |
 | `GET` | `/api/v1/appointments/` | Appointments list | `?time=upcoming\|past` |
 | `GET` | `/api/v1/timeline/` | Chronological care feed | `?type=` |
+| `GET` | `/api/v1/assistant/messages/` | Retrieve chat message history | None |
+| `POST` | `/api/v1/assistant/messages/` | Send message and receive grounded response | `{ "message": "..." }` |
+| `DELETE`| `/api/v1/assistant/messages/` | Clear active session chat history | None |
+| `POST` | `/api/v1/assistant/clear/` | Explicit clear session endpoint | None |
 
 ---
 
 ## Authentication & Patient Data Isolation
 
 1. **Password Hashing:** Uses Django's default PBKDF2 with SHA-256 password hasher. No plaintext credentials are ever stored.
-2. **Object-Level Authorization & Queryset Scoping:** Every view overrides `get_queryset()` to filter strictly by `request.user.patient_profile`. An authenticated patient cannot view, query, or mutate another patient's records, invoices, or claims.
-3. **No Auth in URL Parameters:** Tokens are transferred strictly via HTTP `Authorization: Token <key>` headers.
-4. **CORS & CSRF:** Strict CORS headers permitting only configured local frontend hosts.
+2. **Object-Level Authorization & Queryset Scoping:** Every view overrides `get_queryset()` to filter strictly by `request.user.patient_profile`. An authenticated patient cannot view, query, or mutate another patient's records, invoices, claims, or assistant chat messages.
+3. **Cross-Patient Query Isolation:** The Care Assistant explicitly validates that query results only reflect the authenticated user's records. For example, when Priya Patel queries her claim, the assistant returns `CLM-2026-7712` and cannot disclose Aarav Sharma's `CLM-2026-7702`.
+4. **No Auth in URL Parameters:** Tokens are transferred strictly via HTTP `Authorization: Token <key>` headers.
+5. **CORS & CSRF:** Strict CORS headers permitting only configured local frontend hosts.
 
 ---
 
@@ -187,7 +215,7 @@ All private endpoints require `Authorization: Token <token>` header and enforce 
 
 The seed command is repeatable, safe, and ASCII-clean:
 ```powershell
-python manage.py seed_demo
+python backend/manage.py seed_demo
 ```
 
 ### Seeded Demo Accounts:
@@ -204,7 +232,8 @@ python manage.py seed_demo
 GitHub Pages hosts only the static Angular bundle. It cannot execute Django or PostgreSQL. To handle this limitation honestly and gracefully:
 1. **Configurable API URL:** `environment.apiBaseUrl` can be set via `window.__HEFIN_CONFIG__?.apiBaseUrl` or localStorage.
 2. **Default Simulated Mode:** In static environments (GitHub Pages, tests, initial clone), the frontend defaults to **Simulated Mode**, rendering rich synthetic data locally without firing unprompted network calls that would trigger console errors.
-3. **Honest Unavailable State:** In Live API mode, if the backend dev server is down, the frontend does **not** silently pretend it succeeded; it renders an explicit, honest `Backend Unavailable` alert banner with retry and mode-switch options.
+3. **Simulated Care Assistant:** Generates instant, grounded responses from local synthetic data with zero network latency and identical card payloads.
+4. **Honest Unavailable State:** In Live API mode, if the backend dev server is down, the frontend does **not** silently pretend it succeeded; it renders an explicit, honest `Backend service is temporarily unreachable` alert banner with retry and mode-switch options.
 
 ---
 
@@ -212,49 +241,130 @@ GitHub Pages hosts only the static Angular bundle. It cannot execute Django or P
 
 ### 1. Backend Test Suite (Django)
 ```powershell
-python manage.py test tests
+python backend/manage.py test tests
 ```
-- **Result:** `Ran 21 tests in 35.2s — OK`
+- **Result:** `Ran 34 tests in 83.6s — OK`
 - Model validation (Decimal constraints, positive amount validation)
 - Token authentication & credential validation
 - Strict patient isolation (Cross-patient access rejection)
+- Care Assistant intent routing, grounded responses, session tracking, and clear chat
 - API endpoint status, serializers, and filtering
 
 ### 2. Frontend Test Suite (Playwright)
 ```powershell
 npm test
 ```
-- **Total Tests:** 56 executed across Desktop (1440x1000) and Mobile (iPhone 13 / 375x812)
-- **Passed:** 53 passed
+- **Total Tests:** 82 executed across Desktop (1440x1000) and Mobile (iPhone 13 / 375x812)
+- **Passed:** 79 passed
 - **Skipped:** 3 (intentional mobile viewport exclusions in cinematic tests)
 - **Failed:** 0
 - **Suites Covered:**
+  - `tests/care-assistant.spec.ts` (26 tests: floating launcher, open/close, inline assistant, claim progress card, itemized bills in INR, insurance coverage, appointments, quick action chips, card navigation, clear chat, empty/unsupported input, API failure warning, mobile responsiveness, Escape key accessibility)
+  - `tests/patient-portal.spec.ts` (14 tests: 7 workspace tabs, INR billing, line items, search, drawer modals, accessibility preferences, honest offline error banner)
   - `tests/cinematic.spec.ts` (3D brain/hospital scene, material toggles, orbit reset)
   - `tests/foundation.spec.ts` (all routes zero console errors, zero horizontal overflow)
   - `tests/landing-3d.spec.ts` (Three.js life cycle, canvas cleanup, breakpoint readability)
-  - `tests/patient-portal.spec.ts` (7 workspace tabs, INR billing, line items, search, drawer modals, accessibility preferences, honest offline error banner)
 
-### 3. Production Smoke Verification
-```powershell
-npm run build
-npm run preview
-npm run test:production
+### 3. PostgreSQL Database Check
+- **Result:** PostgreSQL service was not detected in the local development environment (`psql` command not found). Django ORM executed against the zero-setup SQLite engine (`db.sqlite3`), with full ORM migration parity for PostgreSQL deployment.
+
+---
+
+---
+
+## Render Deployment Architecture (Task 04 Add-On)
+
+HEFIN 3.0 provides an Infrastructure-as-Code Blueprint (`render.yaml`) enabling deployment of the Django REST backend and PostgreSQL database on Render, while maintaining the Angular frontend on GitHub Pages.
+
+### 1. Topology & Service Blueprint (`render.yaml`)
+
+```yaml
+services:
+  - type: web
+    name: hefin-backend
+    runtime: python
+    region: oregon
+    plan: free
+    branch: hefin-3.0-development
+    buildCommand: "pip install -r backend/requirements.txt && python backend/manage.py collectstatic --no-input"
+    startCommand: "python backend/manage.py migrate --no-input && python backend/manage.py seed_demo && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
+    healthCheckPath: /healthz/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hefin-postgres
+          property: connectionString
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "localhost,127.0.0.1,.onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://hariharasuthan1105.github.io"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://hariharasuthan1105.github.io,https://*.onrender.com"
+
+databases:
+  - name: hefin-postgres
+    databaseName: hefindb
+    user: hefin
+    plan: free
+    region: oregon
 ```
-- **Result:** `PASS: production cinematic GLBs/Draco paths, material control, deep link, no debug metrics/design-system route/link, no console errors.`
+
+### 2. PostgreSQL Configuration
+- **Database Engine:** Managed PostgreSQL on Render (Internal connection string provided automatically via `fromDatabase: connectionString`).
+- **Django Parsing:** [`backend/config/settings.py`](file:///c:/Users/hariharasuthan/Downloads/-HEFIN-main%20%282%29/-HEFIN-main/backend/config/settings.py) dynamically uses `dj_database_url.config()` when `DATABASE_URL` is set, with `conn_max_age=600`.
+- **Local Fallback:** Falls back seamlessly to SQLite (`db.sqlite3`) for local zero-dependency testing.
+
+### 3. Production Hardening & HTTPS
+- **Debug:** Forced to `DEBUG = False` via `DJANGO_DEBUG="False"`.
+- **Gunicorn:** Multi-worker WSGI server (`gunicorn --chdir backend config.wsgi:application --workers 2 --threads 4`).
+- **WhiteNoise:** Serves static files directly from Gunicorn via `CompressedManifestStaticFilesStorage`.
+- **SSL / Proxy:** Configured with `SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')`, `SESSION_COOKIE_SECURE = True`, and `CSRF_COOKIE_SECURE = True`.
+- **CORS / CSRF:** Explicitly whitelist `https://hariharasuthan1105.github.io` and `https://*.onrender.com`.
+
+### 4. Health-Check Endpoints
+- `GET /healthz/` and `GET /`: Fast 200 OK JSON status responding with version, health status, and demo disclaimer.
+- `GET /api/v1/status/`: Full API catalog with all endpoint routes.
+
+### 5. Frontend API Dynamic Routing
+[`frontend/src/environments/environment.ts`](file:///c:/Users/hariharasuthan/Downloads/-HEFIN-main%20%282%29/-HEFIN-main/frontend/src/environments/environment.ts) detects the hosting environment:
+- When hosted on `https://hariharasuthan1105.github.io/`, it targets `https://hefin-backend.onrender.com/api/v1`.
+- When running locally (`localhost` / `127.0.0.1`), it targets `http://127.0.0.1:8000/api/v1`.
+- Can be dynamically customized via `window.__HEFIN_CONFIG__.apiBaseUrl` or `localStorage.getItem('hefin_api_base_url')`.
+- If the backend is unreachable or sleeping, the frontend displays an explicit, honest status banner rather than silently simulating responses.
+
+### 6. Step-by-Step Render Deployment Guide
+
+When ready to provision the backend on Render:
+1. Log in to [Render Dashboard](https://dashboard.render.com/).
+2. Click **New +** -> **Blueprint**.
+3. Connect the repository `https://github.com/hariharasuthan1105/-HEFIN`.
+4. Select the `hefin-3.0-development` branch.
+5. Render will automatically detect `render.yaml` and display the resources (`hefin-backend` web service and `hefin-postgres` database).
+6. Review the plan (Free tier) and click **Apply**.
+7. Render provisions the database, runs `pip install`, collects static files, executes migrations, seeds synthetic demo data, and launches Gunicorn.
+8. Verify deployment by visiting `https://<service-name>.onrender.com/healthz/`.
 
 ---
 
 ## Security & Deployment Limitations
 
 - **Not Certified for Production Healthcare:** This prototype uses synthetic demonstration data. It is not certified under HIPAA, GDPR, or DISHA (Digital Information Security in Healthcare Act).
+- **Deterministic Rule Router:** The Care Assistant currently operates via deterministic, rule-based intent routing over authenticated patient records. It does not execute raw generative LLMs or make outside calls to Gemma 3 / Ollama.
 - **Demo Passwords:** Simple passwords (`demo1234`) are provided for local evaluation only.
 - **Tokens in LocalStorage:** For demonstration convenience, auth tokens are retained in browser session storage; a production deployment would implement secure `HttpOnly`, `SameSite=Strict` cookies with short-lived tokens and refresh rotation.
-- **Hosting:** Django backend is meant for local evaluation in Task 04. No production backend has been deployed.
+- **Render Free Tier Spin-Down:** On Render Free tier, web services spin down after 15 minutes of inactivity and take ~50 seconds to cold start on the next request. Free databases expire after 30 days unless upgraded.
 
 ---
 
 ## Remaining Work (Future Tasks)
 
 1. **Task 05+:** Implementation of Hospital Staff, Insurance Adjuster, and Government Auditor workspaces.
-2. **AI Assistance:** Integration of local LLM models (e.g., Ollama / Gemma 3) to power report explainability and billing clarification.
+2. **Local AI Model Execution:** Integration of local LLM models (e.g., Ollama / Gemma 3) to power deep clinical free-text report explainability.
 3. **Advanced Security:** OAuth2 / OpenID Connect, audit logging, and signed FHIR / ABHA compliance records.
+

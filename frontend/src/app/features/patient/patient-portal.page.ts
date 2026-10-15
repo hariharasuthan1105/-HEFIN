@@ -16,6 +16,8 @@ import {
 } from '../../core/models/patient.models';
 import { LogoComponent, StatusBadgeComponent, SkeletonCardComponent } from '../../shared/components/ui';
 import { IconComponent } from '../../shared/components/icon.component';
+import { AssistantChatComponent } from '../../shared/components/assistant/assistant-chat.component';
+import { ChatService } from '../../core/services/chat.service';
 
 export type PortalTab =
   | 'dashboard'
@@ -37,6 +39,7 @@ export type PortalTab =
     LogoComponent,
     StatusBadgeComponent,
     IconComponent,
+    AssistantChatComponent,
   ],
   template: `
     <div class="container patient-workspace portal-shell" [attr.data-role]="'patient'">
@@ -960,6 +963,22 @@ export type PortalTab =
                 Identifies zero-interest micro-installment options and eligible patient assistance programs.
               </div>
             </div>
+
+            <!-- Interactive Task 04 Care Assistant Chat Interface -->
+            <div class="interactive-assistant-section" style="margin-top: 24px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <h3 style="margin: 0; font-family: var(--heading); font-size: 1.1rem; color: var(--gold);">
+                    Active Care Assistant Session
+                  </h3>
+                  <span style="font-size: 0.75rem; color: var(--muted);"
+                    >Grounded in verified synthetic records for {{ activeUser().first_name }} {{ activeUser().last_name }}</span
+                  >
+                </div>
+                <div class="status-chip active">DETERMINISTIC INTENT ROUTER</div>
+              </div>
+              <h-assistant-chat [inline]="true" (navigateTab)="onAssistantNavigate($event)" />
+            </div>
           </div>
         }
 
@@ -1139,6 +1158,9 @@ export type PortalTab =
             </div>
           </div>
         }
+
+        <!-- Floating Care Assistant Launcher & Modal Panel -->
+        <h-assistant-chat [inline]="false" (navigateTab)="onAssistantNavigate($event)" />
       </section>
     </div>
   `,
@@ -1146,6 +1168,7 @@ export type PortalTab =
 export class PatientPortalPage implements OnInit {
   auth = inject(AuthService);
   api = inject(PatientApiService);
+  chat = inject(ChatService);
 
   segments = [0, 1, 2, 3, 4, 5, 6, 7];
   demoPatients = DEMO_PATIENTS;
@@ -1215,8 +1238,15 @@ export class PatientPortalPage implements OnInit {
     this.activeTab.set(tab);
   }
 
+  onAssistantNavigate(target: string) {
+    if (['dashboard', 'records', 'bills', 'insurance', 'timeline', 'profile', 'ai-assistant'].includes(target)) {
+      this.setTab(target as PortalTab);
+    }
+  }
+
   onPatientChange(username: string) {
     this.auth.switchDemoPatient(username);
+    this.chat.initWelcomeMessage();
     this.refreshAllData();
   }
 
