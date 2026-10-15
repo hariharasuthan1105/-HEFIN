@@ -3,7 +3,7 @@ name: Deploy HEFIN 3.0 to GitHub Pages
 on:
   push:
     branches:
-      - hefin-3.0-development
+      - main
   workflow_dispatch:
 
 permissions:

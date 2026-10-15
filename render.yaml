@@ -8,7 +8,7 @@ services:
     runtime: python
     region: oregon
     plan: free
-    branch: hefin-3.0-development
+    branch: main
     buildCommand: "pip install -r backend/requirements.txt && python backend/manage.py collectstatic --no-input"
     startCommand: "python backend/manage.py migrate --no-input && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
     healthCheckPath: /healthz/

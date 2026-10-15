@@ -1,7 +1,8 @@
 name: Frontend quality gates
 on:
   pull_request:
-    branches: [hefin-3.0-development]
+    branches: [main, hefin-3.0-development]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:

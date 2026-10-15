@@ -285,7 +285,7 @@ services:
     runtime: python
     region: oregon
     plan: free
-    branch: hefin-3.0-development
+    branch: main
     buildCommand: "pip install -r backend/requirements.txt && python backend/manage.py collectstatic --no-input"
     startCommand: "python backend/manage.py migrate --no-input && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
     healthCheckPath: /healthz/
@@ -346,7 +346,7 @@ When ready to provision the backend on Render:
 1. Log in to [Render Dashboard](https://dashboard.render.com/).
 2. Click **New +** -> **Blueprint**.
 3. Connect the repository `https://github.com/hariharasuthan1105/-HEFIN`.
-4. Select the `hefin-3.0-development` branch.
+4. Select the `main` branch.
 5. Render will automatically detect `render.yaml` and display the resources (`hefin-backend` web service and `hefin-postgres` database).
 6. Review the plan (Free tier, $0.00/mo) and click **Apply**.
 7. Render provisions the database, runs `pip install`, collects static files, executes database migrations, and launches Gunicorn.

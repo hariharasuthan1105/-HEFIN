@@ -108,6 +108,9 @@ npm run test:production
 
 ---
 
-## Branching & Release Isolation
+## Permanent Development Workflow (Direct to Main)
 
-Task 04 is developed on `feature/task-04-patient-portal` targeting `hefin-3.0-development`. The live GitHub Pages deployment reflects the verified static Task 03 release. Task 04 includes graceful static fallback handling so the Patient Portal remains fully interactive on GitHub Pages without requiring a public backend.
+All HEFIN 3.0 development operates directly on `main`. Pull requests and feature branches are retired unless explicitly requested.
+- **GitHub Pages:** Automatically builds and deploys the full-stack Angular frontend and Patient Portal from `main`.
+- **Render Backend:** The `render.yaml` blueprint deploys the Django REST API from `main`.
+- **Archive Branches:** Historical commits on `hefin-3.0-development` and the baseline snapshot `backup/main-pre-migration-045bcbb` are permanently preserved as immutable reference archives.
