@@ -1,0 +1,38 @@
+# HEFIN 3.0 — Render Infrastructure as Code Blueprint
+# Defines Django REST API Web Service + PostgreSQL Managed Database.
+# Documentation: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: hefin-backend
+    runtime: python
+    region: oregon
+    plan: free
+    branch: hefin-3.0-development
+    buildCommand: "pip install -r backend/requirements.txt && python backend/manage.py collectstatic --no-input"
+    startCommand: "python backend/manage.py migrate --no-input && python backend/manage.py seed_demo && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
+    healthCheckPath: /healthz/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hefin-postgres
+          property: connectionString
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "localhost,127.0.0.1,.onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://hariharasuthan1105.github.io"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://hariharasuthan1105.github.io,https://*.onrender.com"
+
+databases:
+  - name: hefin-postgres
+    databaseName: hefindb
+    user: hefin
+    plan: free
+    region: oregon

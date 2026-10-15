@@ -25,6 +25,8 @@ import {
   Calendar,
   Settings,
   Sparkles,
+  RotateCcw,
+  Bot,
 } from 'lucide';
 
 const icons = {
@@ -52,6 +54,8 @@ const icons = {
   Calendar,
   Settings,
   Sparkles,
+  RotateCcw,
+  Bot,
 };
 
 export type IconName = keyof typeof icons;

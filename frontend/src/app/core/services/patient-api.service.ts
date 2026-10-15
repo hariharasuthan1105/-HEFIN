@@ -12,6 +12,9 @@ import {
   InsuranceClaimItem,
   AppointmentItem,
   CareEventItem,
+  AssistantCard,
+  AssistantResponse,
+  ChatMessageItem,
 } from '../models/patient.models';
 
 export type ApiConnectionState = 'connected' | 'offline' | 'checking';
@@ -343,6 +346,443 @@ export class PatientApiService {
       );
   }
 
+  // Care Assistant Message
+  sendAssistantMessage(message: string): Observable<AssistantResponse> {
+    if (this.apiMode() === 'simulated') {
+      const username = this.auth.currentUser().username;
+      return of(this.generateSimulatedAssistantResponse(message, username));
+    }
+    return this.http
+      .post<AssistantResponse>(
+        `${this.baseUrl}/assistant/messages/`,
+        { message },
+        { headers: this.getHeaders() },
+      )
+      .pipe(
+        tap(() => this.connectionStatus.set('connected')),
+        catchError((err) => {
+          this.connectionStatus.set('offline');
+          return throwError(() => err);
+        }),
+      );
+  }
+
+  // Care Assistant History
+  getAssistantMessages(): Observable<ChatMessageItem[]> {
+    if (this.apiMode() === 'simulated') {
+      return of([]);
+    }
+    return this.http
+      .get<ChatMessageItem[]>(`${this.baseUrl}/assistant/messages/`, {
+        headers: this.getHeaders(),
+      })
+      .pipe(
+        tap(() => this.connectionStatus.set('connected')),
+        catchError((err) => {
+          this.connectionStatus.set('offline');
+          return throwError(() => err);
+        }),
+      );
+  }
+
+  // Clear Care Assistant History
+  clearAssistantMessages(): Observable<{ status: string; message: string }> {
+    if (this.apiMode() === 'simulated') {
+      return of({ status: 'cleared', message: 'Active session cleared locally.' });
+    }
+    return this.http
+      .delete<{ status: string; message: string }>(`${this.baseUrl}/assistant/messages/`, {
+        headers: this.getHeaders(),
+      })
+      .pipe(
+        tap(() => this.connectionStatus.set('connected')),
+        catchError((err) => {
+          this.connectionStatus.set('offline');
+          return throwError(() => err);
+        }),
+      );
+  }
+
+  generateSimulatedAssistantResponse(query: string, username: string): AssistantResponse {
+    const q = (query || '').toLowerCase().trim();
+    const disclaimer = 'DEMO — SIMULATED HEALTHCARE AND INSURANCE DATA';
+
+    // 1. Clinical Advice Warning
+    if (
+      q.includes('prescribe') ||
+      q.includes('medicine') ||
+      q.includes('drug') ||
+      q.includes('diagnose') ||
+      q.includes('cancer') ||
+      q.includes('antibiotic') ||
+      q.includes('painkiller')
+    ) {
+      return {
+        role: 'assistant',
+        intent: 'medical_advice_warning',
+        message:
+          'HEFIN Care Assistant provides administrative and record explainability for your simulated profile. I cannot provide medical diagnoses, treatment recommendations, or prescribe medications. Please consult your attending clinician for all medical assessments.',
+        cards: [],
+        suggested_actions: ['Show my latest medical records', 'When is my next appointment?', 'Open health records'],
+        navigation_target: 'records',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 2. Unsupported Action Warning
+    if (
+      q.includes('pay') ||
+      q.includes('transfer money') ||
+      q.includes('submit claim') ||
+      q.includes('book appointment') ||
+      q.includes('schedule appointment') ||
+      q.includes('cancel appointment') ||
+      q.includes('modify record')
+    ) {
+      const navTarget = q.includes('bill') || q.includes('pay') ? 'bills' : q.includes('claim') ? 'insurance' : 'timeline';
+      return {
+        role: 'assistant',
+        intent: 'unsupported_action',
+        message:
+          'In HEFIN 3.0 Task 04, the Care Assistant operates in read-only inquiry mode. Direct financial transactions (such as paying bills or transferring money) and clinical alterations (such as booking real appointments or filing live claims) are not permitted from chat. You can review simulated details in your workspace.',
+        cards: [],
+        suggested_actions: ['Show my unpaid bills', 'What is the status of my claim?', 'When is my next appointment?'],
+        navigation_target: navTarget,
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 3. Navigation
+    if (q.includes('open my claims') || q.includes('take me to claims') || q.includes('go to claims')) {
+      return {
+        role: 'assistant',
+        intent: 'portal_navigation',
+        message: 'Opening the Insurance & Claims section.',
+        cards: [{ type: 'navigation', target: 'insurance', label: 'Open Insurance & Claims', description: 'Switch to insurance workspace view.' }],
+        suggested_actions: ['What is the status of my claim?', 'What does my policy cover?'],
+        navigation_target: 'insurance',
+        simulation: true,
+        disclaimer,
+      };
+    }
+    if (q.includes('take me to my bills') || q.includes('open bills') || q.includes('go to bills') || q.includes('show invoices')) {
+      return {
+        role: 'assistant',
+        intent: 'portal_navigation',
+        message: 'Opening the Medical Bills section.',
+        cards: [{ type: 'navigation', target: 'bills', label: 'Open Medical Bills', description: 'Switch to medical bills workspace view.' }],
+        suggested_actions: ['Show my unpaid bills', 'How much do I need to pay?'],
+        navigation_target: 'bills',
+        simulation: true,
+        disclaimer,
+      };
+    }
+    if (q.includes('show my profile') || q.includes('go to profile') || q.includes('preferences') || q.includes('settings')) {
+      return {
+        role: 'assistant',
+        intent: 'portal_navigation',
+        message: 'Opening the Preferences & Profile section.',
+        cards: [{ type: 'navigation', target: 'profile', label: 'Open Preferences', description: 'Manage display and accessibility settings.' }],
+        suggested_actions: ['What is my claim status?', 'Show my unpaid bills'],
+        navigation_target: 'profile',
+        simulation: true,
+        disclaimer,
+      };
+    }
+    if (q.includes('go to my appointments') || q.includes('open timeline') || q.includes('show timeline') || q.includes('care timeline')) {
+      return {
+        role: 'assistant',
+        intent: 'portal_navigation',
+        message: 'Opening the Care Timeline & Appointments section.',
+        cards: [{ type: 'navigation', target: 'timeline', label: 'Open Care Timeline', description: 'View scheduled appointments and care events.' }],
+        suggested_actions: ['When is my next appointment?', 'Show my care journey'],
+        navigation_target: 'timeline',
+        simulation: true,
+        disclaimer,
+      };
+    }
+    if (q.includes('go to health records') || q.includes('open records') || q.includes('show records')) {
+      return {
+        role: 'assistant',
+        intent: 'portal_navigation',
+        message: 'Opening the Health Records section.',
+        cards: [{ type: 'navigation', target: 'records', label: 'Open Health Records', description: 'View verified clinical documents and lab reports.' }],
+        suggested_actions: ['Show my latest medical records', 'Show recent tests'],
+        navigation_target: 'records',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 4. Claim Tracking & Details
+    if (
+      q.includes('claim') ||
+      q.includes('clm-') ||
+      q.includes('settlement') ||
+      q.includes('pre-approval') ||
+      q.includes('documents missing') ||
+      q.includes('submission')
+    ) {
+      const claims = this.getSimulatedClaims();
+      const claim = claims[0]!;
+      const stage = claim.timeline_steps?.[claim.timeline_steps.length - 1]?.step || claim.settlement_status_display;
+      const missing = claim.settlement_status === 'ADDITIONAL_INFO_REQUESTED' ? 'Itemized discharge summary requested.' : 'None recorded. All clinical documentation verified.';
+      const nextAction = 'Awaiting final settlement disbursement to provider.';
+
+      const card: AssistantCard = {
+        type: 'claim',
+        claim_id: claim.claim_reference,
+        hospital: claim.hospital_name,
+        treatment: claim.treatment_summary,
+        claim_date: claim.claim_date,
+        claimed_amount: claim.claimed_amount,
+        claimed_amount_formatted: `₹${Number(claim.claimed_amount).toLocaleString('en-IN')}`,
+        approved_amount: claim.approved_amount,
+        approved_amount_formatted: `₹${Number(claim.approved_amount).toLocaleString('en-IN')}`,
+        status: claim.settlement_status,
+        status_display: claim.settlement_status_display,
+        current_stage: stage,
+        missing_documents: missing,
+        next_action: nextAction,
+        timeline_steps: claim.timeline_steps,
+      };
+
+      return {
+        role: 'assistant',
+        intent: 'claim_status',
+        message: `Your simulated claim (${claim.claim_reference}) filed with ${claim.hospital_name} for '${claim.treatment_summary}' is currently ${claim.settlement_status_display}. Claimed: ₹${Number(claim.claimed_amount).toLocaleString('en-IN')}, Approved: ₹${Number(claim.approved_amount).toLocaleString('en-IN')}. Current stage: ${stage}. Missing documents: ${missing}`,
+        cards: [card],
+        suggested_actions: ['Show the claim timeline', 'What does my policy cover?', 'Show my unpaid bills'],
+        navigation_target: 'insurance',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 5. Billing & Invoices
+    if (
+      q.includes('bill') ||
+      q.includes('invoice') ||
+      q.includes('unpaid') ||
+      q.includes('owe') ||
+      q.includes('pay') ||
+      q.includes('responsibility') ||
+      q.includes('breakdown')
+    ) {
+      const bills = this.getSimulatedBills();
+      const unpaid = bills.filter((b) => b.payment_status === 'PENDING' || b.payment_status === 'IN_REVIEW');
+      const b = (unpaid[0] || bills[0])!;
+
+      const lineItems = (b.line_items || []).map((it) => ({
+        description: it.description,
+        service_code: it.service_code,
+        quantity: it.quantity,
+        total_price: it.total_price,
+        total_price_formatted: `₹${Number(it.total_price).toLocaleString('en-IN')}`,
+        covered_amount: it.covered_amount,
+        covered_amount_formatted: `₹${Number(it.covered_amount).toLocaleString('en-IN')}`,
+        patient_share: it.patient_share,
+        patient_share_formatted: `₹${Number(it.patient_share).toLocaleString('en-IN')}`,
+      }));
+
+      const card: AssistantCard = {
+        type: 'bill',
+        invoice_number: b.invoice_number,
+        hospital: b.hospital_name,
+        bill_date: b.bill_date,
+        due_date: b.due_date,
+        total_amount: b.total_amount,
+        total_amount_formatted: `₹${Number(b.total_amount).toLocaleString('en-IN')}`,
+        simulated_coverage_amount: b.simulated_coverage_amount,
+        simulated_coverage_amount_formatted: `₹${Number(b.simulated_coverage_amount).toLocaleString('en-IN')}`,
+        estimated_patient_responsibility: b.estimated_patient_responsibility,
+        estimated_patient_responsibility_formatted: `₹${Number(b.estimated_patient_responsibility).toLocaleString('en-IN')}`,
+        payment_status: b.payment_status,
+        payment_status_display: b.payment_status_display,
+        line_items: lineItems,
+      };
+
+      return {
+        role: 'assistant',
+        intent: 'billing_summary',
+        message: `You have ${unpaid.length} outstanding simulated invoice(s). Invoice ${b.invoice_number} from ${b.hospital_name} has a patient responsibility of ₹${Number(b.estimated_patient_responsibility).toLocaleString('en-IN')} (out of ₹${Number(b.total_amount).toLocaleString('en-IN')} total billed), due on ${b.due_date}.`,
+        cards: [card],
+        suggested_actions: ['What portion is covered?', 'What does my policy cover?', 'Open medical bills'],
+        navigation_target: 'bills',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 6. Insurance Coverage
+    if (q.includes('insurance') || q.includes('policy') || q.includes('coverage') || q.includes('exclusion') || q.includes('limit') || q.includes('co-pay')) {
+      const pol = this.getFallbackPolicies()[0]!;
+      const card: AssistantCard = {
+        type: 'insurance',
+        policy_number: pol.policy_number,
+        plan_name: pol.plan_name,
+        fictional_insurer: pol.fictional_insurer,
+        coverage_category: pol.coverage_category,
+        coverage_limit: pol.coverage_limit,
+        coverage_limit_formatted: `₹${Number(pol.coverage_limit).toLocaleString('en-IN')}`,
+        used_coverage: pol.used_coverage,
+        used_coverage_formatted: `₹${Number(pol.used_coverage).toLocaleString('en-IN')}`,
+        remaining_coverage: pol.remaining_coverage,
+        remaining_coverage_formatted: `₹${Number(pol.remaining_coverage).toLocaleString('en-IN')}`,
+        co_pay_percentage: String(pol.co_pay_percentage),
+        status: pol.status,
+        status_display: pol.status_display,
+        exclusions: pol.exclusions_summary,
+        renewal_date: pol.renewal_date,
+      };
+
+      return {
+        role: 'assistant',
+        intent: 'insurance_coverage',
+        message: `You are covered under simulated policy '${pol.plan_name}' (${pol.policy_number}) with ${pol.fictional_insurer}. Annual limit: ₹${Number(pol.coverage_limit).toLocaleString('en-IN')}, Utilized: ₹${Number(pol.used_coverage).toLocaleString('en-IN')}, Remaining: ₹${Number(pol.remaining_coverage).toLocaleString('en-IN')}. Co-pay: ${pol.co_pay_percentage}%. Status: ${pol.status_display}.`,
+        cards: [card],
+        suggested_actions: ['What is the status of my claim?', 'What are the exclusions?', 'Open insurance section'],
+        navigation_target: 'insurance',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 7. Appointments
+    if (q.includes('appointment') || q.includes('doctor') || q.includes('visiting') || q.includes('consultation') || q.includes('when is my next')) {
+      const apts = this.getSimulatedAppointments('upcoming');
+      const apt = (apts[0] || this.getFallbackAppointments()[0])!;
+      const card: AssistantCard = {
+        type: 'appointment',
+        appointment_id: apt.appointment_identifier,
+        facility: apt.healthcare_facility,
+        department: apt.department,
+        clinician: apt.clinician_name,
+        datetime: apt.appointment_date,
+        datetime_formatted: '24 October 2026 at 10:30 AM',
+        appointment_type: apt.appointment_type,
+        type_display: apt.appointment_type_display,
+        status: apt.status,
+        status_display: apt.status_display,
+        reason: apt.reason_for_visit,
+        instructions: apt.instructions,
+      };
+
+      return {
+        role: 'assistant',
+        intent: 'appointments',
+        message: `Your next scheduled consultation is with ${apt.clinician_name} (${apt.department}) at ${apt.healthcare_facility} on 24 October 2026 at 10:30 AM. Type: ${apt.appointment_type_display}. Status: ${apt.status_display}. Instructions: ${apt.instructions}`,
+        cards: [card],
+        suggested_actions: ['Show care journey', 'Show my latest medical records', 'Open appointments & timeline'],
+        navigation_target: 'timeline',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 8. Health Records
+    if (q.includes('record') || q.includes('test') || q.includes('lab') || q.includes('mri') || q.includes('vitals') || q.includes('last hospital visit')) {
+      const rec = this.getFallbackRecords()[0]!;
+      const card: AssistantCard = {
+        type: 'record',
+        record_id: rec.record_identifier,
+        title: rec.title,
+        facility: rec.healthcare_facility,
+        clinician: rec.attending_clinician,
+        record_date: rec.record_date,
+        record_date_formatted: '18 September 2026',
+        record_type: rec.record_type,
+        record_type_display: rec.record_type_display,
+        summary: rec.summary,
+        vitals: rec.vitals_summary,
+        status: rec.status,
+      };
+
+      return {
+        role: 'assistant',
+        intent: 'health_records',
+        message: `Your latest verified clinical report is '${rec.title}' (${rec.record_identifier}) from ${rec.healthcare_facility}, recorded on 18 September 2026 by ${rec.attending_clinician}. Summary: ${rec.summary}`,
+        cards: [card],
+        suggested_actions: ['Show recent tests', 'Find my last hospital visit', 'Open health records'],
+        navigation_target: 'records',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 9. Care Timeline & Journey
+    if (q.includes('timeline') || q.includes('journey') || q.includes('last visit') || q.includes('activities') || q.includes('activity')) {
+      const events = this.getSimulatedTimeline().slice(0, 5);
+      const card: AssistantCard = {
+        type: 'timeline',
+        events: events.map((e) => ({
+          id: e.event_identifier,
+          type: e.event_type,
+          title: e.title,
+          date: 'Sep 2026',
+          facility: e.facility,
+          summary: e.summary,
+          ref: e.related_reference,
+          badge_tone: e.badge_tone,
+        })),
+      };
+
+      return {
+        role: 'assistant',
+        intent: 'care_timeline',
+        message: `Your simulated care timeline tracks ${events.length} recent healthcare events, starting most recently with '${events[0]?.title ?? 'Care Event'}' at ${events[0]?.facility ?? 'Healthcare Facility'}.`,
+        cards: [card],
+        suggested_actions: ['What is the status of my claim?', 'When is my next appointment?', 'Open care timeline'],
+        navigation_target: 'timeline',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 10. Help & Capabilities
+    if (q.includes('help') || q.includes('what can you do') || q.includes('who are you') || q.includes('capabilities') || q.includes('guide')) {
+      return {
+        role: 'assistant',
+        intent: 'help',
+        message:
+          'I am the HEFIN Care Assistant, grounded in your authenticated synthetic records. I can assist you with tracking insurance claims, explaining hospital invoices and patient co-pay responsibility, reviewing policy coverage balances, checking upcoming doctor appointments, reviewing verified medical records and vitals, or summarizing your care journey.',
+        cards: [],
+        suggested_actions: [
+          'What is the status of my claim?',
+          'Show my unpaid bills',
+          'How much coverage is remaining?',
+          'When is my next appointment?',
+          'Show my latest medical records',
+          'Show my care journey',
+        ],
+        navigation_target: '',
+        simulation: true,
+        disclaimer,
+      };
+    }
+
+    // 11. Unknown Query
+    return {
+      role: 'assistant',
+      intent: 'unknown',
+      message:
+        'I could not match your inquiry to your recorded synthetic data. I can assist with inquiries about your claim status, hospital bills, insurance policies, appointments, health records, or care timeline. Try asking one of the suggested questions below.',
+      cards: [],
+      suggested_actions: [
+        'What is the status of my claim?',
+        'Show my unpaid bills',
+        'How much coverage is remaining?',
+        'When is my next appointment?',
+      ],
+      navigation_target: '',
+      simulation: true,
+      disclaimer,
+    };
+  }
+
+
   private getSimulatedRecords(params?: { record_type?: string; facility?: string; search?: string }): MedicalRecordItem[] {
     let records = this.getFallbackRecords();
     if (params?.record_type) {
@@ -385,9 +825,12 @@ export class PatientApiService {
   private getSimulatedAppointments(timeFilter?: 'upcoming' | 'past'): AppointmentItem[] {
     let appts = this.getFallbackAppointments();
     if (timeFilter === 'upcoming') {
-      appts = appts.filter((a) => a.status === 'scheduled');
+      appts = appts.filter((a) => {
+        const s = (a.status || '').toLowerCase();
+        return s === 'scheduled' || s === 'confirmed';
+      });
     } else if (timeFilter === 'past') {
-      appts = appts.filter((a) => a.status === 'completed');
+      appts = appts.filter((a) => (a.status || '').toLowerCase() === 'completed');
     }
     return appts;
   }

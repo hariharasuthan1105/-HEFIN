@@ -239,3 +239,121 @@ export interface CareEventItem {
   badge_tone: string;
   created_at: string;
 }
+
+export interface AssistantCard {
+  type: 'claim' | 'bill' | 'insurance' | 'appointment' | 'record' | 'timeline' | 'navigation';
+  claim_id?: string;
+  hospital?: string;
+  treatment?: string;
+  claim_date?: string;
+  claimed_amount?: string;
+  claimed_amount_formatted?: string;
+  approved_amount?: string;
+  approved_amount_formatted?: string;
+  status?: string;
+  status_display?: string;
+  current_stage?: string;
+  missing_documents?: string;
+  next_action?: string;
+  timeline_steps?: Array<{ step: string; timestamp: string; note: string }>;
+
+  invoice_number?: string;
+  bill_date?: string;
+  due_date?: string;
+  total_amount?: string;
+  total_amount_formatted?: string;
+  simulated_coverage_amount?: string;
+  simulated_coverage_amount_formatted?: string;
+  estimated_patient_responsibility?: string;
+  estimated_patient_responsibility_formatted?: string;
+  payment_status?: string;
+  payment_status_display?: string;
+  line_items?: Array<{
+    description: string;
+    service_code: string;
+    quantity: number;
+    total_price: string;
+    total_price_formatted: string;
+    covered_amount: string;
+    covered_amount_formatted: string;
+    patient_share: string;
+    patient_share_formatted: string;
+  }>;
+
+  policy_number?: string;
+  plan_name?: string;
+  fictional_insurer?: string;
+  coverage_category?: string;
+  coverage_limit?: string;
+  coverage_limit_formatted?: string;
+  used_coverage?: string;
+  used_coverage_formatted?: string;
+  remaining_coverage?: string;
+  remaining_coverage_formatted?: string;
+  co_pay_percentage?: string;
+  exclusions?: string;
+  renewal_date?: string;
+
+  appointment_id?: string;
+  facility?: string;
+  department?: string;
+  clinician?: string;
+  datetime?: string;
+  datetime_formatted?: string;
+  appointment_type?: string;
+  type_display?: string;
+  reason?: string;
+  instructions?: string;
+
+  record_id?: string;
+  title?: string;
+  record_date?: string;
+  record_date_formatted?: string;
+  record_type?: string;
+  record_type_display?: string;
+  summary?: string;
+  vitals?: Record<string, string>;
+
+  events?: Array<{
+    id: string;
+    type: string;
+    title: string;
+    date: string;
+    facility: string;
+    summary: string;
+    ref: string;
+    badge_tone: string;
+  }>;
+
+  target?: string;
+  label?: string;
+  description?: string;
+}
+
+export interface ChatMessageItem {
+  id?: number | string;
+  role: 'user' | 'assistant';
+  content: string;
+  intent?: string;
+  cards?: AssistantCard[];
+  suggested_actions?: string[];
+  navigation_target?: string;
+  simulation?: boolean;
+  disclaimer?: string;
+  created_at?: string;
+  error?: boolean;
+}
+
+export interface AssistantResponse {
+  id?: number;
+  role: string;
+  intent: string;
+  message: string;
+  cards: AssistantCard[];
+  suggested_actions: string[];
+  navigation_target: string;
+  simulation: boolean;
+  disclaimer: string;
+  created_at?: string;
+}
+
