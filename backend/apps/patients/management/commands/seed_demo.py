@@ -1,5 +1,7 @@
+import os
 from decimal import Decimal
 from datetime import date, timedelta
+from django.conf import settings
 from django.utils import timezone
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
@@ -22,8 +24,22 @@ class Command(BaseCommand):
             action='store_true',
             help='Wipes existing demo patient records before seeding.',
         )
+        parser.add_argument(
+            '--force',
+            action='store_true',
+            help='Explicitly authorizes demo seeding in production environments (DEBUG=False).',
+        )
 
     def handle(self, *args, **options):
+        # Production authorization safeguard
+        if not settings.DEBUG and not options.get('force') and os.getenv('ALLOW_DEMO_SEEDING', 'False').lower() not in ('true', '1'):
+            self.stderr.write(self.style.ERROR(
+                'BLOCKED: Production environment detected (DEBUG=False). '
+                'Seeding demo accounts is restricted to authorized development/isolated demo environments. '
+                'To explicitly authorize demo seeding in production, pass --force or set ALLOW_DEMO_SEEDING=True.'
+            ))
+            return
+
         self.stdout.write(self.style.MIGRATE_HEADING('=' * 75))
         self.stdout.write(self.style.MIGRATE_HEADING('HEFIN 3.0 -- DEMO DATA GENERATION ENGINE'))
         self.stdout.write(self.style.WARNING('DEMO ENVIRONMENT -- SIMULATED HEALTHCARE AND FINANCIAL DATA'))

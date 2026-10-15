@@ -14,14 +14,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR.parent / '.env')
 load_dotenv(BASE_DIR / '.env')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv(
-    'DJANGO_SECRET_KEY',
-    'django-insecure-hefin30-spectral-intelligence-task04-dev-key-change-in-production',
-)
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True').strip().lower() in ('true', '1', 'yes')
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+if not SECRET_KEY:
+    if DEBUG:
+        SECRET_KEY = 'django-insecure-hefin30-spectral-intelligence-task04-dev-key-change-in-production'
+    else:
+        from django.core.exceptions import ImproperlyConfigured
+        raise ImproperlyConfigured(
+            'DJANGO_SECRET_KEY environment variable is required in production (DEBUG=False).'
+        )
 
 ALLOWED_HOSTS = [
     host.strip()
@@ -110,13 +115,19 @@ elif os.getenv('DB_NAME'):
             'PORT': os.getenv('DB_PORT', '5432'),
         }
     }
-else:
+elif DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+else:
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(
+        'PostgreSQL database configuration (DATABASE_URL or DB_NAME) is required in production (DEBUG=False). '
+        'SQLite is strictly forbidden in production.'
+    )
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.User'
@@ -177,19 +188,26 @@ REST_FRAMEWORK = {
 }
 
 # CORS & CSRF configuration for Render + GitHub Pages
-CORS_ALLOW_ALL_ORIGINS = DEBUG
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',
-    'http://127.0.0.1:4200',
-    'http://localhost:4201',
-    'http://127.0.0.1:4201',
-    'https://hariharasuthan1105.github.io',
-]
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+    CORS_ALLOWED_ORIGINS = [
+        'http://localhost:4200',
+        'http://127.0.0.1:4200',
+        'http://localhost:4201',
+        'http://127.0.0.1:4201',
+        'https://hariharasuthan1105.github.io',
+    ]
+else:
+    CORS_ALLOW_ALL_ORIGINS = False
+    CORS_ALLOWED_ORIGINS = [
+        'https://hariharasuthan1105.github.io',
+    ]
+
 extra_cors = os.getenv('CORS_ALLOWED_ORIGINS')
 if extra_cors:
     for o in extra_cors.split(','):
         cleaned_origin = o.strip()
-        if cleaned_origin and cleaned_origin not in CORS_ALLOWED_ORIGINS:
+        if cleaned_origin and cleaned_origin.startswith('https://') and cleaned_origin not in CORS_ALLOWED_ORIGINS:
             CORS_ALLOWED_ORIGINS.append(cleaned_origin)
 
 CORS_ALLOW_CREDENTIALS = True
@@ -202,7 +220,7 @@ extra_csrf = os.getenv('CSRF_TRUSTED_ORIGINS')
 if extra_csrf:
     for c in extra_csrf.split(','):
         cleaned_csrf = c.strip()
-        if cleaned_csrf and cleaned_csrf not in CSRF_TRUSTED_ORIGINS:
+        if cleaned_csrf and cleaned_csrf.startswith('https://') and cleaned_csrf not in CSRF_TRUSTED_ORIGINS:
             CSRF_TRUSTED_ORIGINS.append(cleaned_csrf)
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

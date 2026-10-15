@@ -11,6 +11,7 @@ from apps.patients.models import PatientProfile
 from apps.records.models import MedicalRecord
 from apps.billing.models import MedicalBill
 from apps.insurance.models import InsurancePolicy, InsuranceClaim
+from apps.assistant.models import ChatMessage
 
 User = get_user_model()
 
@@ -94,3 +95,40 @@ class PatientIsolationTestCase(TestCase):
         url = reverse('billing-detail', kwargs={'pk': self.bill_b.pk})
         response = self.client_a.get(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_patient_a_cannot_see_patient_b_assistant_messages(self):
+        # Create assistant message for Patient B
+        ChatMessage.objects.create(
+            patient=self.profile_b,
+            role='assistant',
+            content='Private medical explanation for Patient B',
+            intent='RECORDS_VITALS',
+            is_simulated=True,
+        )
+        url = reverse('assistant-messages')
+        response = self.client_a.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # Patient A must not see Patient B's chat history
+        self.assertEqual(len(response.data), 0)
+
+    def test_patient_a_cannot_query_patient_b_data_via_assistant(self):
+        url = reverse('assistant-messages')
+        # Patient A asks for bills - should receive "no outstanding bills" since only Patient B has a bill
+        response = self.client_a.post(url, {'message': 'What are my unpaid bills?'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotIn('INV-BETA-888', response.data['message'])
+        self.assertNotIn('Private Facility B', response.data['message'])
+
+    def test_unauthenticated_request_is_rejected(self):
+        unauth_client = APIClient()
+        url = reverse('records-list')
+        response = unauth_client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_invalid_token_is_rejected(self):
+        bad_client = APIClient()
+        bad_client.credentials(HTTP_AUTHORIZATION='Token invalid-forged-token-xyz123')
+        url = reverse('records-list')
+        response = bad_client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+

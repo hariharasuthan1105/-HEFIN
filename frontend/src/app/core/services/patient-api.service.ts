@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment, sanitizeApiUrl } from '../../../environments/environment';
 import { AuthService } from './auth.service';
 import {
   PatientDashboardSummary,
@@ -54,11 +54,15 @@ export class PatientApiService {
 
   get baseUrl(): string {
     if (typeof window !== 'undefined' && window.__HEFIN_CONFIG__?.apiBaseUrl) {
-      return window.__HEFIN_CONFIG__.apiBaseUrl.replace(/\/+$/, '');
+      const sanitized = sanitizeApiUrl(window.__HEFIN_CONFIG__.apiBaseUrl);
+      if (sanitized) return sanitized;
     }
     if (typeof localStorage !== 'undefined') {
       const saved = localStorage.getItem('hefin_api_base_url');
-      if (saved) return saved.replace(/\/+$/, '');
+      if (saved) {
+        const sanitized = sanitizeApiUrl(saved);
+        if (sanitized) return sanitized;
+      }
     }
     return environment.apiBaseUrl.replace(/\/+$/, '');
   }
@@ -77,8 +81,9 @@ export class PatientApiService {
   }
 
   setApiBaseUrl(url: string): void {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('hefin_api_base_url', url.trim());
+    const sanitized = sanitizeApiUrl(url);
+    if (sanitized && typeof localStorage !== 'undefined') {
+      localStorage.setItem('hefin_api_base_url', sanitized);
     }
   }
 

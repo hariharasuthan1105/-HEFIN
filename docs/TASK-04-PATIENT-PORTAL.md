@@ -287,7 +287,7 @@ services:
     plan: free
     branch: hefin-3.0-development
     buildCommand: "pip install -r backend/requirements.txt && python backend/manage.py collectstatic --no-input"
-    startCommand: "python backend/manage.py migrate --no-input && python backend/manage.py seed_demo && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
+    startCommand: "python backend/manage.py migrate --no-input && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
     healthCheckPath: /healthz/
     envVars:
       - key: PYTHON_VERSION
@@ -315,27 +315,29 @@ databases:
     region: oregon
 ```
 
-### 2. PostgreSQL Configuration
+### 2. PostgreSQL Configuration & Secret Management
 - **Database Engine:** Managed PostgreSQL on Render (Internal connection string provided automatically via `fromDatabase: connectionString`).
-- **Django Parsing:** [`backend/config/settings.py`](file:///c:/Users/hariharasuthan/Downloads/-HEFIN-main%20%282%29/-HEFIN-main/backend/config/settings.py) dynamically uses `dj_database_url.config()` when `DATABASE_URL` is set, with `conn_max_age=600`.
-- **Local Fallback:** Falls back seamlessly to SQLite (`db.sqlite3`) for local zero-dependency testing.
+- **Production PostgreSQL Enforcement:** [`backend/config/settings.py`](file:///c:/Users/hariharasuthan/Downloads/-HEFIN-main%20%282%29/-HEFIN-main/backend/config/settings.py) dynamically uses `dj_database_url.config()` when `DATABASE_URL` is set, with `conn_max_age=600`. In production (`DEBUG=False`), SQLite is strictly blocked with an `ImproperlyConfigured` exception; PostgreSQL is required.
+- **Local Fallback:** Falls back cleanly to SQLite (`db.sqlite3`) for local zero-dependency testing only when `DEBUG=True`.
+- **Secret Key Enforcement:** `DJANGO_SECRET_KEY` is generated and managed through Render environment variables. In production, Django refuses to start if `DJANGO_SECRET_KEY` is missing.
 
-### 3. Production Hardening & HTTPS
+### 3. Production Hardening, HTTPS & Strict CORS
 - **Debug:** Forced to `DEBUG = False` via `DJANGO_DEBUG="False"`.
 - **Gunicorn:** Multi-worker WSGI server (`gunicorn --chdir backend config.wsgi:application --workers 2 --threads 4`).
 - **WhiteNoise:** Serves static files directly from Gunicorn via `CompressedManifestStaticFilesStorage`.
 - **SSL / Proxy:** Configured with `SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')`, `SESSION_COOKIE_SECURE = True`, and `CSRF_COOKIE_SECURE = True`.
-- **CORS / CSRF:** Explicitly whitelist `https://hariharasuthan1105.github.io` and `https://*.onrender.com`.
+- **Strict CORS / CSRF:** In production (`DEBUG=False`), CORS strictly permits only the intended GitHub Pages frontend (`https://hariharasuthan1105.github.io`). Arbitrary or insecure origins are blocked.
+- **Explicit Demo Seeding:** `seed_demo` is removed from the automatic production startup sequence. In production (`DEBUG=False`), `seed_demo` requires explicit authorization via `--force` or `ALLOW_DEMO_SEEDING=True`.
 
 ### 4. Health-Check Endpoints
 - `GET /healthz/` and `GET /`: Fast 200 OK JSON status responding with version, health status, and demo disclaimer.
 - `GET /api/v1/status/`: Full API catalog with all endpoint routes.
 
-### 5. Frontend API Dynamic Routing
+### 5. Frontend API Dynamic Routing & Safe Origin Sanitization
 [`frontend/src/environments/environment.ts`](file:///c:/Users/hariharasuthan/Downloads/-HEFIN-main%20%282%29/-HEFIN-main/frontend/src/environments/environment.ts) detects the hosting environment:
 - When hosted on `https://hariharasuthan1105.github.io/`, it targets `https://hefin-backend.onrender.com/api/v1`.
 - When running locally (`localhost` / `127.0.0.1`), it targets `http://127.0.0.1:8000/api/v1`.
-- Can be dynamically customized via `window.__HEFIN_CONFIG__.apiBaseUrl` or `localStorage.getItem('hefin_api_base_url')`.
+- **Safe Origin Sanitization:** Custom API URL overrides (via `window.__HEFIN_CONFIG__.apiBaseUrl` or `localStorage`) are sanitized through `sanitizeApiUrl(...)`. Dangerous schemes (e.g. `javascript:`, `data:`), credentials in URLs, and unencrypted remote HTTP endpoints are rejected, falling back safely to the official Render endpoint.
 - If the backend is unreachable or sleeping, the frontend displays an explicit, honest status banner rather than silently simulating responses.
 
 ### 6. Step-by-Step Render Deployment Guide
@@ -346,9 +348,10 @@ When ready to provision the backend on Render:
 3. Connect the repository `https://github.com/hariharasuthan1105/-HEFIN`.
 4. Select the `hefin-3.0-development` branch.
 5. Render will automatically detect `render.yaml` and display the resources (`hefin-backend` web service and `hefin-postgres` database).
-6. Review the plan (Free tier) and click **Apply**.
-7. Render provisions the database, runs `pip install`, collects static files, executes migrations, seeds synthetic demo data, and launches Gunicorn.
-8. Verify deployment by visiting `https://<service-name>.onrender.com/healthz/`.
+6. Review the plan (Free tier, $0.00/mo) and click **Apply**.
+7. Render provisions the database, runs `pip install`, collects static files, executes database migrations, and launches Gunicorn.
+8. If demo data seeding is desired in an isolated demo deployment, run `python backend/manage.py seed_demo --force` via the Render Shell or SSH console.
+9. Verify deployment by visiting `https://<service-name>.onrender.com/healthz/`.
 
 ---
 
