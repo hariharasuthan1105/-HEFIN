@@ -35,6 +35,25 @@ jobs:
         working-directory: frontend
         run: npm ci
 
+      - name: Validate 3D assets and Git LFS integrity
+        working-directory: frontend
+        run: |
+          node -e '
+            const fs = require("fs");
+            for (const rel of ["public/assets/models/smart-hospital.glb", "public/assets/models/anatomical-brain.glb"]) {
+              if (!fs.existsSync(rel)) { console.error("Missing GLB file:", rel); process.exit(1); }
+              const stat = fs.statSync(rel);
+              if (stat.size < 500000) { console.error("Invalid GLB size:", rel, stat.size); process.exit(1); }
+              const fd = fs.openSync(rel, "r");
+              const buf = Buffer.alloc(4);
+              fs.readSync(fd, buf, 0, 4, 0);
+              fs.closeSync(fd);
+              const magic = buf.toString("ascii");
+              if (magic !== "glTF") { console.error("Invalid GLB magic header:", rel, magic); process.exit(1); }
+              console.log("Verified GLB asset:", rel, stat.size, "bytes, magic:", magic);
+            }
+          '
+
       - name: Build Angular application for GitHub Pages
         working-directory: frontend
         run: |
