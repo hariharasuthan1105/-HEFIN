@@ -36,8 +36,8 @@ test('both genuine GLBs load, material controls and keyboard orbit reset work', 
     if (r.url().endsWith('.glb') && r.ok()) loaded.push(r.url());
   });
   const scene = await open(page);
-  expect(loaded).toHaveLength(2);
-  await expect(page.locator('canvas')).toHaveCount(1);
+  expect(new Set(loaded).size).toBe(2);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(1);
   for (const mode of ['Glass', 'Wireframe', 'Hybrid']) {
     await scene.getByRole('button', { name: mode, exact: true }).click();
     await expect(scene.getByRole('button', { name: mode, exact: true })).toHaveAttribute(
@@ -77,7 +77,7 @@ test('a failed or corrupt GLB preserves a usable static preview', async ({ page 
     await scene.getByRole('button', { name: 'Explore in 3D' }).click();
   await expect(page.locator('.cinematic-caption')).toContainText('3D unavailable');
   await expect(scene.locator('img')).toBeVisible();
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(0);
   await page.getByRole('link', { name: 'Experience Demo', exact: true }).click();
   await expect(page).toHaveURL(/login$/);
 });
@@ -99,7 +99,7 @@ test('navigation during delayed model loading leaves no late canvas', async ({ p
   await page.getByRole('link', { name: 'Experience Demo', exact: true }).click();
   release();
   await page.waitForTimeout(500);
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(0);
   await expect(page).toHaveURL(/login$/);
 });
 

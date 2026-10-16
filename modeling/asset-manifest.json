@@ -2,10 +2,10 @@
   "models": [
     {
       "path": "frontend/public/assets/models/smart-hospital.glb",
-      "bytes": 1150132,
-      "sha256": "f6c08dbab0646d60f442e843178d70359f75b3a262fd082de5a58b6ffd396696",
-      "meshes": 9,
-      "triangles": 134204,
+      "bytes": 2106832,
+      "sha256": "5f5e94d3c65a55912f75a7fb82fced2933eca4b7d569e46906d88f9b11c6926b",
+      "meshes": 14,
+      "triangles": 321108,
       "extensions": [
         "KHR_draco_mesh_compression",
         "KHR_materials_emissive_strength"

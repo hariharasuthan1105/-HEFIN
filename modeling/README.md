@@ -4,14 +4,20 @@ Blender 4.5.9 LTS was used as a portable workspace tool. It is not an applicatio
 
 ## Hospital
 
-Original reference-inspired geometry: five storeys, rounded twin wings, cylindrical atrium with circular platforms and spiral treads, glass mullions, beds with pillows/rails/casters and monitors, HVAC grilles/fans, antennas, rooftop planters, entrance canopy/steps, plaza paving and shrubs. Nine material batches replace thousands of individual draw calls.
+The hospital-only revision uses all six supplied October 15 references: the four white-and-glass architectural perspectives, the multi-view Medical Centre showcase, and the modelling reference board. These are raster references, not supplied editable models.
+
+The original scripted mesh now has reception plus five inpatient levels, rounded pearl wings, front/rear wards and side beds, glazing and partitions, monitors, waiting furniture, a cylindrical atrium with spiral stair treads and gold helical rails, an elevated cyan medical helipad, mechanical roof units, planted terraces and a landscaped podium. Fourteen material batches keep detailed geometry affordable to draw. The GLB has 321,108 triangles and is 2,106,832 bytes (Draco compressed). No external textures are required; materials are embedded PBR definitions.
 
 ```sh
-blender --background --python build_hospital.py -- /absolute/output-directory
-blender --background /absolute/output-directory/smart-hospital.blend --python refine_hospital.py -- /absolute/refined-directory
+blender --background --python build_hospital.py -- /absolute/base-output
+blender --background /absolute/base-output/smart-hospital.blend --python refine_hospital.py -- /absolute/final-output
 ```
 
-The refinement removes horizontal emissive caps so large floor surfaces do not glow. Runtime curves restore continuous fine cyan facade lines. Copy the refined GLB to `frontend/public/assets/models/` and preserve the refined Blender source here.
+Run refinement once on the base output. It raises the crown, clears helipad vegetation, strengthens the atrium handrails, adjusts warm materials, smooths foliage and rebatches the mesh. Copy the final GLB to `frontend/public/assets/models/` and preserve the final Blender source here. The committed `.blend` is already refined. The generator shares mesh datablocks during construction; final meshes are joined by material for web delivery. The Blender source is about 18.9 MB and is not downloaded by visitors.
+
+The homepage `smart-hospital` viewer uses the existing Three.js install, local Draco decoder, OrbitControls, bounded zoom and four camera views. Mobile/reduced-motion/data-saving users begin with an actual-model still render and can explicitly opt in. Desktop rendering adds shadows and restrained bloom; mobile/software rendering omits those passes. Both scenes retain the authored hospital palette through `prepareHospital()`.
+
+This is a stylized architectural model, not a photographic reconstruction. Foliage, people and room furniture are simplified; glazing uses alpha transparency rather than ray-traced refraction. The helipad and floor plan are conceptual, not construction or aviation specifications. See `docs/HOSPITAL-MODEL-REVIEW.md` for validation and browser captures.
 
 ## Anatomical brain
 

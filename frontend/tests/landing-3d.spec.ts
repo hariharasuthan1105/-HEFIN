@@ -52,7 +52,7 @@ test('reduced motion and low-power devices keep an honest static fallback', asyn
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await expect(page.locator('.cinematic-caption')).toContainText('Reduced motion');
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(0);
   await expect(page.locator('.cinematic-fallback')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Explore in 3D' })).toHaveCount(0);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -64,7 +64,7 @@ test('reduced motion and low-power devices keep an honest static fallback', asyn
   });
   await page.reload();
   await expect(page.locator('.cinematic-caption')).toContainText('Low-power');
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Explore in 3D' })).toBeVisible();
 });
 test('WebGL failure falls back without blocking routes', async ({ page }) => {
@@ -81,7 +81,7 @@ test('WebGL failure falls back without blocking routes', async ({ page }) => {
   if ((page.viewportSize()?.width ?? 1440) <= 600)
     await page.getByRole('button', { name: 'Explore in 3D' }).click();
   await expect(page.locator('.cinematic-caption')).toContainText('3D unavailable');
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(0);
   await expect(page.locator('.cinematic-fallback')).toBeVisible();
   await page.getByRole('link', { name: 'Hospital portal', exact: false }).click();
   await expect(page).toHaveURL(/\/hospital\/dashboard$/);
@@ -117,7 +117,7 @@ test('real 3D pauses offscreen, supports controls and disposes all owned resourc
   await page.locator('.cinematic-experience').scrollIntoViewIfNeeded();
   await expect.poll(async () => (await metrics(page)).activeLoops).toBe(1);
   await page.getByRole('button', { name: 'Static view', exact: true }).click();
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(0);
   expect((await metrics(page)).activeRenderers).toBe(0);
   expect((await metrics(page)).geometries).toBe(0);
   expect((await metrics(page)).materials).toBe(0);
@@ -223,18 +223,18 @@ test('route cycles and changing motion preference do not duplicate render loops'
     );
     expect((await metrics(page)).activeRenderers).toBe(1);
     expect((await metrics(page)).activeLoops).toBe(1);
-    await expect(page.locator('canvas')).toHaveCount(1);
+    await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(1);
   }
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.locator('.cinematic-caption')).toContainText('Reduced motion');
   expect((await metrics(page)).activeLoops).toBe(0);
   expect((await metrics(page)).created).toBe((await metrics(page)).disposed);
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas.cinematic-canvas')).toHaveCount(0);
 });
 test('context loss releases renderer and shows original reference', async ({ page }) => {
   await interactive(page);
   await page
-    .locator('canvas')
+    .locator('canvas.cinematic-canvas')
     .evaluate((canvas: HTMLCanvasElement) =>
       canvas.getContext('webgl2')?.getExtension('WEBGL_lose_context')?.loseContext(),
     );

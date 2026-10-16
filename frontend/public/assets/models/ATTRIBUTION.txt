@@ -24,8 +24,8 @@ Gross anatomical illustration only; not a diagnostic or surgical model.
 
 HOSPITAL
 Original HEFIN architectural approximation modeled in Blender for this project,
-informed by the supplied Smart Hospital and AI Brain Meets Future Healthcare
-images. No third-party hospital mesh was used. The scene represents a fictional
+informed by the six supplied October 15 white/glass hospital perspectives,
+Medical Centre showcase and modelling reference board. No third-party hospital mesh was used. The scene represents a fictional
 concept, not an operating HEFIN hospital. Geometry is not an exact reconstruction
 of the supplied images. Modeling scripts and editable Blender sources are in
 the repository's modeling/ directory.
@@ -45,3 +45,7 @@ cinematic-fallback.webp is a static capture of the actual HEFIN 3D scene, not th
 uploaded reference image. It contains adapted CC BY-SA 4.0 brain geometry and is
 distributed under CC BY-SA 4.0, with the attribution above. Scene screenshots
 in docs/ retain this attribution for the adapted brain imagery as well.
+
+HOSPITAL-ONLY RENDER
+hospital-model.webp and the isolated hospital-view screenshots capture the original HEFIN hospital
+geometry in the Three.js viewer. Full-page hospital-page-*.png captures also include the anatomical brain section and retain its CC BY-SA 4.0 attribution above.

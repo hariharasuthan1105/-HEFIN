@@ -1,7 +1,7 @@
 """HEFIN reference-inspired architectural model. Blender 4.5, no external addons.
 Run: blender --background --python build_hospital.py -- /absolute/output/directory
 Coordinates: X across wings, Y depth (front negative), Z up.
-The supplied single image informs this original approximation, not a measured building.
+Six supplied architectural images inform this original approximation, not a measured building.
 """
 import bpy, math, random, sys
 from pathlib import Path
@@ -21,15 +21,15 @@ def mat(name, color, metal=0, rough=.5, alpha=1, emission=0):
     p.inputs['Emission Color'].default_value=(*color,1); p.inputs['Emission Strength'].default_value=emission
     if alpha<1: m.surface_render_method='DITHERED'
     return m
-metal=mat('Graphite titanium',(.13,.22,.29),.65,.32)
-trim=mat('Brushed facade bands',(.35,.48,.55),.6,.38)
+metal=mat('Graphite titanium',(.10,.16,.20),.65,.32)
+trim=mat('Brushed facade bands',(.82,.87,.92),.38,.28)
 dark=mat('Recessed surfaces',(.023,.044,.065),.3,.65)
-glass=mat('Cyan architectural glazing',(.08,.45,.55),.25,.16,.18,.08)
+glass=mat('Cyan architectural glazing',(.28,.59,.70),.15,.14,.12,0)
 cyan=mat('Cyan light strips',(.05,.72,.85),.35,.3,1,1.2)
 gold=mat('HEFIN gold medical symbol',(.9,.57,.12),.75,.25,1,.3)
-white=mat('Medical equipment',(.59,.72,.75),.15,.55)
-bedmat=mat('Bed upholstery',(.12,.29,.34),0,.8)
-leaf=mat('Roof and plaza planting',(.055,.19,.16),0,.95)
+white=mat('Medical equipment',(.88,.9,.88),.1,.45)
+bedmat=mat('Bed upholstery',(.08,.35,.57),0,.7)
+leaf=mat('Roof and plaza planting',(.12,.29,.07),0,.85)
 soil=mat('Planting beds',(.018,.043,.04),0,1)
 
 def finish(obj,name,m):
@@ -79,88 +79,211 @@ def bed(x,y,z):
     box('Monitor screen',(x+.35,y+.209,z+.57),(.17,.008,.12),cyan)
     cyl('Monitor stand',(x+.35,y+.25,z+.3),.016,.43,trim,8)
 
-rounded('Raised square architectural plinth',0,0,-.20,11,9.5,.40,.5,trim)
-rounded('Plaza surface',0,0,.015,10.9,9.4,.055,.48,dark)
-for x in range(-10,11): box('Plaza paving joint',(x*.5,0,.05),(.012,9.1,.008),metal)
-for y in range(-9,10): box('Plaza paving joint',(0,y*.5,.051),(10.6,.012,.008),metal)
-for x in [-2.25,2.25]:
-    # Five glazed storeys, exposed through transparent continuous curved walls.
-    for f in range(6):
-        z=.18+f*1.08
-        rounded('Rounded wing floor band',x,0,z,3.9,5.4,.20,.62,trim)
-        rounded('Fine cyan facade reveal',x,0,z+.105,3.91,5.41,.012,.62,cyan)
-        if f==5: continue
-        rounded('Curved curtain wall',x,0,z+.54,3.74,5.24,.89,.57,glass)
-        box('Internal service core',(x,.4,z+.54),(.62,2.7,.90),dark)
-        for xx in [-1.15,-.4,.4,1.15]:
-            for yy in [-2.60,2.60]: box('Glazing mullion',(x+xx,yy,z+.54),(.035,.05,.89),metal)
-        for yy in [-1.85,-1.05,-.25,.55,1.35,2.05]:
-            for xx in [-1.86,1.86]: box('Side glazing mullion',(x+xx,yy,z+.54),(.05,.035,.89),metal)
-        for xx in [-1.15,-.45,.45,1.15]:
-            if f: bed(x+xx,-1.85,z+.1)
-        if f:
-            for yy in [-.65,.6,1.85]:
-                bed(x+1.22,yy,z+.1); bed(x-1.22,yy,z+.1)
-        for yy in [-1.1,.1,1.3]: box('Room partition',(x,yy,z+.5),(3.35,.035,.74),metal)
-    # Roof parapet inset and planted edge.
-    rounded('Roof garden inset',x,0,5.70,3.64,5.14,.18,.52,dark)
+# Reuse primitive mesh datablocks during construction to avoid thousands of operator rebuilds.
+_box, _cyl, _ring = box, cyl, ring
+mesh_cache = {}
+def cached(kind, args, creator, name, loc, material):
+    key=(kind,args,material.name)
+    if key not in mesh_cache:
+        ob=creator(); mesh_cache[key]=ob.data
+        return ob
+    ob=bpy.data.objects.new(name,mesh_cache[key]); bpy.context.collection.objects.link(ob); ob.location=loc
+    return ob
+def box(name,loc,size,m,bevel=0):
+    return cached('box',(tuple(size),bevel),lambda:_box(name,loc,size,m,bevel),name,loc,m)
+def cyl(name,loc,r,depth,m,vertices=48):
+    return cached('cyl',(r,depth,vertices),lambda:_cyl(name,loc,r,depth,m,vertices),name,loc,m)
+def ring(name,loc,r,t,m):
+    return cached('ring',(r,t),lambda:_ring(name,loc,r,t,m),name,loc,m)
+def shrub(x,y,z,s=.22):
+    key=('foliage',)
+    if key not in mesh_cache:
+        bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=1,radius=1)
+        ob=bpy.context.object; ob.data.materials.append(leaf); mesh_cache[key]=ob.data
+        bpy.data.objects.remove(ob,do_unlink=True)
+    for i in range(6):
+        ob=bpy.data.objects.new('Clustered leaves',mesh_cache[key]); bpy.context.collection.objects.link(ob)
+        ob.location=(x+random.uniform(-s*.65,s*.65),y+random.uniform(-s*.65,s*.65),z+random.uniform(0,s*.5))
+        r=s*random.uniform(.6,1); ob.scale=(r,r,r*.8)
+
+# Six levels: reception plus five inpatient floors. All dimensions are conceptual metres.
+warm=mat('Warm architectural LEDs',(1,.66,.28),0,.35,1,3)
+cream=mat('Warm interior plaster',(.72,.57,.38),0,.75,1,.12)
+flower=mat('White flowering shrubs',(.82,.85,.73),0,.9)
+wood=mat('Reception oak',(.38,.20,.085),0,.7)
+blue=mat('Diagnostic display',(.04,.42,.8),.15,.35,1,1)
+
+def tube(name,points,r,m):
+    cu=bpy.data.curves.new(name,'CURVE'); cu.dimensions='3D'; cu.bevel_depth=r; cu.bevel_resolution=1; cu.resolution_u=1
+    sp=cu.splines.new('POLY'); sp.points.add(len(points)-1)
+    for p,co in zip(sp.points,points): p.co=(*co,1)
+    ob=bpy.data.objects.new(name,cu); bpy.context.collection.objects.link(ob); ob.data.materials.append(m)
+    bpy.context.view_layer.objects.active=ob; ob.select_set(True)
+    bpy.ops.object.convert(target='MESH'); ob.select_set(False)
+    return ob
+
+def outline(x,y,z,w,d,r,m,th=.018):
+    pts=[]
+    for cx,cy,start in [(w/2-r,d/2-r,0),(-w/2+r,d/2-r,90),(-w/2+r,-d/2+r,180),(w/2-r,-d/2+r,270)]:
+        for j in range(13):
+            a=math.radians(start+j*90/12); pts.append((x+cx+r*math.cos(a),y+cy+r*math.sin(a),z))
+    tube('Continuous facade reveal',pts+[pts[0]],th,m)
+
+def tree(x,y,z,h=.9):
+    cyl('Tree trunk',(x,y,z+h*.4),.035,h*.8,wood,8)
+    for i in range(7):
+        a=i*2.4; r=.17 if i else 0
+        shrub(x+r*math.cos(a),y+r*math.sin(a),z+h*.72+(i%3)*.12,h*.23)
+
+def planter(x,y,z,w,d):
+    rounded('Stone garden planter',x,y,z,w,d,.17,.15,trim)
+    rounded('Garden soil',x,y,z+.09,w-.10,d-.10,.025,.12,soil)
+    count=max(3,int(w/.23))
+    for i in range(count):
+        xx=x-w*.42+i*w*.84/(count-1)
+        shrub(xx,y,z+.2,.16)
+        if i%3==0:
+            for k in range(4):
+                bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=1,radius=.065,location=(xx+random.uniform(-.1,.1),y+random.uniform(-.1,.1),z+.38))
+                finish(bpy.context.object,'Flower cluster',flower)
+
+def chair(x,y,z):
+    box('Waiting seat',(x,y,z+.24),(.25,.28,.08),bedmat,.025)
+    box('Chair back',(x,y+.12,z+.40),(.25,.05,.3),bedmat,.02)
+    for dx in [-.09,.09]:
+        for dy in [-.09,.09]: cyl('Chair legs',(x+dx,y+dy,z+.12),.012,.24,metal,6)
+
+def person(x,y,z):
+    cyl('Person torso',(x,y,z+.45),.075,.28,white,8)
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=8,ring_count=6,radius=.065,location=(x,y,z+.65)); finish(bpy.context.object,'Person head',cream)
+    for dx in [-.035,.035]: cyl('Person legs',(x+dx,y,z+.18),.023,.32,metal,6)
+
+rounded('Rounded podium lower',0,0,-.24,11.4,10,.28,.65,metal)
+rounded('Rounded podium upper',0,0,-.08,11.2,9.8,.17,.6,trim)
+rounded('Porcelain plaza',0,0,.025,11,9.6,.06,.55,white)
+outline(0,0,-.11,11.22,9.82,.6,warm,.015)
+for x in range(-10,11): box('Paving seam',(x*.5,0,.06),(.008,9.1,.004),metal)
+for y in range(-9,10): box('Paving seam',(0,y*.5,.06),(10.6,.008,.004),metal)
+H=1.35
+roof=.2+6*H
+for x in [-2.5,2.5]:
+    print('BUILD_WING',x,flush=True)
+    for f in range(7):
+        z=.2+f*H
+        print('BUILD_FLOOR',x,f,flush=True)
+        rounded('Sculpted pearl floor fascia',x,0,z,4.25,5.5,.24,.72,trim)
+        outline(x,0,z+.11,4.27,5.52,.72,warm,.012)
+        if f==6: continue
+        rounded('Blue transparent curtain wall',x,0,z+.7,4.12,5.36,1.13,.67,glass)
+        # A warm back wall, open front rooms and a passage through the side bays.
+        box('Interior service spine',(x,.35,z+.68),(.62,2.5,1.08),cream)
+        for xx in [-1.4,-.7,0,.7,1.4]:
+            for yy in [-2.68,2.68]: box('Window mullion',(x+xx,yy,z+.68),(.026,.032,1.12),metal)
+        for yy in [-1.95,-1.2,-.45,.3,1.05,1.8]:
+            for xx in [-2.06,2.06]: box('Side window mullion',(x+xx,yy,z+.68),(.032,.026,1.12),metal)
+        for yy in [-2.67,2.67]: box('Window transom',(x,yy,z+.94),(3.05,.025,.025),metal)
+        # Front and rear wards remain visible from a full 360-degree orbit.
+        for yy,sgn in [(-1.85,1),(1.85,-1)]:
+            if f:
+                box('Warm ward wall',(x,yy+sgn*.54,z+.68),(3.5,.07,1.05),cream)
+                box('Ward linear ceiling light',(x,yy,z+1.19),(3.4,.035,.018),warm)
+                for xx in [-1.25,-.4,.45,1.3]:
+                    bed(x+xx,yy,z+.13)
+                    box('Bedside cabinet',(x+xx+.28,yy+.25,z+.32),(.15,.2,.35),white,.015)
+                    box('Diagnostic panel',(x+xx,yy+sgn*.49,z+.88),(.25,.025,.20),metal,.01)
+                    box('Diagnostic screen',(x+xx,yy+sgn*.47,z+.88),(.21,.008,.16),blue)
+                    for k in range(3): box('Monitor trace',(x+xx,yy+sgn*.46,z+.84+k*.035),(.14,.009,.006),cyan)
+                for xx in [-.82,.02,.87]: box('Glass room partition',(x+xx,yy,z+.65),(.018,.95,.97),glass)
+            else:
+                for xx in [-1.25,-.65,.65,1.25]: chair(x+xx,yy,z+.12)
+                box('Lobby wall',(x,yy+sgn*.6,z+.68),(3.4,.06,1.05),cream)
+        for side in [-1,1]:
+            for yy in [-.75,.75]:
+                if f: bed(x+side*1.48,yy,z+.13)
+        for xx in [-1.7,1.7]:
+            cyl('Interior planter',(x+xx,-2.18,z+.27),.11,.28,white,12)
+            tree(x+xx,-2.18,z+.4,.6)
+        if f in [0,2,4]: person(x-.8,-2.3,z+.12)
+    rounded('Roof parapet',x,0,roof+.24,4.25,5.5,.40,.72,trim)
+    rounded('Roof terrace paving',x,0,roof+.46,4.05,5.3,.035,.65,white)
+    outline(x,0,roof+.68,4.1,5.35,.67,metal,.018)
     for yy in [-2.22,2.22]:
-        box('Rooftop planter',(x,yy,5.84),(2.7,.36,.19),metal,.05)
-        for i in range(10): shrub(x-1.2+i*.265,yy,6.0,.14)
-    for xx,yy,w,d,h in [(-.65,-.8,1.1,1.25,.55),(.65,.6,.9,1.2,.8),(-.75,1.0,.7,.8,.5)]:
-        box('Rooftop mechanical unit',(x+xx,yy,5.8+h/2),(w,d,h),trim,.06)
-        for k in range(8): box('HVAC ventilation louvre',(x+xx,yy-d/2-.006,5.83+k*h/9),(w*.85,.025,.026),dark)
-        for offset in [-.22,.22]:
-            cyl('Roof fan',(x+xx+offset,yy,5.82+h),.18,.055,dark,24)
-            ring('Fan grille',(x+xx+offset,yy,5.85+h),.14,.009,metal)
-    for xx,yy,h in [(1.2,1.5,1.5),(-1.1,.8,.85),(.8,-.7,.7)]:
-        cyl('Rooftop antenna',(x+xx,yy,5.85+h/2),.018,h,trim,8)
-        cyl('Antenna tip',(x+xx,yy,5.85+h),.027,.12,white,8)
-        for a in [-.18,.18]: box('Antenna crossbar',(x+xx+a/2,yy,5.85+h*.7),(.2,.018,.018),metal)
+        planter(x,yy,roof+.51,3.45,.52)
+        for xx in [-1.25,1.25]: tree(x+xx,yy,roof+.65,.85)
+    for xx in [-1.65,1.65]:
+        for yy in [-1.2,0,1.2]:
+            planter(x+xx,yy,roof+.51,.5,.7); tree(x+xx,yy,roof+.65,.65)
+    for xx,yy,w,d,h in [(-.65,-.7,1.05,1.1,.65),(.6,.6,1.0,1.25,.9),(-.65,1.05,.8,.8,.55)]:
+        box('Roof mechanical housing',(x+xx,yy,roof+.5+h/2),(w,d,h),trim,.045)
+        for k in range(8): box('HVAC louvres',(x+xx,yy-d/2-.01,roof+.55+k*h/10),(w*.83,.025,.028),metal)
+        cyl('HVAC exhaust fan',(x+xx,yy,roof+.52+h),.23,.045,metal,24)
+        for k in range(4):
+            o=box('Fan blades',(x+xx,yy,roof+.55+h),(.38,.035,.012),white); o.rotation_euler.z=k*math.pi/4
+    cyl('Roof antenna',(x+.65,.6,roof+1.7),.012,.65,metal,8)
 
-# The reference's prominent glass cylinder projects forward between the two wings.
-ay=-1.72
-cyl('Transparent central cylindrical atrium',(0,ay,2.97),1.15,5.7,glass,96)
-for f in range(6):
-    z=.18+f*1.08
-    cyl('Visible circular atrium platform',(0,ay,z),1.16,.13,trim,64)
-    ring('Atrium light band',(0,ay,z+.08),1.17,.018,cyan)
-    if f<5:
-        ring('Atrium interior balustrade',(0,ay,z+.68),.91,.018,metal)
-        for i in range(14):
-            a=i*math.tau/14
-            cyl('Balustrade upright',(.91*math.cos(a),ay+.91*math.sin(a),z+.40),.012,.55,trim,6)
-        # Interior spiral stair treads (not an unrelated decorative helix).
-        for i in range(16):
-            a=(f*16+i)*math.tau/24
-            o=box('Atrium stair tread',(.39*math.cos(a),ay+.39*math.sin(a),z+.10+i*1.08/16),(.50,.14,.035),metal)
-            o.rotation_euler.z=a
-for i in range(18):
-    a=i*math.tau/18
-    cyl('Atrium structural mullion',(1.15*math.cos(a),ay+1.15*math.sin(a),2.98),.023,5.7,metal,8)
-cyl('Atrium crown',(0,ay,5.78),1.24,.27,trim,64)
-ring('Crown gold reveal',(0,ay,5.93),1.18,.022,gold)
-cyl('Atrium skylight',(0,ay,5.94),1.09,.035,glass,64)
-rounded('Entrance canopy',0,-2.88,1.20,2.6,1.15,.13,.35,trim)
-for x in [-.88,.88]: cyl('Entrance column',(x,-3.15,.64),.04,1.05,trim,12)
-for i in range(3): box('Entrance steps',(0,-3.45-i*.24,.12-i*.035),(2.2+i*.22,.50,.07),trim,.025)
-box('Medical cross vertical',(0,-3.02,1.6),(.095,.045,.43),gold)
-box('Medical cross horizontal',(0,-3.025,1.6),(.40,.05,.095),gold)
-for x in [-4.6,4.6]:
-    for y in [-3,-1.8,-.6,.6,1.8,3]:
-        box('Ground planter',(x,y,.17),(.6,.6,.22),metal,.06); shrub(x,y,.47,.26)
-for x in [-3.0,-1.8,1.8,3.0]:
-    box('Front landscape bed',(x,-3.75,.15),(.85,.6,.18),metal,.07)
-    for dx in [-.24,0,.24]: shrub(x+dx,-3.75,.4,.20)
+ay=-1.7
+cyl('Central atrium glazing',(0,ay,roof/2+.15),1.27,roof,glass,96)
+for f in range(7):
+    z=.2+f*H
+    cyl('Circular atrium landing',(0,ay,z),1.28,.14,trim,64)
+    ring('Landing warm rim',(0,ay,z+.08),1.28,.015,warm)
+    if f<6:
+        ring('Circular glass railing top',(0,ay,z+.60),1.12,.015,metal)
+        for i in range(20):
+            a=i*math.tau/20
+            cyl('Landing railing post',(1.12*math.cos(a),ay+1.12*math.sin(a),z+.34),.009,.5,metal,6)
+        for i in range(22):
+            a=(f*22+i)*math.tau/22
+            o=box('Central spiral stair tread',(.52*math.cos(a),ay+.52*math.sin(a),z+.1+i*H/22),(.52,.19,.035),trim); o.rotation_euler.z=a
+        for xx in [-.87,.87]:
+            cyl('Atrium planter',(xx,ay,z+.19),.12,.2,white,12); tree(xx,ay,z+.3,.7)
+for offset in [0,math.pi]:
+    pts=[]
+    for i in range(481):
+        z=.35+i*(roof-.25)/480; a=i/480*math.tau*6+offset
+        pts.append((.79*math.cos(a),ay+.79*math.sin(a),z))
+    tube('Golden helical atrium sculpture',pts,.022,warm)
+for i in range(20):
+    a=i*math.tau/20
+    cyl('Atrium curtain wall mullion',(1.27*math.cos(a),ay+1.27*math.sin(a),roof/2+.14),.015,roof,metal,8)
+# Helipad is integral to the crown, not an oversized decorative orbit ring.
+cyl('Helipad pearl rim',(0,ay,roof+.24),1.60,.22,trim,96)
+cyl('Helipad graphite deck',(0,ay,roof+.365),1.48,.035,metal,96)
+ring('Helipad cyan perimeter',(0,ay,roof+.39),1.29,.018,cyan)
+ring('Helipad warm underside',(0,ay,roof+.13),1.57,.017,warm)
+box('Helipad medical cross long',(0,ay,roof+.39),(.25,1.15,.025),cyan,.025)
+box('Helipad medical cross wide',(0,ay,roof+.39),(1.15,.25,.025),cyan,.025)
+# Reception, entrance canopy and glass doors.
+cyl('Reception desk',(0,ay-.30,.47),.56,.62,wood,48)
+cyl('Reception counter',(0,ay-.30,.79),.60,.05,white,48)
+box('Reception computer',(0,ay-.22,.91),(.23,.06,.18),metal)
+person(.45,ay+.05,.27)
+rounded('Glass entrance canopy',0,-2.92,1.55,2.9,1.25,.075,.4,glass)
+outline(0,-2.92,1.55,2.9,1.25,.4,trim,.035)
+for xx in [-1.05,1.05]: cyl('Entrance canopy column',(xx,-3.25,.8),.035,1.48,metal,12)
+for xx in [-.45,.45]:
+    box('Lobby glass door',(xx,-2.98,.7),(.86,.018,1.16),glass)
+    cyl('Door handle',(xx*.3,-3.01,.72),.012,.28,trim,8)
+for x in [-4.8,4.8]:
+    for y in [-3,-1.5,0,1.5,3]:
+        planter(x,y,.18,.65,1.1); tree(x,y,.33,.95)
+for x in [-3.15,3.15]:
+    planter(x,-3.8,.19,2.9,.85)
+    for dx in [-.95,.95]: tree(x+dx,-3.8,.38,1.05)
+for x in [-2,-.8,.8,2]:
+    planter(x,4,.17,.8,.65); tree(x,4,.35,.85)
+for x in [-4.9,-2.1,2.1,4.9]:
+    cyl('Landscape bollard',(x,-4.3,.31),.035,.48,metal,8)
+    cyl('Bollard warm lamp',(x,-4.3,.54),.047,.065,warm,12)
+for x,y in [(-.8,-3.65),(.75,-3.35),(2.1,-3.1)]: person(x,y,.08)
 
-# Join by material: retain detailed geometry without thousands of runtime draw calls.
+# Batch by material. Keep source names as semantic Blender collection metadata.
 for m in list(bpy.data.materials):
     objects=[o for o in bpy.context.scene.objects if o.type=='MESH' and o.data.materials and o.data.materials[0]==m]
     if not objects: continue
     bpy.ops.object.select_all(action='DESELECT')
     for o in objects: o.select_set(True)
-    bpy.context.view_layer.objects.active=objects[0]; bpy.ops.object.join()
-    objects[0].name=m.name
+    bpy.context.view_layer.objects.active=objects[0]; bpy.ops.object.join(); objects[0].name=m.name
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'smart-hospital.blend'))
 bpy.ops.export_scene.gltf(filepath=str(OUT/'smart-hospital.glb'),export_format='GLB',export_draco_mesh_compression_enable=True,export_draco_mesh_compression_level=6)
-print('HOSPITAL_EXPORT_COMPLETE',len(bpy.context.scene.objects))
+print('HOSPITAL_EXPORT_COMPLETE',len(bpy.context.scene.objects),sum(len(o.data.polygons) for o in bpy.context.scene.objects if o.type=='MESH'))

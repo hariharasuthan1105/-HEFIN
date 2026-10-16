@@ -1213,3 +1213,8 @@ h-smart-hospital-scene {
     transform: none;
   }
 }
+/* Hospital model controls need their own space below the touch viewport. */
+h-home-page .hero-visual:has(h-smart-hospital-scene) { min-height: 610px; }
+@media (max-width: 700px) {
+  h-home-page .hero-visual:has(h-smart-hospital-scene) { height: 640px; min-height: 640px; }
+}

@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+.hospital-viewport {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #071323;
+  min-height: 340px;
+}
+.hospital-viewport ::ng-deep canvas.hospital-canvas {
+  touch-action: none;
+  animation: none;
+}
+.hospital-fallback {
+  filter: none !important;
+  mask-image: none;
+  mix-blend-mode: normal;
+}
+.scene-controls {
+  gap: 5px;
+  padding: 10px 8px 0;
+}
+.scene-controls button {
+  min-width: 36px;
+  min-height: 36px;
+  font-size: 0.65rem;
+}
+.scene-controls a {
+  font-size: 0.62rem;
+}
+.hospital-scene-caption {
+  font-size: 0.6rem;
+  text-align: center;
+  padding-inline: 8px;
+}
+@media (max-width: 600px) {
+  .hospital-viewport {
+    min-height: 350px;
+  }
+  .scene-controls button {
+    min-height: 44px;
+  }
+}

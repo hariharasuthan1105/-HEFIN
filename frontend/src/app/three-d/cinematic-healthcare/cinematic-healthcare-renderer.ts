@@ -1,4 +1,5 @@
 import * as T from 'three';
+import { prepareHospital } from '../smart-hospital/hospital-viewer';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
@@ -337,60 +338,7 @@ export async function createHealthcareScene(
     scene.add(warm);
     hospital.position.set(5.1, 0, -0.7);
     hospital.scale.setScalar(0.9);
-    hospital.traverse((o) => {
-      if (o instanceof T.Mesh) {
-        const m = o.material as T.MeshStandardMaterial;
-        if (m.name.includes('glazing')) {
-          m.opacity = 0.22;
-          m.transparent = true;
-          m.depthWrite = false;
-          m.roughness = 0.18;
-          m.metalness = 0.25;
-          m.emissive.set(0x12647b);
-          m.emissiveIntensity = 0.025;
-        }
-        if (m.name.includes('equipment')) {
-          m.color.set(0xb7aaa0);
-          m.emissive.set(0xffcf8a);
-          m.emissiveIntensity = 0.16;
-        }
-        if (m.name.includes('light strips')) {
-          m.emissive.set(0x21c9f3);
-          m.emissiveIntensity = 1.5;
-        }
-        if (m.name.includes('facade bands')) m.color.set(0x34495b);
-      }
-    });
-    const edgeMaterial = new T.MeshBasicMaterial({
-      color: new T.Color(0x21c9f3).multiplyScalar(2.2),
-      toneMapped: false,
-    });
-    for (const x of [-2.25, 2.25])
-      for (let floor = 1; floor <= 5; floor++) {
-        const points: T.Vector3[] = [];
-        for (const [cx, cz, start] of [
-          [1.33, 2.08, 0],
-          [-1.33, 2.08, 90],
-          [-1.33, -2.08, 180],
-          [1.33, -2.08, 270],
-        ])
-          for (let j = 0; j <= 8; j++) {
-            const a = T.MathUtils.degToRad(start! + (j * 90) / 8);
-            points.push(
-              new T.Vector3(
-                x + cx! + 0.62 * Math.cos(a),
-                0.29 + floor * 1.08,
-                cz! + 0.62 * Math.sin(a),
-              ),
-            );
-          }
-        hospital.add(
-          new T.Mesh(
-            new T.TubeGeometry(new T.CatmullRomCurve3(points, true), 80, 0.012, 4, true),
-            edgeMaterial,
-          ),
-        );
-      }
+    prepareHospital(hospital);
     brain.scale.setScalar(1.18);
     brain.position.set(-6, 5, 0.5);
     brain.rotation.y = -1.05;

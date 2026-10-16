@@ -1,0 +1,14 @@
+{
+  "active": 1,
+  "frames": 83,
+  "calls": 42,
+  "triangles": 639288,
+  "bytes": 2106832,
+  "loadMs": 1030.699999999255,
+  "renderMs": 0.6999999992549419,
+  "dpr": 1,
+  "quality": "full",
+  "distance": 32.32464087918174,
+  "azimuth": -0.00002869534908343168,
+  "geometries": 16
+}
