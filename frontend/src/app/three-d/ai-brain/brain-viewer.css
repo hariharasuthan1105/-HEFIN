@@ -118,6 +118,21 @@
   transition: all 0.15s ease;
   line-height: 1;
   flex-shrink: 0;
+  position: relative;
+}
+
+/* WCAG accessible touch target expander (approx 44x44px touch zone without affecting visual compactness) */
+.brain-controls button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 32px;
+  min-height: 44px;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
 }
 
 .brain-controls button.view-btn {
@@ -175,23 +190,31 @@
   }
   .brain-controls {
     bottom: 10px;
-    gap: 3px;
-    padding: 3px 6px;
-    max-width: calc(100% - 14px);
+    gap: 2px;
+    padding: 3px 5px;
+    max-width: calc(100% - 10px);
   }
   .brain-controls button {
-    min-width: 23px;
-    height: 23px;
-    padding: 0 4px;
-    font-size: 0.64rem;
-    border-radius: 11px;
+    min-width: 21px;
+    height: 22px;
+    padding: 0 2px;
+    font-size: 0.62rem;
+    border-radius: 10px;
+  }
+  .brain-controls button::before {
+    min-width: 26px;
+    min-height: 44px;
   }
   .brain-controls button.view-btn {
-    font-size: 0.60rem;
-    padding: 0 3px;
+    font-size: 0.58rem;
+    padding: 0 2px;
+  }
+  .brain-controls .divider {
+    height: 12px;
+    margin: 0 1px;
   }
   .brain-scene-caption {
-    font-size: 0.62rem;
+    font-size: 0.60rem;
     padding: 3px 8px;
     top: 10px;
     left: 10px;
