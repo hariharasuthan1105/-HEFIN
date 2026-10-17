@@ -23,8 +23,8 @@ type PowerNavigator = Navigator & { deviceMemory?: number; connection?: { saveDa
         role="img"
         [attr.aria-label]="
           mode() === 'interactive'
-            ? 'A luminous anatomical brain floats above a circular display platform, linked by animated cyan and violet paths to a curved glass hospital. Drag with a mouse or use orbit controls. This is a fictional concept simulation.'
-            : 'Static render of the anatomical brain connected to a glass hospital concept.'
+            ? 'Interactive 3D HEFIN Trust Network featuring a central golden HEFIN shield on a cyber pedestal connected through luminous neon conduits to four service nodes: Smart Hospital, Neural AI Cloud, Financial Protection, and Verified Governance. Drag with a mouse or use orbit controls.'
+            : 'Static render of the HEFIN Trust Network featuring the central golden shield and connected service nodes.'
         "
       >
         <div class="scene-grid" aria-hidden="true"></div>
@@ -32,7 +32,7 @@ type PowerNavigator = Navigator & { deviceMemory?: number; connection?: { saveDa
           <img
             class="cinematic-fallback"
             src="assets/images/cinematic-fallback.webp"
-            alt="Static render of the HEFIN anatomical brain, holographic platform and glass hospital concept"
+            alt="Static render of the HEFIN Trust Network, central golden shield, cyber pedestal, and connected service nodes"
             width="1600"
             height="850"
             loading="lazy"
@@ -40,7 +40,7 @@ type PowerNavigator = Navigator & { deviceMemory?: number; connection?: { saveDa
         }
       </div>
       <div class="scene-labels" aria-hidden="true">
-        <span>01 / NEURAL INTELLIGENCE</span><span>02 / CONNECTED CARE</span>
+        <span>01 / TRUST NETWORK</span><span>02 / CONNECTED CARE</span>
       </div>
       <div class="cinematic-caption" aria-live="polite">
         <span class="status-dot"></span>{{ status() }}

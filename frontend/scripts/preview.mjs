@@ -2,11 +2,8 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-const pages = process.argv.includes('--pages');
-const base = pages ? '/-HEFIN' : '';
-const root = fileURLToPath(
-  new URL(pages ? '../dist/pages/browser/' : '../dist/frontend/browser/', import.meta.url),
-);
+const pagesRoot = fileURLToPath(new URL('../dist/pages/browser/', import.meta.url));
+const standardRoot = fileURLToPath(new URL('../dist/frontend/browser/', import.meta.url));
 const mime = {
   '.html': 'text/html',
   '.js': 'text/javascript',
@@ -21,16 +18,16 @@ const mime = {
   '.glb': 'model/gltf-binary',
   '.txt': 'text/plain',
 };
-if (!fs.existsSync(path.join(root, 'index.html'))) throw new Error('Run npm run build first.');
+if (!fs.existsSync(path.join(standardRoot, 'index.html'))) throw new Error('Run npm run build first.');
 http
   .createServer((req, res) => {
     try {
       let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-      if (base && !pathname.startsWith(base + '/')) {
-        res.writeHead(404).end();
-        return;
+      let root = standardRoot;
+      if (pathname.startsWith('/-HEFIN')) {
+        root = pagesRoot;
+        pathname = pathname.slice('/-HEFIN'.length) || '/';
       }
-      pathname = pathname.slice(base.length);
       let file = path.resolve(root, '.' + pathname);
       if (path.relative(root, file).startsWith('..')) {
         res.writeHead(403).end();
@@ -53,5 +50,5 @@ http
     }
   })
   .listen(4201, '127.0.0.1', () =>
-    console.log(`Production preview: http://127.0.0.1:4201${base}/`),
+    console.log(`Production preview: http://127.0.0.1:4201/ and http://127.0.0.1:4201/-HEFIN/`),
   );
