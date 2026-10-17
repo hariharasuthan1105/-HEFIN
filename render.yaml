@@ -10,7 +10,7 @@ services:
     plan: free
     branch: main
     buildCommand: "pip install -r backend/requirements.txt && python backend/manage.py collectstatic --no-input"
-    startCommand: "python backend/manage.py migrate --no-input && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
+    startCommand: "python backend/manage.py migrate --no-input && python backend/manage.py revoke_demo_tokens && gunicorn --chdir backend config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
     healthCheckPath: /healthz/
     envVars:
       - key: PYTHON_VERSION

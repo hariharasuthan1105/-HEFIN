@@ -7,6 +7,7 @@ from decimal import Decimal
 from datetime import date, timedelta
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.test import override_settings
 from rest_framework.test import APITestCase
 from rest_framework import status
 from rest_framework.authtoken.models import Token
@@ -20,6 +21,7 @@ from apps.assistant.models import ChatMessage
 
 User = get_user_model()
 
+@override_settings(DEBUG=True, ENABLE_DEV_DEMO_AUTH=True)
 class CareAssistantTests(APITestCase):
     def setUp(self):
         # Patient 1: Aarav Sharma

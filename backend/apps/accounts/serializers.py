@@ -25,6 +25,8 @@ class UserSerializer(serializers.ModelSerializer):
             return obj.patient_profile.patient_identifier
         return None
 
+from .authentication import is_demo_auth_permitted
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True, write_only=True)
@@ -39,6 +41,10 @@ class LoginSerializer(serializers.Serializer):
                 raise serializers.ValidationError('Invalid username or password credentials.')
             if not user.is_active:
                 raise serializers.ValidationError('This user account is inactive.')
+            if getattr(user, 'is_demo', False) and not is_demo_auth_permitted():
+                raise serializers.ValidationError(
+                    'Demo account credentials are strictly prohibited in production and unapproved environments.'
+                )
             attrs['user'] = user
             return attrs
         raise serializers.ValidationError('Must include username and password.')

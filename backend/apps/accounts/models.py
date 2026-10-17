@@ -18,7 +18,7 @@ class User(AbstractUser):
     )
     phone_number = models.CharField(max_length=20, blank=True, default='')
     is_demo = models.BooleanField(
-        default=True,
+        default=False,
         help_text='Indicates if this is a synthetic demonstration account',
     )
 

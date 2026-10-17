@@ -176,11 +176,19 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Demo authentication security policy (Task 06)
+# Demo authentication is STRICTLY FORBIDDEN when DEBUG=False (production).
+# In development (DEBUG=True), it is disabled by default and requires explicit opt-in.
+ENABLE_DEV_DEMO_AUTH = (
+    os.getenv('ENABLE_DEV_DEMO_AUTH', 'False').strip().lower() in ('true', '1', 'yes')
+    if DEBUG else False
+)
+
 # Django REST Framework configuration
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'apps.accounts.authentication.HefinTokenAuthentication',
+        'apps.accounts.authentication.HefinSessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
