@@ -488,19 +488,34 @@ h-smart-hospital-scene {
   width: 15px;
 }
 .intelligence-section {
-  grid-template-columns: 0.75fr 1.25fr;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 44px;
+  padding: 40px;
+  align-items: stretch;
   background: radial-gradient(
-    ellipse at 16% 50%,
-    color-mix(in srgb, var(--indigo) 17%, var(--midnight)),
+    ellipse at 18% 50%,
+    color-mix(in srgb, var(--indigo) 18%, var(--midnight)),
     var(--midnight) 75%
   );
-  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
 }
 .intelligence-section .ai-art {
-  height: 440px;
+  height: 100%;
+  min-height: 520px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .intelligence-section .ai-copy {
-  padding: 50px 40px 45px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .intelligence-section .ai-copy > p {
   max-width: none;
@@ -538,7 +553,9 @@ h-smart-hospital-scene {
   color: var(--gold);
 }
 .intelligence-section .ai-copy > .micro-label {
-  font-size: 0.45rem;
+  display: block;
+  margin-top: 10px;
+  font-size: 0.46rem;
 }
 .stakeholder-grid {
   display: grid;
@@ -813,8 +830,12 @@ h-smart-hospital-scene {
     gap: 5px;
     font-size: 0.62rem;
   }
+  .intelligence-section {
+    gap: 36px;
+    padding: 32px;
+  }
   .intelligence-section .ai-copy {
-    padding-right: 30px;
+    padding: 0;
   }
 }
 @media (max-width: 850px) {
@@ -912,10 +933,13 @@ h-smart-hospital-scene {
     font-size: 0.6rem;
   }
   .intelligence-section {
-    grid-template-columns: 0.65fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 28px 24px;
   }
   .intelligence-section .ai-art {
-    height: 360px;
+    height: 440px;
+    min-height: 380px;
   }
   .ai-capabilities {
     grid-template-columns: 1fr;
@@ -924,7 +948,7 @@ h-smart-hospital-scene {
     grid-column: auto;
   }
   .intelligence-section .ai-copy {
-    padding: 35px 25px 35px 0;
+    padding: 0;
   }
   .stakeholder-grid {
     grid-template-columns: 1fr 1fr;
@@ -1091,15 +1115,18 @@ h-smart-hospital-scene {
   }
   .intelligence-section {
     grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 16px;
   }
   .intelligence-section .ai-art {
-    height: 300px;
+    height: 380px;
+    min-height: 340px;
   }
   .intelligence-section .ai-copy {
-    padding: 0 25px 35px;
+    padding: 0;
   }
   .intelligence-section .ai-copy > .micro-label {
-    font-size: 0.43rem;
+    font-size: 0.44rem;
   }
   .ai-capabilities {
     gap: 20px;
