@@ -13,18 +13,17 @@ import type { BrainController, BrainView } from './brain-viewer';
 @Component({
   selector: 'h-ai-brain-scene',
   styleUrl: './brain-viewer.css',
-  template: `<div class="brain-experience" [attr.data-mode]="mode()">
+  template: `<div class="brain-scene brain-experience" [attr.data-mode]="mode()">
     <div #viewport class="brain-viewport">
-      @if (mode() !== 'interactive') {
-        <img
-          class="brain-fallback"
-          src="assets/images/ai-brain.webp"
-          alt="3D Neural Intelligence brain model showing translucent sapphire tissue, icy-cyan gyri highlights, and golden neural network"
-          width="819"
-          height="965"
-          fetchpriority="high"
-        />
-      }
+      <img
+        class="brain-fallback"
+        [class.active-3d]="mode() === 'interactive'"
+        src="assets/images/ai-brain.webp"
+        alt="3D Neural Intelligence brain model showing translucent sapphire tissue, icy-cyan gyri highlights, and golden neural network"
+        width="819"
+        height="965"
+        fetchpriority="high"
+      />
     </div>
     <div class="brain-scene-caption" aria-live="polite">{{ status() }}</div>
     <div class="brain-controls" role="toolbar" aria-label="3D Brain controls">

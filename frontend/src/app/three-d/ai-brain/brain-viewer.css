@@ -52,6 +52,13 @@
   display: block;
   pointer-events: none;
   filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.5));
+  transition: opacity 0.3s ease;
+}
+
+.brain-fallback.active-3d {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
 }
 
 .brain-scene-caption {
