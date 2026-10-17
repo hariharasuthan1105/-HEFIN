@@ -19,7 +19,7 @@ import type { BrainController, BrainView } from './brain-viewer';
         <img
           class="brain-fallback"
           src="assets/images/ai-brain.webp"
-          alt="Realistic 3D anatomical human brain showing cerebrum gyri, cerebellum, and brainstem"
+          alt="3D Neural Intelligence brain model showing translucent sapphire tissue, icy-cyan gyri highlights, and golden neural network"
           width="819"
           height="965"
           fetchpriority="high"
@@ -109,7 +109,7 @@ export class AIBrainScene {
   controller?: BrainController;
   mode = signal<'static' | 'loading' | 'interactive'>('static');
   paused = signal(false);
-  status = signal('Neural Anatomy · 3D Concept');
+  status = signal('Neural Intelligence · 3D Interactive');
   viewPresets: { id: BrainView; label: string; icon: string }[] = [
     { id: 'Isometric', label: 'Isometric', icon: 'Iso' },
     { id: 'Front', label: 'Front (Anterior)', icon: 'F' },
