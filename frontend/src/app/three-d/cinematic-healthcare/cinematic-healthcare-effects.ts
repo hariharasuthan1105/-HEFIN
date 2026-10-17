@@ -300,44 +300,37 @@ export function medicalPanel(kind: 'vitals' | 'anatomy'): T.CanvasTexture {
 }
 
 /**
- * Creates the 3D Gold HEFIN Shield geometry with the signature "H" emblem cutout.
+ * Creates the official 3D Gold HEFIN Shield outer frame geometry matching Image B.
  */
 export function createShieldGeometry(): T.BufferGeometry {
   const shape = new T.Shape();
-  // Outer shield contour
-  shape.moveTo(0, 1.75);
-  shape.bezierCurveTo(0.65, 1.75, 1.35, 1.55, 1.48, 1.35);
-  shape.lineTo(1.48, 0.2);
-  shape.bezierCurveTo(1.48, -0.65, 0.8, -1.35, 0, -1.8);
-  shape.bezierCurveTo(-0.8, -1.35, -1.48, -0.65, -1.48, 0.2);
-  shape.lineTo(-1.48, 1.35);
-  shape.bezierCurveTo(-1.35, 1.55, -0.65, 1.75, 0, 1.75);
+  // Outer shield contour matching official HEFIN branding
+  shape.moveTo(0, 1.90);
+  shape.bezierCurveTo(0.72, 1.88, 1.42, 1.74, 1.62, 1.58);
+  shape.lineTo(1.54, 0.35);
+  shape.bezierCurveTo(1.50, -0.65, 0.88, -1.40, 0, -1.90);
+  shape.bezierCurveTo(-0.88, -1.40, -1.50, -0.65, -1.54, 0.35);
+  shape.lineTo(-1.62, 1.58);
+  shape.bezierCurveTo(-1.42, 1.74, -0.72, 1.88, 0, 1.90);
+  shape.closePath();
 
-  // Inner signature "H" cutout
+  // Inner cutout hole creating the prominent beveled outer gold frame
   const hole = new T.Path();
-  const w = 0.58, h = 0.88, tw = 0.22, bar = 0.22;
-  hole.moveTo(-w, -h);
-  hole.lineTo(-w + tw, -h);
-  hole.lineTo(-w + tw, -bar);
-  hole.lineTo(w - tw, -bar);
-  hole.lineTo(w - tw, -h);
-  hole.lineTo(w, -h);
-  hole.lineTo(w, h * 0.72);
-  hole.lineTo(w - tw * 0.6, h);
-  hole.lineTo(w - tw, h);
-  hole.lineTo(w - tw, bar);
-  hole.lineTo(-w + tw, bar);
-  hole.lineTo(-w + tw, h);
-  hole.lineTo(-w + tw * 0.6, h);
-  hole.lineTo(-w, h * 0.72);
+  hole.moveTo(0, 1.52);
+  hole.bezierCurveTo(0.58, 1.50, 1.10, 1.38, 1.25, 1.24);
+  hole.lineTo(1.18, 0.32);
+  hole.bezierCurveTo(1.14, -0.48, 0.68, -1.10, 0, -1.48);
+  hole.bezierCurveTo(-0.68, -1.10, -1.14, -0.48, -1.18, 0.32);
+  hole.lineTo(-1.25, 1.24);
+  hole.bezierCurveTo(-1.10, 1.38, -0.58, 1.50, 0, 1.52);
   hole.closePath();
   shape.holes.push(hole);
 
   const geom = new T.ExtrudeGeometry(shape, {
-    depth: 0.38,
+    depth: 0.32,
     bevelEnabled: true,
-    bevelThickness: 0.08,
-    bevelSize: 0.06,
+    bevelThickness: 0.06,
+    bevelSize: 0.04,
     bevelSegments: 3,
   });
   geom.center();
@@ -345,50 +338,243 @@ export function createShieldGeometry(): T.BufferGeometry {
 }
 
 /**
- * Creates 3D extruded bold letters for "HEFIN".
+ * Creates the recessed solid black inner shield face geometry from Image B.
+ */
+export function createInnerShieldGeometry(): T.BufferGeometry {
+  const shape = new T.Shape();
+  shape.moveTo(0, 1.52);
+  shape.bezierCurveTo(0.58, 1.50, 1.10, 1.38, 1.25, 1.24);
+  shape.lineTo(1.18, 0.32);
+  shape.bezierCurveTo(1.14, -0.48, 0.68, -1.10, 0, -1.48);
+  shape.bezierCurveTo(-0.68, -1.10, -1.14, -0.48, -1.18, 0.32);
+  shape.lineTo(-1.25, 1.24);
+  shape.bezierCurveTo(-1.10, 1.38, -0.58, 1.50, 0, 1.52);
+  shape.closePath();
+
+  const geom = new T.ExtrudeGeometry(shape, {
+    depth: 0.14,
+    bevelEnabled: true,
+    bevelThickness: 0.02,
+    bevelSize: 0.02,
+    bevelSegments: 2,
+  });
+  geom.center();
+  return geom;
+}
+
+/**
+ * Creates the official 3D Stylized Gold "H" Emblem with signature tapered fangs and diagonal cuts.
+ */
+export function createOfficialHEmblemGeometry(): T.BufferGeometry {
+  const shape = new T.Shape();
+  const topY = 0.78;
+  const topSlantInnerY = 0.64;
+  const pillarOuterX = 0.62;
+  const pillarInnerX = 0.22;
+  const barTopY = 0.12;
+  const barBotY = -0.14;
+  const fangTipX = 0.22;
+  const fangTipY = -0.82;
+  const waistY = -0.16;
+
+  // Left pillar top-outer corner
+  shape.moveTo(-pillarOuterX, topY);
+  // Slanted top edge of left pillar
+  shape.lineTo(-pillarInnerX, topSlantInnerY);
+  // Inner vertical edge of left pillar down to crossbar
+  shape.lineTo(-pillarInnerX, barTopY);
+  // Top edge of crossbar
+  shape.lineTo(pillarInnerX, barTopY);
+  // Inner vertical edge of right pillar up to top
+  shape.lineTo(pillarInnerX, topSlantInnerY);
+  // Slanted top edge of right pillar
+  shape.lineTo(pillarOuterX, topY);
+  // Upper outer vertical edge of right pillar down to waist
+  shape.lineTo(pillarOuterX, waistY);
+  // Outer curve tapering smoothly down and inward to right fang tip
+  shape.bezierCurveTo(pillarOuterX - 0.04, waistY - 0.35, fangTipX + 0.08, fangTipY + 0.22, fangTipX, fangTipY);
+  // Inner vertical edge of right fang cutting up to bottom of crossbar
+  shape.lineTo(pillarInnerX, barBotY);
+  // Bottom edge of crossbar
+  shape.lineTo(-pillarInnerX, barBotY);
+  // Inner vertical edge of left fang cutting down to left fang tip
+  shape.lineTo(-fangTipX, fangTipY);
+  // Outer curve tapering smoothly up and outward from left fang tip to left waist
+  shape.bezierCurveTo(-fangTipX - 0.08, fangTipY + 0.22, -pillarOuterX + 0.04, waistY - 0.35, -pillarOuterX, waistY);
+  // Upper outer vertical edge of left pillar up to top
+  shape.lineTo(-pillarOuterX, topY);
+  shape.closePath();
+
+  const geom = new T.ExtrudeGeometry(shape, {
+    depth: 0.22,
+    bevelEnabled: true,
+    bevelThickness: 0.04,
+    bevelSize: 0.03,
+    bevelSegments: 3,
+  });
+  geom.center();
+  return geom;
+}
+
+/**
+ * Creates 3D extruded bold letters for "HEFIN" matching Image B wordmark.
  */
 export function createWordmarkGroup(goldMat: T.Material): T.Group {
-  function makeLetter(char: string) {
-    const s = new T.Shape();
-    const w = 0.38, h = 0.52, th = 0.11;
-    if (char === 'H') {
-      s.moveTo(0, 0); s.lineTo(th, 0); s.lineTo(th, h * 0.42); s.lineTo(w - th, h * 0.42); s.lineTo(w - th, 0); s.lineTo(w, 0);
-      s.lineTo(w, h); s.lineTo(w - th, h); s.lineTo(w - th, h * 0.58); s.lineTo(th, h * 0.58); s.lineTo(th, h); s.lineTo(0, h);
-    } else if (char === 'E') {
-      s.moveTo(0, 0); s.lineTo(w, 0); s.lineTo(w, th); s.lineTo(th, th); s.lineTo(th, h * 0.44); s.lineTo(w * 0.85, h * 0.44);
-      s.lineTo(w * 0.85, h * 0.44 + th); s.lineTo(th, h * 0.44 + th); s.lineTo(th, h - th); s.lineTo(w, h - th); s.lineTo(w, h); s.lineTo(0, h);
-    } else if (char === 'F') {
-      s.moveTo(0, 0); s.lineTo(th, 0); s.lineTo(th, h * 0.44); s.lineTo(w * 0.85, h * 0.44); s.lineTo(w * 0.85, h * 0.44 + th);
-      s.lineTo(th, h * 0.44 + th); s.lineTo(th, h - th); s.lineTo(w, h - th); s.lineTo(w, h); s.lineTo(0, h);
-    } else if (char === 'I') {
-      s.moveTo(0, 0); s.lineTo(th * 1.3, 0); s.lineTo(th * 1.3, h); s.lineTo(0, h);
-    } else if (char === 'N') {
-      s.moveTo(0, 0); s.lineTo(th, 0); s.lineTo(w - th, h * 0.35); s.lineTo(w - th, 0); s.lineTo(w, 0);
-      s.lineTo(w, h); s.lineTo(w - th, h); s.lineTo(th, h * 0.65); s.lineTo(th, h); s.lineTo(0, h);
-    }
-    s.closePath();
-    return new T.ExtrudeGeometry(s, {
-      depth: 0.16,
-      bevelEnabled: true,
-      bevelThickness: 0.03,
-      bevelSize: 0.02,
-      bevelSegments: 2,
-    });
+  const group = new T.Group();
+  const h = 0.70;
+  const th = 0.14;
+  const extrudeSettings: T.ExtrudeGeometryOptions = {
+    depth: 0.12,
+    bevelEnabled: true,
+    bevelSegments: 2,
+    steps: 1,
+    bevelSize: 0.012,
+    bevelThickness: 0.012,
+  };
+
+  function makeLetterMesh(shape: T.Shape): T.Mesh {
+    const geom = new T.ExtrudeGeometry(shape, extrudeSettings);
+    geom.center();
+    return new T.Mesh(geom, goldMat);
   }
 
-  const group = new T.Group();
-  const chars = 'HEFIN';
-  const widths = [0.48, 0.48, 0.48, 0.28, 0.48];
-  const totalW = widths.reduce((a, b) => a + b, 0);
+  function makeH(w: number) {
+    const s = new T.Shape();
+    const x0 = -w / 2;
+    const x1 = -w / 2 + th;
+    const x2 = w / 2 - th;
+    const x3 = w / 2;
+    const y0 = -h / 2;
+    const y1 = h / 2;
+    const ym0 = -th / 2;
+    const ym1 = th / 2;
+
+    s.moveTo(x0, y0);
+    s.lineTo(x1, y0);
+    s.lineTo(x1, ym0);
+    s.lineTo(x2, ym0);
+    s.lineTo(x2, y0);
+    s.lineTo(x3, y0);
+    s.lineTo(x3, y1);
+    s.lineTo(x2, y1);
+    s.lineTo(x2, ym1);
+    s.lineTo(x1, ym1);
+    s.lineTo(x1, y1);
+    s.lineTo(x0, y1);
+    s.closePath();
+    return { obj: makeLetterMesh(s), width: w };
+  }
+
+  function makeE(w: number) {
+    const s = new T.Shape();
+    const x0 = -w / 2;
+    const x1 = -w / 2 + th;
+    const x2 = w / 2;
+    const xMid = -w / 2 + w * 0.88;
+    const y0 = -h / 2;
+    const y1 = h / 2;
+    const ym0 = -th / 2;
+    const ym1 = th / 2;
+
+    s.moveTo(x0, y0);
+    s.lineTo(x2, y0);
+    s.lineTo(x2, y0 + th);
+    s.lineTo(x1, y0 + th);
+    s.lineTo(x1, ym0);
+    s.lineTo(xMid, ym0);
+    s.lineTo(xMid, ym1);
+    s.lineTo(x1, ym1);
+    s.lineTo(x1, y1 - th);
+    s.lineTo(x2, y1 - th);
+    s.lineTo(x2, y1);
+    s.lineTo(x0, y1);
+    s.closePath();
+    return { obj: makeLetterMesh(s), width: w };
+  }
+
+  function makeF(w: number) {
+    const s = new T.Shape();
+    const x0 = -w / 2;
+    const x1 = -w / 2 + th;
+    const x2 = w / 2;
+    const xMid = -w / 2 + w * 0.88;
+    const y0 = -h / 2;
+    const y1 = h / 2;
+    const ym0 = -th / 2;
+    const ym1 = th / 2;
+
+    s.moveTo(x0, y0);
+    s.lineTo(x1, y0);
+    s.lineTo(x1, ym0);
+    s.lineTo(xMid, ym0);
+    s.lineTo(xMid, ym1);
+    s.lineTo(x1, ym1);
+    s.lineTo(x1, y1 - th);
+    s.lineTo(x2, y1 - th);
+    s.lineTo(x2, y1);
+    s.lineTo(x0, y1);
+    s.closePath();
+    return { obj: makeLetterMesh(s), width: w };
+  }
+
+  function makeI(w: number) {
+    const s = new T.Shape();
+    const x0 = -w / 2;
+    const x1 = w / 2;
+    const y0 = -h / 2;
+    const y1 = h / 2;
+
+    s.moveTo(x0, y0);
+    s.lineTo(x1, y0);
+    s.lineTo(x1, y1);
+    s.lineTo(x0, y1);
+    s.closePath();
+    return { obj: makeLetterMesh(s), width: w };
+  }
+
+  function makeN(w: number) {
+    const s = new T.Shape();
+    const x0 = -w / 2;
+    const x1 = -w / 2 + th;
+    const x3 = w / 2;
+    const x2 = w / 2 - th;
+    const y0 = -h / 2;
+    const y1 = h / 2;
+
+    const spanX = w - th;
+    const yInnerRight = y0 + (h * th) / spanX;
+    const yInnerLeft = y1 - (h * th) / spanX;
+
+    s.moveTo(x0, y0);
+    s.lineTo(x1, y0);
+    s.lineTo(x1, yInnerLeft);
+    s.lineTo(x2, y0);
+    s.lineTo(x3, y0);
+    s.lineTo(x3, y1);
+    s.lineTo(x2, y1);
+    s.lineTo(x2, yInnerRight);
+    s.lineTo(x1, y1);
+    s.lineTo(x0, y1);
+    s.closePath();
+    return { obj: makeLetterMesh(s), width: w };
+  }
+
+  const letters = [
+    makeH(0.60),
+    makeE(0.50),
+    makeF(0.46),
+    makeI(0.16),
+    makeN(0.62),
+  ];
+
+  const gap = 0.16;
+  const totalW = letters.reduce((acc, l) => acc + l.width, 0) + gap * (letters.length - 1);
   let curX = -totalW / 2;
 
-  for (let i = 0; i < chars.length; i++) {
-    const c = chars[i]!;
-    const geom = makeLetter(c);
-    const m = new T.Mesh(geom, goldMat);
-    m.position.set(curX, 0, 0);
-    group.add(m);
-    curX += widths[i]!;
+  for (const l of letters) {
+    l.obj.position.set(curX + l.width / 2, 0, 0);
+    group.add(l.obj);
+    curX += l.width + gap;
   }
 
   return group;
@@ -410,101 +596,82 @@ export function createCenterpiece(materials: {
   group.add(baseTiers);
 
   // Bottom tier
-  const tier1 = new T.Mesh(new T.CylinderGeometry(3.3, 3.55, 0.28, 72), materials.darkMetal);
-  tier1.position.y = 0.14;
+  const tier1 = new T.Mesh(new T.CylinderGeometry(3.3, 3.55, 0.16, 72), materials.darkMetal);
+  tier1.position.y = 0.08;
   baseTiers.add(tier1);
 
   // Cyan neon ring on tier 1
   const ring1 = new T.Mesh(new T.TorusGeometry(3.42, 0.024, 8, 72), materials.cyanNeon);
   ring1.rotation.x = Math.PI / 2;
-  ring1.position.y = 0.28;
+  ring1.position.y = 0.16;
   baseTiers.add(ring1);
 
-  // Intermediate tier with ventilation fins
-  const tier2 = new T.Mesh(new T.CylinderGeometry(2.95, 3.15, 0.35, 72), materials.darkMetal);
-  tier2.position.y = 0.45;
+  // Intermediate tier
+  const tier2 = new T.Mesh(new T.CylinderGeometry(2.95, 3.15, 0.12, 72), materials.darkMetal);
+  tier2.position.y = 0.22;
   baseTiers.add(tier2);
 
   // Gold accent ring on tier 2
   const goldRing = new T.Mesh(new T.TorusGeometry(3.02, 0.03, 8, 72), materials.gold);
   goldRing.rotation.x = Math.PI / 2;
-  goldRing.position.y = 0.62;
+  goldRing.position.y = 0.28;
   baseTiers.add(goldRing);
 
   // Top deck
-  const tier3 = new T.Mesh(new T.CylinderGeometry(2.65, 2.8, 0.25, 72), materials.darkMetal);
-  tier3.position.y = 0.75;
+  const tier3 = new T.Mesh(new T.CylinderGeometry(2.65, 2.8, 0.08, 72), materials.darkMetal);
+  tier3.position.y = 0.32;
   baseTiers.add(tier3);
 
   // Top cyan neon perimeter ring
   const ring3 = new T.Mesh(new T.TorusGeometry(2.7, 0.026, 8, 72), materials.cyanNeon);
   ring3.rotation.x = Math.PI / 2;
-  ring3.position.y = 0.88;
+  ring3.position.y = 0.36;
   baseTiers.add(ring3);
 
   // Glossy recessed deck disc
   const topDeck = new T.Mesh(
-    new T.CylinderGeometry(2.55, 2.55, 0.04, 64),
+    new T.CylinderGeometry(2.55, 2.55, 0.03, 64),
     new T.MeshStandardMaterial({ color: 0x071120, roughness: 0.55, metalness: 0.45 }),
   );
-  topDeck.position.y = 0.89;
+  topDeck.position.y = 0.37;
   baseTiers.add(topDeck);
 
-  // 2. The 3D Gold HEFIN Shield
+  // 2. The 3D Official HEFIN Logo Lockup (Gold Shield, Black Inner Shield, Gold "H" with fangs, Gold Wordmark)
   const shieldPivot = new T.Group();
-  shieldPivot.position.set(0, 2.75, 0);
+  shieldPivot.position.set(0, 3.05, 0);
   group.add(shieldPivot);
 
+  // A. Outer Gold Shield Frame
   const shieldGeom = createShieldGeometry();
   const shieldMesh = new T.Mesh(shieldGeom, materials.gold);
   shieldPivot.add(shieldMesh);
 
-  // 3D Embossed Gold "H" Emblem floating inside the shield
-  const hShape = new T.Shape();
-  const hw = 0.42, hh = 0.65, hth = 0.14;
-  hShape.moveTo(-hw, -hh); hShape.lineTo(-hw + hth, -hh); hShape.lineTo(-hw + hth, -hth * 0.45);
-  hShape.lineTo(hw - hth, -hth * 0.45); hShape.lineTo(hw - hth, -hh); hShape.lineTo(hw, -hh);
-  hShape.lineTo(hw, hh); hShape.lineTo(hw - hth, hh); hShape.lineTo(hw - hth, hth * 0.45);
-  hShape.lineTo(-hw + hth, hth * 0.45); hShape.lineTo(-hw + hth, hh); hShape.lineTo(-hw, hh);
-  hShape.closePath();
-  const hGeom = new T.ExtrudeGeometry(hShape, {
-    depth: 0.16,
-    bevelEnabled: true,
-    bevelThickness: 0.035,
-    bevelSize: 0.025,
-    bevelSegments: 3,
+  // B. Recessed Black Inner Shield Plate
+  const innerShieldGeom = createInnerShieldGeometry();
+  const innerShieldMat = new T.MeshStandardMaterial({
+    color: 0x040914,
+    metalness: 0.68,
+    roughness: 0.48,
   });
-  hGeom.center();
+  const innerShieldMesh = new T.Mesh(innerShieldGeom, innerShieldMat);
+  innerShieldMesh.position.set(0, 0, -0.04);
+  shieldPivot.add(innerShieldMesh);
+
+  // C. Official 3D Stylized Gold "H" Emblem with signature tapered fangs
+  const hGeom = createOfficialHEmblemGeometry();
   const hMesh = new T.Mesh(hGeom, materials.gold);
-  hMesh.position.set(0, 0, 0.05);
+  hMesh.position.set(0, 0, 0.08);
   shieldPivot.add(hMesh);
 
-  // Inner backplate with subtle warm amber radiance (no additive blending)
-  const backplateGeom = new T.PlaneGeometry(1.4, 2.0);
-  const backplateMat = new T.MeshBasicMaterial({
-    color: 0xb45309,
-    transparent: true,
-    opacity: 0.08,
-    side: T.DoubleSide,
-  });
-  const backplate = new T.Mesh(backplateGeom, backplateMat);
-  backplate.position.set(0, 0, -0.05);
-  shieldPivot.add(backplate);
-
-  // Internal subtle warm gold accent light
-  const shieldLight = new T.PointLight(0xf59e0b, 0.35, 3.5, 2.0);
-  shieldLight.position.set(0, 0, 0.15);
-  shieldPivot.add(shieldLight);
-
-  // 3. 3D Gold "HEFIN" Wordmark
+  // D. 3D Bold Gold "HEFIN" Wordmark directly below the shield tip, angled up to camera
   const wordmark = createWordmarkGroup(materials.gold);
-  wordmark.position.set(0, 1.05, 1.95);
-  wordmark.rotation.x = -0.15;
-  group.add(wordmark);
+  wordmark.position.set(0, -2.33, 0.25);
+  wordmark.rotation.x = -0.22; // tilted up towards elevated camera lens
+  shieldPivot.add(wordmark);
 
-  // 4. Glowing Golden Orbit Ring around shield
+  // 3. Glowing Golden Orbit Ring around shield
   const orbitGroup = new T.Group();
-  orbitGroup.position.set(0, 2.75, 0);
+  orbitGroup.position.set(0, 3.05, 0);
   orbitGroup.rotation.set(0.42, 0, 0.28);
   group.add(orbitGroup);
 
@@ -516,7 +683,7 @@ export function createCenterpiece(materials: {
     metalness: 0.8,
     roughness: 0.32,
   });
-  const orbitTorus = new T.Mesh(new T.TorusGeometry(2.35, 0.032, 12, 96), orbitMat);
+  const orbitTorus = new T.Mesh(new T.TorusGeometry(2.55, 0.032, 12, 96), orbitMat);
   orbitGroup.add(orbitTorus);
 
   // Golden particle trail around the ring
@@ -524,10 +691,10 @@ export function createCenterpiece(materials: {
   const positions = new Float32Array(particleCount * 3);
   for (let i = 0; i < particleCount; i++) {
     const a = (i / particleCount) * Math.PI * 2;
-    const r = 2.35 + (Math.sin(i * 5) * 0.06);
+    const r = 2.55 + Math.sin(i * 5) * 0.06;
     positions[i * 3] = Math.cos(a) * r;
     positions[i * 3 + 1] = Math.sin(a) * r;
-    positions[i * 3 + 2] = (Math.cos(i * 3) * 0.08);
+    positions[i * 3 + 2] = Math.cos(i * 3) * 0.08;
   }
   const particleGeom = new T.BufferGeometry();
   particleGeom.setAttribute('position', new T.BufferAttribute(positions, 3));
@@ -544,7 +711,6 @@ export function createCenterpiece(materials: {
     group,
     update(t: number) {
       orbitGroup.rotation.z = 0.28 + t * 0.45;
-      shieldLight.intensity = 0.35 + Math.sin(t * 1.5) * 0.04;
     },
   };
 }

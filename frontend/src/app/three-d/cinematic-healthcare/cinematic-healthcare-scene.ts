@@ -99,6 +99,9 @@ export class CinematicHealthcareScene {
   orbit(value: number) {
     this.controller?.orbit(value);
   }
+  orbitPitch(value: number) {
+    this.controller?.orbitPitch(value);
+  }
   failed = signal(false);
   private onMotion = () => {
     this.reduced.set(this.motion?.matches ?? false);

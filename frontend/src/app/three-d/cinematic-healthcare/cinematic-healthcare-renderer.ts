@@ -26,6 +26,7 @@ export interface SceneController {
   setPaused(v: boolean): void;
   setMode(v: BrainMode): void;
   orbit(v: number): void;
+  orbitPitch(v: number): void;
   reset(): void;
   dispose(): void;
 }
@@ -155,13 +156,13 @@ export async function createHealthcareScene(
   canvas.setAttribute('aria-hidden', 'true');
 
   const camera = new T.PerspectiveCamera(35, 1, 0.1, 150);
-  const focus = new T.Vector3(0, 1.9, 0.8);
+  const focus = new T.Vector3(0, 2.1, 0.2);
   // Isometric perspective angle
   const direction = new T.Vector3(0, 10.5, 23);
   let distance = 28;
 
   // Framing box bounding all 5 peripheral nodes and the central shield
-  const fitBox = new T.Box3(new T.Vector3(-8.2, -0.4, -5.6), new T.Vector3(8.2, 6.2, 7.6));
+  const fitBox = new T.Box3(new T.Vector3(-8.2, -0.4, -7.8), new T.Vector3(8.2, 6.2, 5.2));
   const corners = boxCorners(fitBox);
   const baseCamera = new T.Vector3();
   const orbitPosition = new T.Vector3();
@@ -268,12 +269,12 @@ export async function createHealthcareScene(
   });
   scene.add(centerpiece.group);
 
-  // 2. Peripheral Node Positions (5-node balanced network arrangement matching reference)
-  const nodeA_pos = new T.Vector3(-5.3, 0, -3.2); // Node A: Hospital (Top-Left)
-  const nodeB_pos = new T.Vector3(5.3, 0, -3.2);  // Node B: Intelligence Cloud (Top-Right)
-  const nodeC_pos = new T.Vector3(-5.6, 0, 1.8);  // Node C: Financial Confidence (Mid/Bottom-Left)
-  const nodeD_pos = new T.Vector3(0, 0, 5.2);     // Node D: Verified Document (Bottom-Center)
-  const nodeE_pos = new T.Vector3(5.6, 0, 1.8);   // Node E: Connected Care Clinic (Mid/Bottom-Right)
+  // 2. Peripheral Node Positions (5-node balanced network arrangement with clear front corridor)
+  const nodeA_pos = new T.Vector3(-5.6, 0, -1.8); // Node A: Hospital (Mid-Left)
+  const nodeB_pos = new T.Vector3(5.6, 0, -1.8);  // Node B: Intelligence Cloud (Mid-Right)
+  const nodeC_pos = new T.Vector3(-4.8, 0, 2.5);  // Node C: Financial Confidence (Front-Left)
+  const nodeD_pos = new T.Vector3(0, 0, -5.6);     // Node D: Verified Document (Back-Center)
+  const nodeE_pos = new T.Vector3(4.8, 0, 2.5);   // Node E: Connected Care Clinic (Front-Right)
 
   // Node A: Hospital Node
   const hospitalNode = createHospitalNode(hospital, { cyanNeon, darkMetal, gold: goldPhysical });
@@ -387,8 +388,8 @@ export async function createHealthcareScene(
   function move(e: PointerEvent) {
     if (!drag) return;
     idleTimer = performance.now();
-    yaw = T.MathUtils.clamp(downYaw + (e.clientX - downX) * 0.0018, -0.32, 0.32);
-    pitch = T.MathUtils.clamp(downPitch + (e.clientY - downY) * 0.0008, -0.15, 0.15);
+    yaw = downYaw + (e.clientX - downX) * 0.005;
+    pitch = T.MathUtils.clamp(downPitch + (e.clientY - downY) * 0.003, -0.20, 0.65);
     updateCamera();
     draw();
   }
@@ -559,11 +560,11 @@ export async function createHealthcareScene(
 
     // Node accent point lights (gentle localized radiance, no floor glare)
     const nodeLights = [
-      { pos: new T.Vector3(-5.3, 1.2, -3.2), col: 0x00e5ff, intensity: 0.35 },
-      { pos: new T.Vector3(5.3, 1.2, -3.2), col: 0x38bdf8, intensity: 0.35 },
-      { pos: new T.Vector3(-5.6, 1.2, 1.8), col: 0xf59e0b, intensity: 0.3 },
-      { pos: new T.Vector3(0, 1.0, 4.4), col: 0x0284c7, intensity: 0.15 },
-      { pos: new T.Vector3(5.6, 1.2, 1.8), col: 0x00e5ff, intensity: 0.3 },
+      { pos: new T.Vector3(-5.6, 1.2, -1.8), col: 0x00e5ff, intensity: 0.35 },
+      { pos: new T.Vector3(5.6, 1.2, -1.8), col: 0x38bdf8, intensity: 0.35 },
+      { pos: new T.Vector3(-4.8, 1.2, 2.5), col: 0xf59e0b, intensity: 0.3 },
+      { pos: new T.Vector3(0, 1.2, -5.6), col: 0x0284c7, intensity: 0.25 },
+      { pos: new T.Vector3(4.8, 1.2, 2.5), col: 0x00e5ff, intensity: 0.3 },
     ];
     for (const nl of nodeLights) {
       const pLight = new T.PointLight(nl.col, nl.intensity, 4, 2.0);
@@ -616,7 +617,7 @@ export async function createHealthcareScene(
     throw err;
   }
 
-  return {
+  const controller: SceneController = {
     setVisible(v: boolean) {
       visible = v;
       visibility();
@@ -630,7 +631,13 @@ export async function createHealthcareScene(
       applyMode(v);
     },
     orbit(v: number) {
-      yaw = T.MathUtils.clamp(yaw + v * 0.08, -0.32, 0.32);
+      yaw += v * 0.28;
+      idleTimer = performance.now();
+      updateCamera();
+      draw();
+    },
+    orbitPitch(v: number) {
+      pitch = T.MathUtils.clamp(pitch + v * 0.15, -0.20, 0.65);
       idleTimer = performance.now();
       updateCamera();
       draw();
@@ -648,4 +655,11 @@ export async function createHealthcareScene(
     },
     dispose,
   };
+
+  (canvas as any).__sceneController = controller;
+  if (typeof window !== 'undefined') {
+    (window as any).__hefinSceneController = controller;
+  }
+
+  return controller;
 }

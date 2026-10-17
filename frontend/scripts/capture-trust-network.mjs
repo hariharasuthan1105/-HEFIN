@@ -16,47 +16,58 @@ async function main() {
     Object.defineProperty(navigator, 'connection', { get: () => ({ saveData: false }) });
   });
 
-  console.log('Navigating to http://127.0.0.1:4201/...');
-  await page.goto('http://127.0.0.1:4201/');
+  const port = process.env.PORT || 4201;
+  console.log(`Navigating to http://127.0.0.1:${port}/...`);
+  await page.goto(`http://127.0.0.1:${port}/`);
   const scene = page.locator('.cinematic-experience');
   await scene.scrollIntoViewIfNeeded();
   await scene.waitFor({ state: 'visible' });
   await page.waitForSelector('canvas.cinematic-canvas', { timeout: 30000 });
   await page.waitForTimeout(1500); // Allow render to stabilize
 
+  // Pause motion so all perspective captures are perfectly still and crisp
+  const pauseBtn = scene.getByRole('button', { name: 'Pause motion' });
+  if (await pauseBtn.isVisible()) {
+    await pauseBtn.click();
+    await page.waitForTimeout(300);
+  }
+
   const canvas = page.locator('canvas.cinematic-canvas');
   const box = await canvas.boundingBox();
 
-  // 1. Front Perspective (Default Center)
+  // 1. Front Perspective (Default Center looking directly at shield & wordmark)
   console.log('Capturing front view...');
   await scene.getByRole('button', { name: 'Reset view' }).click();
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(600);
   await scene.screenshot({ path: path.join(docsDir, 'trust-network-front.png') });
 
-  // 2. Isometric Perspective (Orbit Right 1 click)
+  // 2. Isometric Perspective (Orbit Right 2 steps ~ 32 degrees)
   console.log('Capturing isometric view...');
   await scene.getByRole('button', { name: 'Orbit right' }).click();
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(200);
+  await scene.getByRole('button', { name: 'Orbit right' }).click();
+  await page.waitForTimeout(600);
   await scene.screenshot({ path: path.join(docsDir, 'trust-network-isometric.png') });
 
-  // 3. Side Perspective (Orbit Right 2 more clicks)
+  // 3. Side Perspective (Orbit Right 3 more steps ~ 80 degrees)
   console.log('Capturing side view...');
   await scene.getByRole('button', { name: 'Orbit right' }).click();
+  await page.waitForTimeout(200);
   await scene.getByRole('button', { name: 'Orbit right' }).click();
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(200);
+  await scene.getByRole('button', { name: 'Orbit right' }).click();
+  await page.waitForTimeout(600);
   await scene.screenshot({ path: path.join(docsDir, 'trust-network-side.png') });
 
-  // 4. Top / High-angle Perspective (Drag down on canvas)
+  // 4. Top / High-angle Perspective (Elevate camera to high overhead perspective)
   console.log('Capturing top perspective...');
   await scene.getByRole('button', { name: 'Reset view' }).click();
   await page.waitForTimeout(400);
-  if (box) {
-    await page.mouse.move(box.x + box.width / 2, box.y + box.height * 0.35);
-    await page.mouse.down();
-    await page.mouse.move(box.x + box.width / 2, box.y + box.height * 0.75, { steps: 10 });
-    await page.mouse.up();
-    await page.waitForTimeout(600);
-  }
+  await page.evaluate(() => {
+    const c = window.__hefinSceneController;
+    if (c?.orbitPitch) c.orbitPitch(3.2);
+  });
+  await page.waitForTimeout(600);
   await scene.screenshot({ path: path.join(docsDir, 'trust-network-top.png') });
 
   // Reset view
@@ -71,6 +82,11 @@ async function main() {
   if (await exploreBtn.isVisible()) {
     await exploreBtn.click();
     await page.waitForTimeout(1500);
+  }
+  const mobilePause = scene.getByRole('button', { name: 'Pause motion' });
+  if (await mobilePause.isVisible()) {
+    await mobilePause.click();
+    await page.waitForTimeout(300);
   }
   await scene.screenshot({ path: path.join(docsDir, 'trust-network-mobile-390.png') });
 

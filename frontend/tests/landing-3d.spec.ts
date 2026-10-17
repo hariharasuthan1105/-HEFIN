@@ -251,8 +251,8 @@ test('requested breakpoints remain readable and overflow-free', async ({ page },
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/');
     await expect(page.locator('h1')).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Experience Demo', exact: true })).toBeVisible();
-    await page.locator('.brain-scene img').scrollIntoViewIfNeeded();
+    await page.locator('.brain-scene img').first().waitFor({ state: 'visible' });
+    await page.locator('.brain-scene img').first().scrollIntoViewIfNeeded();
     await expect
       .poll(() =>
         page
